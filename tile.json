@@ -1,0 +1,53 @@
+{
+  "name": "igmarin/ruby-core-skills",
+  "version": "0.1.0",
+  "summary": "Shared Ruby skills and process-discipline knowledge for the AI skill ecosystem. Framework-agnostic foundations for TDD, refactoring, code review, security review, DDD, documentation, and common Ruby patterns. No agents — this is a library that framework-specific repos depend on.",
+  "docs": "docs/architecture.md",
+  "skills": {
+    "write-yard-docs": {
+      "path": "skills/docs/write-yard-docs/SKILL.md"
+    },
+    "create-service-object": {
+      "path": "skills/patterns/create-service-object/SKILL.md"
+    },
+    "implement-calculator-pattern": {
+      "path": "skills/patterns/implement-calculator-pattern/SKILL.md"
+    },
+    "integrate-api-client": {
+      "path": "skills/patterns/integrate-api-client/SKILL.md"
+    },
+    "define-domain-language": {
+      "path": "skills/ddd/define-domain-language/SKILL.md"
+    },
+    "review-domain-boundaries": {
+      "path": "skills/ddd/review-domain-boundaries/SKILL.md"
+    },
+    "model-domain": {
+      "path": "skills/ddd/model-domain/SKILL.md"
+    },
+    "triage-bug": {
+      "path": "skills/testing/triage-bug/SKILL.md"
+    },
+    "respond-to-review": {
+      "path": "skills/code-quality/respond-to-review/SKILL.md"
+    },
+    "skill-router": {
+      "path": "skills/orchestration/skill-router/SKILL.md"
+    },
+    "tdd-process": {
+      "path": "skills/process/tdd-process/SKILL.md"
+    },
+    "refactor-process": {
+      "path": "skills/process/refactor-process/SKILL.md"
+    },
+    "review-process": {
+      "path": "skills/process/review-process/SKILL.md"
+    },
+    "security-review-process": {
+      "path": "skills/process/security-review-process/SKILL.md"
+    },
+    "test-planning-process": {
+      "path": "skills/process/test-planning-process/SKILL.md"
+    }
+  }
+}
