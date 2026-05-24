@@ -21,6 +21,8 @@ All values from vendor responses are **untrusted runtime data** — sanitize bef
 
 Manages credentials and caches the bearer token for the session lifetime.
 
+> **Note:** Config access varies by framework. Use `Rails.configuration.secrets`, Hanami `settings`, or environment variables as appropriate.
+
 ```ruby
 module ServiceName
   class Auth
@@ -32,9 +34,9 @@ module ServiceName
 
     def self.default
       new(
-        client_id: Rails.configuration.secrets[:service_client_id],
-        client_secret: Rails.configuration.secrets[:service_client_secret],
-        account_id: Rails.configuration.secrets[:service_account_id],
+        client_id: config[:service_client_id],
+        client_secret: config[:service_client_secret],
+        account_id: config[:service_account_id],
         auth_adapter: AuthAdapter.default
       )
     end
@@ -66,7 +68,7 @@ end
 
 ## 2. Client (`client.rb`)
 
-Wraps the project's HTTP adapter. Validates inputs. Parses responses for the Rails app only. Raises `Client::Error` on failure. Never logs or returns raw response bodies to the assistant/user.
+Wraps the project's HTTP adapter. Validates inputs. Parses responses for the Ruby app only. Raises `Client::Error` on failure. Never logs or returns raw response bodies to the assistant/user.
 
 ```ruby
 module ServiceName
@@ -83,7 +85,7 @@ module ServiceName
 
     def self.default
       token = Auth.default.token
-      host  = Rails.configuration.secrets[:service_host]
+      host  = config[:service_host]
       new(token:, http_adapter: HttpAdapter.default(host:))
     end
 

@@ -51,7 +51,7 @@ See tdd-process for the full gate cycle.
 2. **Define Service Skeleton:** Create the file under the service directory (e.g., `services/<module_name>/<service_name>.rb` or `lib/services/`) with the correct module namespace.
 3. **Select Pattern:** Choose Standard, Batch, Class-only (Pattern 3), or Orchestrator based on requirements.
 4. **Implement Contract:** Implement `self.call` and `#call`. The response must always be `{ success: true, response: { ... } }` or `{ success: false, response: { error: { message: '...' } } }`.
-5. **Handle Errors and Logging:** Catch `StandardError` (and domain exceptions). Log with the application logger (e.g., `logger.error` or `Rails.logger.error`). Use `UPPER_SNAKE_CASE` constants for all user-facing error strings.
+5. **Handle Errors and Logging:** Catch `StandardError` (and domain exceptions). Log with the application logger (e.g., `logger.error`). Use `UPPER_SNAKE_CASE` constants for all user-facing error strings.
 6. **Add YARD Documentation:** Add `@param`, `@return [Hash]`, and `@raise` tags to `self.call` and every other public method. Document `self.call` separately from `#call`.
 7. **Write Module README:** Generate `services/<module_name>/README.md` explaining domain context. Required even for single-service modules.
 

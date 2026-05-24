@@ -30,7 +30,7 @@ results = items.each_with_object({ successful: [], failed: [] }) do |item, acc|
   process_item(item)
   acc[:successful] << item[:sku]
 rescue StandardError => e
-  Rails.logger.error("Item error: #{e.message}")
+  logger.error("Item error: #{e.message}")
   acc[:failed] << { sku: item[:sku], error: e.message }
 end
 { success: true, response: results }
