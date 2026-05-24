@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe 'Bug reproduction: Pricing::Calculator', type: :model do
   it 'reproduces total calculation mismatch (failing example)' do
