@@ -1,0 +1,19 @@
+# Tracked source for Tessl-native scenarios. The publish workflow flattens this
+# into root evals/ so every direct child is a runnable scenario.
+tessl-evals/
+
+# Local scratch output from validation and packaging checks.
+tmp/
+
+# Root-level files — not publishable skills.
+/SKILL.md
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md
+
+# Architecture docs — recursive content, not for tessl validation.
+docs/architecture/
+
+# Docs not yet written — skip recursive validation.
+docs/reference/
+docs/calling-skills.md

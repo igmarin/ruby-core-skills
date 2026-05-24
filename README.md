@@ -14,7 +14,7 @@ This repository is a core component of the multi-repo AI Skill Ecosystem:
 
 ### Dependency Direction
 
-```
+```text
                     ┌──────────────────┐
                     │ ruby-core-skills │
                     │ (process skills) │
@@ -34,6 +34,8 @@ This repository is a core component of the multi-repo AI Skill Ecosystem:
 ```
 
 Framework repos depend on core skills. `ruby-core-skills` does not know about any downstream frameworks.
+
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Figmarin%2Fruby-core-skills)](https://tessl.io/registry/igmarin/ruby-core-skills)
 
 ---
 
