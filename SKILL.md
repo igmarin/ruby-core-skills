@@ -28,11 +28,11 @@ This repository serves as the central library of framework-agnostic Ruby skills 
 
 Process-discipline skills encode universal software engineering principles. They contain zero framework-specific details and are meant to be referenced by framework agents to enforce engineering gates.
 
-- [tdd-process](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/process/tdd-process/SKILL.md): Standardizes the Red-Green-Refactor loop.
-- [refactor-process](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/process/refactor-process/SKILL.md): Guides safe code cleanups under tests.
-- [review-process](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/process/review-process/SKILL.md): Defines severity levels and structures feedback.
-- [security-review-process](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/process/security-review-process/SKILL.md): Focuses on general Ruby threat vectors.
-- [test-planning-process](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/process/test-planning-process/SKILL.md): Decision grid for test scopes and cases.
+- [tdd-process](./skills/process/tdd-process/SKILL.md): Standardizes the Red-Green-Refactor loop.
+- [refactor-process](./skills/process/refactor-process/SKILL.md): Guides safe code cleanups under tests.
+- [review-process](./skills/process/review-process/SKILL.md): Defines severity levels and structures feedback.
+- [security-review-process](./skills/process/security-review-process/SKILL.md): Focuses on general Ruby threat vectors.
+- [test-planning-process](./skills/process/test-planning-process/SKILL.md): Decision grid for test scopes and cases.
 
 ## 2. Atomic Skills (10)
 
