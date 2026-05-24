@@ -1,0 +1,37 @@
+{
+  "mappings": [
+    {"intent": "triage bug", "skill": "triage-bug", "path": "skills/testing/triage-bug/SKILL.md", "examples": ["Triage a NoMethodError", "Debug why calculation fails at midnight"]},
+    {"intent": "test planning", "skill": "test-planning-process", "path": "skills/process/test-planning-process/SKILL.md", "examples": ["Choose first failing test for authentication flow", "Where do I start testing this feature?"]},
+    {"intent": "TDD process", "skill": "tdd-process", "path": "skills/process/tdd-process/SKILL.md", "examples": ["Execute TDD loop", "How to write failing test before implementation"]},
+    {"intent": "code review process", "skill": "review-process", "path": "skills/process/review-process/SKILL.md", "examples": ["Review changesets for logic and structure", "How to taxonomy review comments"]},
+    {"intent": "refactor process", "skill": "refactor-process", "path": "skills/process/refactor-process/SKILL.md", "examples": ["Refactor code safely under characterization tests"]},
+    {"intent": "security review process", "skill": "security-review-process", "path": "skills/process/security-review-process/SKILL.md", "examples": ["Review code for security vulnerabilities", "Does this have proper validation?"]},
+    {"intent": "respond to review", "skill": "respond-to-review", "path": "skills/code-quality/respond-to-review/SKILL.md", "examples": ["Address these review comments", "Respond to PR feedback"]},
+    {"intent": "service object", "skill": "create-service-object", "path": "skills/patterns/create-service-object/SKILL.md", "examples": ["Implement a service class", "Extract this into a service"]},
+    {"intent": "strategy pattern", "skill": "implement-calculator-pattern", "path": "skills/patterns/implement-calculator-pattern/SKILL.md", "examples": ["Build a calculator with variant dispatch", "Factory pattern for pricing"]},
+    {"intent": "documentation", "skill": "write-yard-docs", "path": "skills/docs/write-yard-docs/SKILL.md", "examples": ["Add YARD docs to this module", "Document the public API"]},
+    {"intent": "domain language", "skill": "define-domain-language", "path": "skills/ddd/define-domain-language/SKILL.md", "examples": ["Define domain terms for invoicing", "What should we call this concept?"]},
+    {"intent": "bounded contexts", "skill": "review-domain-boundaries", "path": "skills/ddd/review-domain-boundaries/SKILL.md", "examples": ["Review context boundaries", "Check for language leakage across modules"]},
+    {"intent": "DDD modeling", "skill": "model-domain", "path": "skills/ddd/model-domain/SKILL.md", "examples": ["Map aggregates to domain classes", "Model this domain"]},
+    {"intent": "api client", "skill": "integrate-api-client", "path": "skills/patterns/integrate-api-client/SKILL.md", "examples": ["Integrate with Stripe API", "Build HTTP client for external service"]}
+  ],
+  "defaults": {
+    "test_gate": "skills/process/tdd-process",
+    "tdd_flow": ["skills/process/test-planning-process", "skills/process/tdd-process"],
+    "review_flow": ["skills/process/review-process", "skills/code-quality/respond-to-review"]
+  },
+  "disambiguation": {
+    "review_process_vs_boundaries": "Use review-domain-boundaries when auditing boundaries between subsystems; use review-process when doing a standard code review of a specific changeset.",
+    "test_planning_vs_tdd": "Use test-planning-process when mapping what scenarios and boundaries to test; use tdd-process to execute the Red-Green-Refactor loop."
+  },
+  "categories": {
+    "docs": "skills/docs/",
+    "code-quality": "skills/code-quality/",
+    "ddd": "skills/ddd/",
+    "orchestration": "skills/orchestration/",
+    "patterns": "skills/patterns/",
+    "testing": "skills/testing/",
+    "process": "skills/process/"
+  },
+  "agents": {}
+}
