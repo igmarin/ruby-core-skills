@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe 'Bug reproduction: Pricing::Calculator', type: :model do
+RSpec.describe 'Bug reproduction: Pricing::Calculator' do
   it 'reproduces total calculation mismatch (failing example)' do
     # Minimal failing assertion to serve as reproduction skeleton.
     # Replace with real setup when using this skeleton.
