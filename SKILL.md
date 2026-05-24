@@ -38,13 +38,13 @@ Process-discipline skills encode universal software engineering principles. They
 
 Atomic skills focus on concrete Ruby programming patterns, design patterns, and domain analysis techniques.
 
-- [write-yard-docs](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/docs/write-yard-docs/SKILL.md): Rules for API documentation.
-- [create-service-object](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/patterns/create-service-object/SKILL.md): Standardizes PORO service objects.
-- [implement-calculator-pattern](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/patterns/implement-calculator-pattern/SKILL.md): Implements Factory + Strategy.
-- [integrate-api-client](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/patterns/integrate-api-client/SKILL.md): Layered API clients.
-- [define-domain-language](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/ddd/define-domain-language/SKILL.md): Glossary and terms extraction.
-- [review-domain-boundaries](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/ddd/review-domain-boundaries/SKILL.md): Evaluates context leakage.
-- [model-domain](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/ddd/model-domain/SKILL.md): Identifies aggregates and invariants.
-- [triage-bug](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/testing/triage-bug/SKILL.md): Standardizes bug investigations.
-- [respond-to-review](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/code-quality/respond-to-review/SKILL.md): Process for receiving PR feedback.
-- [skill-router](file:///Users/igmarin/Developer/Personal/Projects/ruby-core-skills/skills/orchestration/skill-router/SKILL.md): Orchestrator entry point.
+- [write-yard-docs](./skills/docs/write-yard-docs/SKILL.md): Rules for API documentation.
+- [create-service-object](./skills/patterns/create-service-object/SKILL.md): Standardizes PORO service objects.
+- [implement-calculator-pattern](./skills/patterns/implement-calculator-pattern/SKILL.md): Implements Factory + Strategy.
+- [integrate-api-client](./skills/patterns/integrate-api-client/SKILL.md): Layered API clients.
+- [define-domain-language](./skills/ddd/define-domain-language/SKILL.md): Glossary and terms extraction.
+- [review-domain-boundaries](./skills/ddd/review-domain-boundaries/SKILL.md): Evaluates context leakage.
+- [model-domain](./skills/ddd/model-domain/SKILL.md): Identifies aggregates and invariants.
+- [triage-bug](./skills/testing/triage-bug/SKILL.md): Standardizes bug investigations.
+- [respond-to-review](./skills/code-quality/respond-to-review/SKILL.md): Process for receiving PR feedback.
+- [skill-router](./skills/orchestration/skill-router/SKILL.md): Orchestrator entry point.
