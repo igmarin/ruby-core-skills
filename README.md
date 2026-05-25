@@ -1,4 +1,5 @@
 # AI Skill Ecosystem — Ruby Core Skills
+![Ruby Core Skills](https://github.com/user-attachments/assets/7280d783-c803-43dd-9a6c-3d382a1669aa)
 
 Shared Ruby development skills and process-discipline knowledge for the AI skill ecosystem. This repository contains framework-agnostic foundations for TDD, refactoring, code review, security review, DDD, inline documentation, and common Ruby design patterns.
 
@@ -33,7 +34,21 @@ flowchart BT
 
 Framework repos depend on core skills. `ruby-core-skills` does not know about any downstream frameworks.
 
-[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Figmarin%2Fruby-core-skills)](https://tessl.io/registry/igmarin/ruby-core-skills)
+
+> Supported agent environments
+>
+> [![ChatGPT](https://custom-icon-badges.demolab.com/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#)
+> [![Claude](https://img.shields.io/badge/Claude-D97757?logo=claude&logoColor=fff)](#)
+> [![Cursor](https://img.shields.io/badge/Cursor-000000?logo=cursor)](#)
+> [![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-000?logo=githubcopilot&logoColor=fff)](#)
+> [![Google Gemini](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff)](#)
+> [![OpenCode](https://img.shields.io/badge/OpenCode-4285F4?style=for-the-badge&logoColor=white)](#)
+> [![Windsurf](https://img.shields.io/badge/Windsurf-0B100F?logo=windsurf&logoColor=fff)](#)
+>
+> [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/igmarin/agnostic-planning-skills/pulls)
+> [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+> ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/igmarin/ruby-core-skills?utm_source=oss&utm_medium=github&utm_campaign=igmarin%2Fruby-core-skills&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+> [![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Figmarin%2Fruby-core-skills)](https://tessl.io/registry/igmarin/ruby-core-skills)
 
 ---
 
