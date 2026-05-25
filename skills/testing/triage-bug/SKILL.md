@@ -33,21 +33,42 @@ DO NOT guess at fixes without a reproduction path.
 
 ## Core Process
 
-1. **Capture the report:** Restate the expected behavior, actual behavior, and reproduction steps.
-2. **Bound the scope:** Identify whether the issue appears in request handling, domain logic, background workers, integration boundaries, or an external dependency.
-3. **Gather current evidence:** Logs, error messages, edge-case inputs, recent changes, or missing guards.
-4. **Choose the first failing test:** Pick the boundary where the bug is visible to users or operators.
-5. **Define the smallest fix path:** Name the likely files and the narrowest behavior change that should make the test pass.
-6. **Hand off:** Continue through `test-planning-process` -> `tdd-process` -> implementation skill.
+Work through each step in order. The final triage output must include all seven named outputs below.
+
+1. **Capture the report** → **Observed behavior** and **Expected behavior**: restate actual behavior, expected behavior, and reproduction steps.
+2. **Bound the scope** → **Likely boundary**: identify whether the issue is in request handling, domain logic, background workers, integration boundaries, or an external dependency.
+3. **Gather current evidence**: logs, error messages, edge-case inputs, recent changes, or missing guards.
+4. **Choose the first failing test** → **First failing test to add** and **Exact command to run before the fix**: pick the boundary where the bug is visible to users or operators.
+5. **Define the smallest fix path** → **Smallest safe fix path**: name the likely files and the narrowest behavior change needed to make the test pass.
+6. **Produce a skeleton test** → **Skeleton test**: provide a failing test/spec to run before implementing the fix (see canonical example below).
+7. **Hand off** → **Follow-up skills**: continue through `test-planning-process` → `tdd-process` → implementation skill.
+
+*Language: Must be in English unless explicitly requested otherwise.*
 
 ### Canonical Request-Boundary Example
 
-When the report is an order creation failure visible through an API request `POST /orders`, default to the request boundary first:
+When the report is an order creation failure visible through `POST /orders`, default to the request boundary first:
 
 - **First failing test:** `spec/requests/orders_spec.rb` (or `test/integration/orders_test.rb`)
 - **Command:** `bundle exec rspec spec/requests/orders_spec.rb` (or `bundle exec ruby test/integration/orders_test.rb`)
 - **Expected RED:** response is not `422` with `"Out of stock"` yet, or the service raises instead of returning a handled error.
 - **Smallest fix path:** `Orders::CreateOrder` handles the stock guard and returns `{ success: false, error: "Out of stock" }` without creating the order.
+- **Skeleton test:**
+  ```ruby
+  # spec/requests/orders_spec.rb
+  RSpec.describe "POST /orders" do
+    context "when product is out of stock" do
+      let(:product) { Product.new(stock: 0) }
+
+      it "returns 422 with an error message" do
+        post "/orders", params: { product_id: product.id, quantity: 1 }
+        expect(response.status).to eq(422)
+        expect(response.body).to include("Out of stock")
+      end
+    end
+  end
+  ```
+  *For a Minitest equivalent, see [assets/examples.md](assets/examples.md).*
 
 Do not replace this with a pricing, model-only, or class-only example unless the bug report points there.
 
@@ -68,46 +89,6 @@ See [BOUNDARY_GUIDE.md](./BOUNDARY_GUIDE.md) for the full bug-shape → test-typ
 
 - [BOUNDARY_GUIDE.md](./BOUNDARY_GUIDE.md)
 - [assets/examples.md](assets/examples.md)
-
-## Output Style
-
-1. **Triage shape**:
-   - **Observed behavior**
-   - **Expected behavior**
-   - **Likely boundary**
-   - **First failing test to add**
-   - **Smallest safe fix path**
-   - **Follow-up skills**
-   - **Exact command to run before the fix**
-2. **Skeleton test**: Provide a skeleton failing test/spec to run before implementing the fix.
-   *Example using RSpec:*
-   ```ruby
-   # spec/requests/orders_spec.rb
-   RSpec.describe "POST /orders" do
-     context "when product is out of stock" do
-       let(:product) { Product.new(stock: 0) }
-
-       it "returns 422 with an error message" do
-         post "/orders", params: { product_id: product.id, quantity: 1 }
-         expect(response.status).to eq(422)
-         expect(response.body).to include("Out of stock")
-       end
-     end
-   end
-   ```
-   *Example using Minitest:*
-   ```ruby
-   # test/integration/orders_test.rb
-   class OrdersTest < Minitest::Test
-     def test_order_creation_out_of_stock
-       product = Product.new(stock: 0)
-       post "/orders", { product_id: product.id, quantity: 1 }
-       assert_equal 422, response.status
-       assert_includes response.body, "Out of stock"
-     end
-   end
-   ```
-3. **Language**: Must be in English unless explicitly requested otherwise.
 
 ## Integration
 

@@ -2,9 +2,11 @@
 name: tdd-process
 license: MIT
 description: >
-  Enforces the universal Red-Green-Refactor process. Ensures failing tests exist
-  and are run before writing any implementation code. Trigger words: TDD, Red-Green-Refactor,
-  test-first, write tests first, test gate.
+  Enforces the universal Red-Green-Refactor process for test-driven development. Generates
+  failing test cases, validates test failure before proceeding, gates implementation code
+  behind passing red-phase checks, and guides refactoring only after tests are green.
+  Use when the user requests TDD workflow, asks to write tests first, mentions
+  Red-Green-Refactor methodology, or uses trigger words: TDD, test-first, test gate.
 metadata:
   version: 1.0.0
   user-invocable: "true"
@@ -13,14 +15,6 @@ metadata:
 # TDD Process
 
 A standardized, tool-agnostic framework for executing the Red-Green-Refactor loop.
-
-## Quick Reference
-
-| Phase | Core Rule | Checkpoint |
-|-------|-----------|------------|
-| **1. Red** | Write a test that fails for the correct reason | Pause to review the test design |
-| **2. Green** | Write the minimum code required to make the test pass | Pause if implementation requires design choices |
-| **3. Refactor** | Clean up code while keeping tests green | Run tests after every small cleanup step |
 
 ## HARD-GATE
 
@@ -40,12 +34,13 @@ NO implementation code may be written until a failing test exists and has been e
 - Identify the smallest logical chunk of behavior to implement.
 - Write a failing test asserting this behavior.
 - Run the test suite on that specific file.
-- **Verify the Failure:** Ensure it fails exactly on the assertion you wrote, proving the test is checking the right thing.
+- **Verify the Failure:** Ensure it fails exactly on the assertion you wrote, proving the test is checking the right thing. A syntax error in the test file is not a valid RED state.
+- **Test Design Checkpoint:** Present the test file/code and the test failure output to the user before starting implementation.
 
 ### Step 2: Implement (Green Phase)
 - Write the simplest, most direct code to make the test pass.
-- Do not add extra features, optimize performance, or write YARD docs yet.
 - Run the test file. Once it is Green, proceed to Refactoring.
+- **Implementation Checkpoint:** Present the minimal code implemented to pass the tests.
 
 ### Step 3: Refactor (Refactor Phase)
 - Clean up duplication, naming, class structures, and documentation (e.g., YARD docs).
@@ -54,19 +49,11 @@ NO implementation code may be written until a failing test exists and has been e
 
 ---
 
-## Checkpoint Pattern
+## Framework Example
 
-To ensure alignment, pause and present findings to the user at these key checkpoints:
-1. **Test Design Checkpoint:** After writing the failing test(s) but before starting implementation. Present the test file/code and the test failure output.
-2. **Implementation Checkpoint:** Once the tests turn Green. Present the minimal code implemented to pass the tests.
+Below is a standard pattern using RSpec.
 
----
-
-## RSpec and Minitest Examples
-
-Below are standard patterns for both testing frameworks.
-
-### Example A: RSpec
+### RSpec
 **Failing Test (RED):**
 ```ruby
 # spec/user_spec.rb
@@ -102,42 +89,7 @@ class User
 end
 ```
 
-### Example B: Minitest
-**Failing Test (RED):**
-```ruby
-# test/user_test.rb
-require "minitest/autorun"
-require_relative "../lib/user"
-
-class UserTest < Minitest::Test
-  def test_full_name
-    user = User.new(first_name: "Ada", last_name: "Lovelace")
-    assert_equal "Ada Lovelace", user.full_name
-  end
-end
-```
-*Failure command & output:*
-```bash
-$ bundle exec ruby test/user_test.rb
-...
-NoMethodError: undefined method `full_name' for #<User:0x00007f...>
-1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
-```
-
-**Minimal Implementation (GREEN):**
-Same implementation class as above. Running again results in:
-```bash
-$ bundle exec ruby test/user_test.rb
-1 runs, 1 assertions, 0 failures, 0 errors, 0 skips
-```
-
 ---
-
-## Anti-Patterns
-
-- **Blind Implementation:** Writing logic first, then writing tests that "prove" it works. This risks coding incorrect behavior or writing un-testable code.
-- **Unverified Failure:** Assuming a test fails correctly without running it. A syntax error in the test file is not a valid RED state.
-- **Premature Optimization:** Refactoring or writing complex helper utilities during the Green phase. Keep it minimal first.
 
 ## Integration
 

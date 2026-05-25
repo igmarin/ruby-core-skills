@@ -12,8 +12,6 @@ metadata:
 ---
 # Test Planning Process
 
-A standardized, framework-agnostic process for planning what test cases to write and determining test boundaries before coding.
-
 ## Quick Reference
 
 | Dimension | Rule |
@@ -72,7 +70,7 @@ Align with the user:
 ### 2. Test Case Matrix:
 
 | Scenario | Input Category | Expected Result |
-|----------|----------------|-----------------|
+|----------|----------------|------------------|
 | Valid registration | Happy Path | `201 Created` with User ID |
 | Duplicate email | Edge Case | `422 Unprocessable` with message |
 | Nil/Empty email | Boundary Case | `422 Unprocessable` with validation error |
@@ -81,17 +79,42 @@ Align with the user:
 ### 3. First Failing Test:
 `POST /register` with valid registration returns `201 Created`. (Fails currently with `404 Not Found` or `NoMethodError`).
 
+```ruby
+RSpec.describe "POST /register", type: :request do
+  it "returns 201 Created with a user ID for a valid registration" do
+    post "/register", params: {
+      email: "alice@example.com",
+      password: "S3cur3P@ss"
+    }, as: :json
+
+    expect(response).to have_http_status(:created)
+    expect(JSON.parse(response.body)).to include("id")
+  end
+end
+```
+
+> This test will fail (Red) until the route, controller action, and user-creation logic are implemented.
+
+### 4. Isolation — DB Timeout (Error Path):
+
+Stub the repository layer before the request so no real database call is made. Replace `UserRepository` and the raised exception class with whatever persistence layer your project uses:
+
+```ruby
+allow(UserRepository).to receive(:create!)
+  .and_raise(ActiveRecord::StatementTimeout)
+```
+
 ---
 
 ## Anti-Patterns
 
-- **Coverage Blindness:** Writing tests only for the happy path and ignoring error/edge cases.
-- **Low-Value Testing:** Writing hundreds of low-level unit tests for simple getter/setter methods while having zero integration tests verifying that the components actually work together.
-- **Shared State Leaks:** Allowing tests to write to a shared database or system file without cleaning up, causing subsequent tests to fail randomly.
+- **Coverage Blindness:** Happy-path-only tests with no error/edge cases.
+- **Low-Value Testing:** Hundreds of unit tests for trivial methods with zero integration coverage.
+- **Shared State Leaks:** Tests that write to a shared database or file without cleanup.
 
 ## Integration
 
 | Context | Next Skill |
-|---------|-----------|
+|---------|----------|
 | Writing the failing test | **tdd-process** |
 | General design modeling | **model-domain** |
