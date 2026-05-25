@@ -11,7 +11,8 @@ tmp/
 /CLAUDE.md
 /GEMINI.md
 
-# Architecture docs — recursive content, not for tessl validation.
+# Architecture docs — not for tessl validation.
+docs/architecture.md
 docs/architecture/
 
 # Docs not yet written — skip recursive validation.

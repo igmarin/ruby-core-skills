@@ -14,23 +14,21 @@ This repository is a core component of the multi-repo AI Skill Ecosystem:
 
 ### Dependency Direction
 
-```text
-                    ┌──────────────────┐
-                    │ ruby-core-skills │
-                    │ (process skills) │
-                    │ (atomic skills)  │
-                    └────────▲─────────┘
-                             │
-                    knows about │ (depends on)
-                             │
-              ┌──────────────┼──────────────┐
-              │              │              │
-     ┌────────┴──────┐ ┌────┴──────┐ ┌─────┴───────────┐
-     │rails-agent-    │ │hanakai-   │ │agnostic-        │
-     │skills          │ │yaku       │ │planning-skills  │
-     │(skills+agents) │ │(skills+   │ │(skills+agents)  │
-     └────────────────┘ │agents)    │ └─────────────────┘
-                        └───────────┘
+```mermaid
+flowchart BT
+    subgraph core["ruby-core-skills"]
+        direction LR
+        process["process skills"]
+        atomic["atomic skills"]
+    end
+
+    rails["rails-agent-skills<br/>(skills+agents)"]
+    hanakai["hanakai-yaku<br/>(skills+agents)"]
+    agnostic["agnostic-planning-skills<br/>(skills+agents)"]
+
+    rails --> core
+    hanakai --> core
+    agnostic --> core
 ```
 
 Framework repos depend on core skills. `ruby-core-skills` does not know about any downstream frameworks.

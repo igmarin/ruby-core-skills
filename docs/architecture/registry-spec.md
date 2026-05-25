@@ -90,7 +90,7 @@ The central registry manifest lives in `agent-mcp-runtime` (or a well-known remo
 
 ### 3.1 Detection Algorithm
 
-```
+```text
 1. If --pack flag(s) provided:
    → Use only explicit packs + their depends_on + default_stack
    → Log: "Pack selection: explicit (--pack rails). Skipping auto-detection."
@@ -164,7 +164,7 @@ Skills are resolved by searching packs in priority order. The first match wins.
 
 ### 4.1 Priority Stack (highest → lowest)
 
-```
+```text
 1. --registry ./local-path       (ad-hoc local override for development)
 2. Explicit --pack <framework>    (rails or hanami)
 3. ruby-core-skills              (always_loaded = true)
@@ -175,7 +175,7 @@ Skills are resolved by searching packs in priority order. The first match wins.
 ### 4.2 Resolution Examples
 
 **Scenario A: `--pack rails`**
-```
+```text
 "write-yard-docs"    → NOT in rails → FOUND in core → use core version
 "load-context"       → FOUND in rails → use Rails version (stop searching)
 "tdd-process"        → NOT in rails → FOUND in core → use core version
@@ -184,7 +184,7 @@ Skills are resolved by searching packs in priority order. The first match wins.
 ```
 
 **Scenario B: `--pack hanami`**
-```
+```text
 "write-yard-docs"    → NOT in hanami → FOUND in core → use core version
 "load-context"       → FOUND in hanami → use Hanami version (stop searching)
 "tdd-process"        → NOT in hanami → FOUND in core → use core version
@@ -193,7 +193,7 @@ Skills are resolved by searching packs in priority order. The first match wins.
 ```
 
 **Scenario C: No framework detected**
-```
+```text
 "write-yard-docs"    → FOUND in core → use core version
 "create-prd"         → NOT in core → FOUND in planning → use it
 "load-context"       → NOT in core → NOT in planning → ERROR: Skill not found
@@ -224,7 +224,7 @@ At startup, the runtime validates that every loaded pack's dependencies are sati
 ### 5.2 Circular Dependency Detection
 
 If `depends_on` chains form a cycle (e.g., core depends on rails, rails depends on core), the runtime logs an ERROR and exits:
-```
+```text
 "Circular dependency detected: core → rails → core. Check registry.json and tile.json files."
 ```
 

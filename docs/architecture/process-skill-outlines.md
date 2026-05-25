@@ -279,7 +279,7 @@ Decision framework for choosing what type of test to write and where. This skill
 
 **Example: Rails `tdd` agent workflow**
 
-```
+```text
 Phase 1: load-context (local)          → Rails schema, routes, patterns
 Phase 2: plan-tests (local)            → RSpec request/model/service selection
          test-planning-process (core)  → Ensure test type chosen with reasoning
@@ -293,7 +293,7 @@ Phase 5: write-yard-docs (core)         → Document public Ruby API
 
 **Example: Hanami `tdd-loop` agent workflow**
 
-```
+```text
 Phase 1: load-context (local)          → Slices, providers, routes
 Phase 2: plan-tests (local)            → Request/action/relation spec selection
          test-planning-process (core)  → Ensure test type chosen with reasoning

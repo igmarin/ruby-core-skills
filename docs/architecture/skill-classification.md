@@ -213,32 +213,29 @@ No changes. All 10 skills and 4 agents remain. This repo is already clean and ha
 
 ### 5.1 Repository Inventory
 
-| Repository | Skills (post) | Agents | `depends_on` |
-|------------|--------------|--------|--------------|
-| `ruby-core-skills` | 15 | 0 | — |
-| `rails-agent-skills` | 28 | 9 | `ruby-core-skills` |
-| `hanakai-yaku` | 35 | 10 | `ruby-core-skills` |
-| `agnostic-planning-skills` | 10 | 4 | — |
-| **Total** | **88** | **23** | |
+| Repository                 | Skills (post) | Agents | `depends_on`       |
+| ----------------------------| ---------------| --------| --------------------|
+| `ruby-core-skills`         | 15            | 0      | —                  |
+| `rails-agent-skills`       | 28            | 9      | `ruby-core-skills` |
+| `hanakai-yaku`             | 35            | 10     | `ruby-core-skills` |
+| `agnostic-planning-skills` | 10            | 4      | —                  |
+| **Total**                  | **88**        | **23** |                    |
 
 ### 5.2 Dependency Graph
 
-```
-                    ruby-core-skills
-                   (15 skills, 0 agents)
-                          |
-          ┌───────────────┴───────────────┐
-          |                               |
-  rails-agent-skills            hanakai-yaku
-  (28 skills, 9 agents)         (35 skills, 10 agents)
-          |                               |
-          └───────────────┬───────────────┘
-                          |
-            agnostic-planning-skills
-            (10 skills, 4 agents)
-                          |
-                    agent-mcp-runtime
-                   (pack resolution)
+```mermaid
+flowchart TB
+    core["ruby-core-skills<br/>(15 skills, 0 agents)"]
+    rails["rails-agent-skills<br/>(28 skills, 9 agents)"]
+    hanakai["hanakai-yaku<br/>(35 skills, 10 agents)"]
+    agnostic["agnostic-planning-skills<br/>(10 skills, 4 agents)"]
+    runtime["agent-mcp-runtime<br/>(pack resolution)"]
+
+    core --> rails
+    core --> hanakai
+    rails --> agnostic
+    hanakai --> agnostic
+    agnostic --> runtime
 ```
 
 ### 5.3 Naming Collisions Resolved

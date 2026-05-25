@@ -2,9 +2,7 @@
 name: review-process
 license: MIT
 description: >
-  Standardizes the code review process. Defines severity levels, structured
-  finding templates, self-review checklists, and re-review criteria.
-  Trigger words: code review, review PR, PR review, code audit, check code.
+  Reviews pull requests and code changesets using structured finding templates with severity levels (Critical/Major/Minor/Nitpick), generates self-review checklists for authors, produces findings reports, and determines re-review criteria. Use when the user requests a code review, asks to review a pull request, or needs a structured code audit with severity-classified findings. Trigger words: code review, review PR, PR review, code audit, structured review, severity levels.
 metadata:
   version: 1.0.0
   user-invocable: "true"
@@ -12,7 +10,7 @@ metadata:
 ---
 # Review Process
 
-A standardized, objective process for reviewing Ruby code changesets.
+Standardized code review process for Ruby code changesets.
 
 ## Quick Reference
 
@@ -40,18 +38,13 @@ REVIEW GATES:
 - Identify the changed files and the overall scope.
 
 ### Step 2: Self-Review Checklists (For Authors)
-Before requesting a review, verify:
-- [ ] Tests are written, covering happy paths, boundaries, and error states.
-- [ ] YARD inline documentation exists for all new/modified public interfaces.
-- [ ] Code is free of hardcoded secrets or environment configuration.
-- [ ] Standard syntax checks and linters pass cleanly.
+- [ ] Tests cover happy paths, boundaries, and error states
+- [ ] YARD docs on new/modified public interfaces
+- [ ] No hardcoded secrets or environment config
+- [ ] Syntax checks and linters pass
 
 ### Step 3: Analysis (For Reviewers)
-Review the changeset systematically:
-1. **Correctness:** Does the code solve the problem? Are edge cases handled?
-2. **Safety:** Are exceptions handled properly? Is there any risk of resource leaks, thread safety issues, or data corruption?
-3. **Security:** Is input data validated? Are secrets hidden?
-4. **Readability & Standards:** Does the code follow ubiquitous domain language? Is it documented?
+Review for correctness, safety, security, and adherence to domain language and documentation standards.
 
 ### Step 4: Write Findings
 For each issue identified, format it as a structured finding:
@@ -89,9 +82,9 @@ end
 
 ## Anti-Patterns
 
-- **Cosmetic Bias:** Focusing entirely on nitpicks (indentation, style) while ignoring major logical flaws, structural smells, or missing tests.
-- **Performative Reviews:** LGTM (Looks Good To Me) approvals without actually reading the diff, running the tests, or verifying edge cases.
-- **Vague Feedback:** Writing comments like "this looks weird" or "fix this" without explaining why it's a problem or suggesting a clear alternative.
+- **Cosmetic Bias:** Focusing on nitpicks while ignoring logical flaws, structural smells, or missing tests
+- **Performative Reviews:** LGTM approvals without reading the diff, running tests, or verifying edge cases
+- **Vague Feedback:** Comments like "this looks weird" or "fix this" without explanation or clear alternatives
 
 ## Integration
 

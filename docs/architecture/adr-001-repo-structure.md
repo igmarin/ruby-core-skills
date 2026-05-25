@@ -47,7 +47,7 @@ We will restructure the ecosystem into **4 separate skill repositories** with a 
 
 The runtime (`agent-mcp-runtime`) resolves skills by pack priority. No skill renames are needed:
 
-```
+```text
 --pack rails  →  search order: [rails-agent-skills, ruby-core-skills, agnostic-planning-skills]
 --pack hanami →  search order: [hanakai-yaku, ruby-core-skills, agnostic-planning-skills]
 (no --pack)   →  search order: [ruby-core-skills, agnostic-planning-skills]

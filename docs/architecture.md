@@ -19,26 +19,19 @@ AI agents are highly effective when equipped with structured workflows (skills).
 
 The ecosystem follows a strict hierarchical dependency model:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Tier 1: Agents                           │
-│  - Lives in framework repos (e.g. rails-agent-skills)       │
-│  - Composes workflows by chaining multiple skills          │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ (calls/references)
-                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    Tier 2: Framework Skills                 │
-│  - Lives in framework repos (e.g. rails-agent-skills)       │
-│  - Framework-specific logic (Sequel, ROM, RSpec request)    │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ (depends on)
-                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    Tier 3: Core Skills                      │
-│  - Lives in ruby-core-skills                                │
-│  - Framework-agnostic PORO patterns & process gates         │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph tier1["Tier 1: Agents"]
+        a["Lives in framework repos<br/>(e.g. rails-agent-skills)<br/>Composes workflows by chaining multiple skills"]
+    end
+    subgraph tier2["Tier 2: Framework Skills"]
+        b["Lives in framework repos<br/>(e.g. rails-agent-skills)<br/>Framework-specific logic<br/>(Sequel, ROM, RSpec request)"]
+    end
+    subgraph tier3["Tier 3: Core Skills"]
+        c["Lives in ruby-core-skills<br/>Framework-agnostic PORO patterns<br/>&amp; process gates"]
+    end
+    tier1 -->|"calls / references"| tier2
+    tier2 -->|"depends on"| tier3
 ```
 
 - **Downstream repos (Tier 1 & 2) know about Tier 3.**

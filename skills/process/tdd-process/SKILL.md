@@ -14,44 +14,27 @@ metadata:
 ---
 # TDD Process
 
-A standardized, tool-agnostic framework for executing the Red-Green-Refactor loop.
-
-## HARD-GATE
-
-```text
-TESTS GATE IMPLEMENTATION:
-NO implementation code may be written until a failing test exists and has been executed.
-1. The test MUST exist and be run.
-2. The test MUST fail for the correct reason (e.g. method missing, wrong output value), not due to syntax, configuration, or test setup errors.
-3. The implementation code MUST be the minimal code required to pass the test.
-4. The test MUST pass (turn Green) before refactoring or moving to the next feature slice.
-5. Code refactoring is ONLY permitted when all tests are Green.
-```
-
 ## Process Steps
 
-### Step 1: Design the Test (Red Phase)
-- Identify the smallest logical chunk of behavior to implement.
-- Write a failing test asserting this behavior.
-- Run the test suite on that specific file.
-- **Verify the Failure:** Ensure it fails exactly on the assertion you wrote, proving the test is checking the right thing. A syntax error in the test file is not a valid RED state.
-- **Test Design Checkpoint:** Present the test file/code and the test failure output to the user before starting implementation.
+### Step 1: Red Phase
+- Write a failing test for the target behavior
+- Run the test suite on that specific file
+- **Gate:** Failure must be on the assertion — not a syntax or configuration error
+- **Checkpoint:** Present the test code and failure output before proceeding to implementation
 
-### Step 2: Implement (Green Phase)
-- Write the simplest, most direct code to make the test pass.
-- Run the test file. Once it is Green, proceed to Refactoring.
-- **Implementation Checkpoint:** Present the minimal code implemented to pass the tests.
+### Step 2: Green Phase
+- Write the minimal code required to pass the test — nothing more
+- Run the test file
+- **Checkpoint:** Present the minimal implementation once tests pass
 
-### Step 3: Refactor (Refactor Phase)
-- Clean up duplication, naming, class structures, and documentation (e.g., YARD docs).
-- Run the test suite after each micro-change to verify you have not broken behavior.
-- Ensure the tests remain Green.
+### Step 3: Refactor Phase
+- Clean up duplication, naming, class structures, and documentation
+- Run the test suite after each micro-change
+- **Gate:** Tests must remain green throughout
 
 ---
 
 ## Framework Example
-
-Below is a standard pattern using RSpec.
 
 ### RSpec
 **Failing Test (RED):**
@@ -89,6 +72,11 @@ class User
 end
 ```
 
+> Additional framework examples are available in companion files:
+> - `EXAMPLES_PYTEST.md` — pytest (Python)
+> - `EXAMPLES_JEST.md` — Jest (JavaScript/TypeScript)
+> - `EXAMPLES_GO_TEST.md` — Go testing package
+
 ---
 
 ## Integration
@@ -98,6 +86,3 @@ end
 | Testing first slices | **test-planning-process** |
 | Refactoring green code | **refactor-process** |
 | Documenting public APIs | **write-yard-docs** |
-
-## What This Skill Does NOT Cover
-This skill does not define test runner configurations, matchers, framework integration helpers, or mock library selection.

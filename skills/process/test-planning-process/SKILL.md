@@ -2,9 +2,7 @@
 name: test-planning-process
 license: MIT
 description: >
-  Defines a test-planning decision framework. Helps select test boundaries,
-  identify test cases (happy path, edge case, error), and pick the first failing test.
-  Trigger words: test plan, planning tests, what tests to write, test coverage, test scope.
+  Selects test boundaries, identifies test cases (happy path, edge case, error), and picks the first failing test before writing any test code. Use when the user needs to plan test coverage, determine test boundaries, or decide what tests to write before implementation. Trigger words: test plan, planning tests, test boundaries, test matrix, test strategy, first failing test.
 metadata:
   version: 1.0.0
   user-invocable: "true"
@@ -63,46 +61,42 @@ Align with the user:
 
 ---
 
-## Test Planning Grid Example (User Registration)
+## Inline Example
 
-### 1. Test Boundary: Request (Integration) Level
+### Feature: `POST /users` — create a new user account
 
-### 2. Test Case Matrix:
+**Selected Boundary:** Request / API (verifies HTTP status and JSON response shape)
 
-| Scenario | Input Category | Expected Result |
-|----------|----------------|------------------|
-| Valid registration | Happy Path | `201 Created` with User ID |
-| Duplicate email | Edge Case | `422 Unprocessable` with message |
-| Nil/Empty email | Boundary Case | `422 Unprocessable` with validation error |
-| DB Timeout | Error Path | `503 Service Unavailable` |
+| # | Type | Description | Expected Result | First Failing? |
+|---|------|-------------|-----------------|----------------|
+| 1 | Happy path | Valid email + password | `201 Created`, body contains `id` | ✅ Yes |
+| 2 | Boundary | Password at minimum length (8 chars) | `201 Created` | |
+| 3 | Error | Missing email field | `422 Unprocessable Entity` | |
+| 4 | Error | Duplicate email already in database | `409 Conflict` | |
 
-### 3. First Failing Test:
-`POST /register` with valid registration returns `201 Created`. (Fails currently with `404 Not Found` or `NoMethodError`).
+**First Failing Test — skeleton (Python / pytest + requests):**
 
-```ruby
-RSpec.describe "POST /register", type: :request do
-  it "returns 201 Created with a user ID for a valid registration" do
-    post "/register", params: {
-      email: "alice@example.com",
-      password: "S3cur3P@ss"
-    }, as: :json
-
-    expect(response).to have_http_status(:created)
-    expect(JSON.parse(response.body)).to include("id")
-  end
-end
+```python
+def test_create_user_returns_201_with_id(client):
+    payload = {"email": "alice@example.test", "password": "s3cr3t!X"}
+    response = client.post("/users", json=payload)
+    assert response.status_code == 201
+    assert "id" in response.json()
 ```
 
-> This test will fail (Red) until the route, controller action, and user-creation logic are implemented.
+**First Failing Test — skeleton (JavaScript / Jest + supertest):**
 
-### 4. Isolation — DB Timeout (Error Path):
-
-Stub the repository layer before the request so no real database call is made. Replace `UserRepository` and the raised exception class with whatever persistence layer your project uses:
-
-```ruby
-allow(UserRepository).to receive(:create!)
-  .and_raise(ActiveRecord::StatementTimeout)
+```js
+test('POST /users returns 201 with id for valid payload', async () => {
+  const res = await request(app)
+    .post('/users')
+    .send({ email: 'alice@example.test', password: 's3cr3t!X' });
+  expect(res.status).toBe(201);
+  expect(res.body).toHaveProperty('id');
+});
 ```
+
+Run the skeleton as-is — it should fail (Red). Proceed to `tdd-process` to make it pass.
 
 ---
 

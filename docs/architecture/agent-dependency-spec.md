@@ -45,11 +45,11 @@ metadata:
 
 ### 2.2 Field Definitions
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `metadata.dependencies` | array | No | List of dependency groups. Absent = no external dependencies. |
-| `metadata.dependencies[].source` | string | Yes | `self` for same-repo skills, or the repo slug (`owner/repo`) for external skills. |
-| `metadata.dependencies[].skills` | array | Yes | List of skill canonical names (from `tile.json` keys). |
+| Field                            | Type   | Required | Description                                                                       |
+| ----------------------------------| --------| ----------| -----------------------------------------------------------------------------------|
+| `metadata.dependencies`          | array  | No       | List of dependency groups. Absent = no external dependencies.                     |
+| `metadata.dependencies[].source` | string | Yes      | `self` for same-repo skills, or the repo slug (`owner/repo`) for external skills. |
+| `metadata.dependencies[].skills` | array  | Yes      | List of skill canonical names (from `tile.json` keys).                            |
 
 ### 2.3 Source Values
 
