@@ -2,12 +2,16 @@
 name: implement-calculator-pattern
 license: MIT
 description: >
-  Use when building variant-based calculators with a single entry point that
-  picks the right implementation (Strategy + Factory), or when adding a no-op
-  fallback (Null Object). Generates variant-based calculator classes, implements
-  SERVICE_MAP routing, and scaffolds tests per variant. Trigger words:
-  design pattern, Ruby, dispatch table, polymorphism, no-op default, variant
-  calculator, strategy pattern, factory pattern, null object pattern.
+  Use when building variant-based calculators with a single entry point that picks the right
+  implementation via SERVICE_MAP routing. Four components: Factory (dispatches via SERVICE_MAP,
+  falls back to NullService for unknown/nil), BaseService (`calculate` → `compute_result` if
+  `should_calculate?`), NullService (`should_calculate?` false, `compute_result` nil), Concrete
+  (override both, call `super` in `should_calculate?`). Single entry point: `Factory.for(entity)`
+  — direct instantiation is FORBIDDEN. Each component tested in order: Factory → BaseService →
+  NullService → Concrete. Do not collapse NullService and concrete into one verification step.
+  Test contexts: named variants, inactive plan, nil plan, unknown variant. Scaffolds tests per
+  variant with SERVICE_MAP routing. Trigger words: strategy pattern, factory pattern, null object
+  pattern, variant calculator, dispatch table, SERVICE_MAP, no-op fallback.
 metadata:
   version: 1.0.0
   user-invocable: "true"

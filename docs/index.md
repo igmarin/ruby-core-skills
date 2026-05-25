@@ -1,6 +1,6 @@
 # Ruby Core Skills — Docs
 
-15 public atomic and process-discipline skills for Ruby development — YARD docs, service objects, calculator pattern, API clients, DDD, bug triage, code review, skill routing, TDD, refactoring, review, security, and test planning.
+16 public skills for Ruby development: 10 atomic skills (YARD docs, service objects, calculator pattern, API clients, DDD, bug triage, code review, skill routing), 5 process-discipline skills (TDD, refactoring, review, security, test planning), and 1 planning skill (TDD task generation).
 
 ## Skill Categories
 
@@ -28,3 +28,9 @@
 | `triage-bug` | Testing | Bug investigation via failing test |
 | `respond-to-review` | Code Quality | Addressing PR feedback |
 | `skill-router` | Orchestration | Task decomposition and skill delegation |
+
+### Planning Skills (1)
+
+| Skill | Category | Purpose |
+|-------|----------|---------|
+| `generate-tdd-tasks` | Planning | TDD quadruplet task lists with auto-detected conventions |

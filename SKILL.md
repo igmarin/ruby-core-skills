@@ -16,6 +16,7 @@ This repository serves as the central library of framework-agnostic Ruby skills 
 | **triage-bug** | Testing | Investigating a bug, reproducing via failing test, and creating a repair plan. |
 | **respond-to-review** | Code Quality | Receiving code review feedback and addressing comments. |
 | **skill-router** | Orchestration | Triaging and decomposing complex Ruby requests into ordered sub-tasks. |
+| **generate-tdd-tasks** | Planning | Breaking features into TDD quadruplet task lists with docs and review tasks. |
 | **tdd-process** | Process | General engineering loop: Red-Green-Refactor process gates and checkpoints. |
 | **refactor-process** | Process | Safely refactoring code while preserving behavior under characterization tests. |
 | **review-process** | Process | Reviewing changesets (severity taxonomies, structured findings, re-review). |
@@ -34,7 +35,13 @@ Process-discipline skills encode universal software engineering principles. They
 - [security-review-process](./skills/process/security-review-process/SKILL.md): Focuses on general Ruby threat vectors.
 - [test-planning-process](./skills/process/test-planning-process/SKILL.md): Decision grid for test scopes and cases.
 
-## 2. Atomic Skills (10)
+## 2. Planning Skills (1)
+
+Planning skills bridge requirements and implementation by breaking features into actionable task lists. They compose process-discipline and atomic skills into ordered workflows.
+
+- [generate-tdd-tasks](./skills/planning/generate-tdd-tasks/SKILL.md): Breaks features into TDD quadruplet task lists with auto-detected project conventions.
+
+## 3. Atomic Skills (10)
 
 Atomic skills focus on concrete Ruby programming patterns, design patterns, and domain analysis techniques.
 

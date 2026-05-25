@@ -38,7 +38,7 @@ We will restructure the ecosystem into **4 separate skill repositories** with a 
 
 | Repository | Skills | Agents | Purpose |
 |------------|--------|--------|---------|
-| **`ruby-core-skills`** (NEW) | ~15 | 0 | Shared Ruby atomic skills + process-discipline skills |
+| **`ruby-core-skills`** | ~16 | 0 | Shared Ruby atomic skills + process-discipline + planning skills |
 | `rails-agent-skills` | ~28 | 9 | Rails-specific skills + agents |
 | `hanakai-yaku` | ~35 | 10 | Hanami/dry-rb/ROM skills + agents |
 | `agnostic-planning-skills` | 10 | 4 | Language-agnostic planning (unchanged) |

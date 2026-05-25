@@ -6,7 +6,7 @@ Shared Ruby development skills and process-discipline knowledge for the AI skill
 
 This repository is a core component of the multi-repo AI Skill Ecosystem:
 
-1. **`ruby-core-skills` (This repository)**: Contains 15 foundational Ruby programming and software engineering process-discipline skills. **Contains zero agents.**
+1. **`ruby-core-skills` (This repository)**: Contains 16 foundational Ruby programming, planning, and software engineering process-discipline skills. **Contains zero agents.**
 2. **`rails-agent-skills`**: Curated library of Rails-specific skills + 9 specialized agents that compose core processes.
 3. **`hanakai-yaku`**: Curated library of Hanami-specific skills + 10 specialized agents.
 4. **`agnostic-planning-skills`**: Generic project management, planning, and task breakdown skills + 4 agents.
@@ -51,6 +51,7 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 | **triage-bug** | Testing | Investigating a bug, reproducing via failing test, and creating a repair plan. |
 | **respond-to-review** | Code Quality | Receiving code review feedback and addressing comments. |
 | **skill-router** | Orchestration | Triaging and decomposing complex Ruby requests into ordered sub-tasks. |
+| **generate-tdd-tasks** | Planning | Breaking features into TDD quadruplet task lists with docs and review tasks. |
 | **tdd-process** | Process | General engineering loop: Red-Green-Refactor process gates and checkpoints. |
 | **refactor-process** | Process | Safely refactoring code while preserving behavior under characterization tests. |
 | **review-process** | Process | Reviewing changesets (severity taxonomies, structured findings, re-review). |

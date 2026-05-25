@@ -4,7 +4,7 @@ This file tells AI agents how to use this repository effectively.
 
 ## What This Repository Is
 
-A curated library of 15 public atomic and process-discipline skills for Ruby development, with **zero agents**. Each skill encodes specialized workflow knowledge, conventions, and hard gates for general Ruby development. Skills are not documentation — they are executable instructions that guide agents through structured workflows.
+A curated library of 16 public skills (atomic, process-discipline, and planning) for Ruby development, with **zero agents**. Each skill encodes specialized workflow knowledge, conventions, and hard gates for general Ruby development. Skills are not documentation — they are executable instructions that guide agents through structured workflows.
 
 This repository serves as a foundational library. Framework-specific repositories (such as `rails-agent-skills` and `hanakai-yaku`) contain agents that compose and chain skills from this repository.
 
@@ -34,6 +34,7 @@ Load the skill that best matches the current task. The bootstrap skill `skill-ro
 | **Testing** | `skills/testing/` | `triage-bug` |
 | **Code Quality** | `skills/code-quality/` | `respond-to-review` |
 | **Orchestration** | `skills/orchestration/` | `skill-router` |
+| **Planning** | `skills/planning/` | `generate-tdd-tasks` |
 | **Process** | `skills/process/` | `tdd-process`, `refactor-process`, `review-process`, `security-review-process`, `test-planning-process` |
 
 ## Non-Negotiable Workflow Rule
