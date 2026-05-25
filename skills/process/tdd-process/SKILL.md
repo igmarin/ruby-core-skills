@@ -2,9 +2,12 @@
 name: tdd-process
 license: MIT
 description: >
-  Enforces the universal Red-Green-Refactor process for test-driven development. Generates
-  failing test cases, validates test failure before proceeding, gates implementation code
-  behind passing red-phase checks, and guides refactoring only after tests are green.
+  Enforces Red-Green-Refactor with hard gates: Red phase writes failing test that MUST
+  fail on assertion (not syntax/config) and presents test+failure before proceeding,
+  runs tests on the specific file (not full suite) after each phase, Green phase writes
+  minimal code to pass and stops there, Refactor phase runs test after each micro-change
+  and MUST stay Green throughout. Generates failing test cases, validates test failure
+  before proceeding, gates implementation behind passing red-phase checks.
   Use when the user requests TDD workflow, asks to write tests first, mentions
   Red-Green-Refactor methodology, or uses trigger words: TDD, test-first, test gate.
 metadata:

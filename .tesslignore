@@ -18,3 +18,4 @@ docs/architecture/
 # Docs not yet written — skip recursive validation.
 docs/reference/
 docs/calling-skills.md
+docs/engineering/skill-description-strategy.md

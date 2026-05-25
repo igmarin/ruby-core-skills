@@ -2,12 +2,15 @@
 name: skill-router
 license: MIT
 description: >
-  Triages and decomposes complex Ruby requests into ordered sub-tasks, then delegates to
-  specialized skills for testing, code review, DDD, and patterns. Enforces TDD discipline
-  across all code-producing work. Use when scope is unclear, the best approach is uncertain, or a
-  request spans multiple concerns. Trigger: where do I start, help me plan a Ruby feature,
-  break this down, what's the best approach for this Ruby work, not sure how to approach this,
-  multi-step Ruby task, complex Ruby task, what should I do first.
+  Triages and decomposes complex Ruby requests: first response line MUST be
+  "Next skill: skills/[category]/[name]", priority TDD→Planning→Domain discovery→
+  Process/refactor→Domain implementation, use `test-planning-process` when first failing
+  test is not obvious, fallback to `define-domain-language` or `model-domain` for ambiguity,
+  and all output MUST be in English. Enforces TDD discipline across all code-producing work.
+  Use when scope is unclear, best approach uncertain, or request spans multiple concerns.
+  Trigger: where do I start, help me plan a Ruby feature, break this down, what's the best
+  approach, not sure how to approach this, multi-step Ruby task, complex Ruby task,
+  what should I do first.
 metadata:
   user-invocable: "true"
   version: 1.0.0

@@ -2,13 +2,17 @@
 name: create-service-object
 license: MIT
 description: >
-  Use when creating or refactoring Ruby service classes. Covers the
-  .call pattern, module namespacing, YARD documentation on self.call and every
-  public method, module README requirement, standardized {success:, response:}
-  response contract, orchestrator delegation, transaction wrapping, and error
-  handling conventions. Trigger words: service object, .call pattern,
-  services, service module, service README, response hash, success/response
-  shape, YARD on self.call.
+  Use when creating or refactoring Ruby service classes with `def self.call(...)`→`new(...).call`
+  entry point, `{success: true/false, response: {...}}` response contract (error:
+  `{success: false, response: {error: {message: string}}}`), must catch `StandardError` +
+  log with `logger.error` + use `UPPER_SNAKE_CASE` error constants, spec at
+  `spec/services/[module]/[name]_spec.rb`, impl at `services/[module]/[name].rb`,
+  mandatory module README even for single-service modules, tests assert `success:` and
+  `response:` keys, test command+failure output in artifact — and MUST write failing test
+  BEFORE implementation. Covers 9 quick-ref rules, 4 core patterns (Standard, Batch,
+  Static/Class-only, Orchestrator), `.call` ≤20 lines, YARD on self.call and #call. Trigger
+  words: service object, .call pattern, services, service module, response hash, success/response
+  shape, YARD on self.call, service skeleton, module README, orchestrator.
 metadata:
   version: 1.0.0
   user-invocable: "true"

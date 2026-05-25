@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This document maps every skill in the ecosystem to its target repository after the Phase 1–2 migration. The goal is to eliminate naming collisions, clarify ownership, and establish a clean dependency graph where `ruby-core-skills` provides shared atomic and process-discipline skills, and framework repos depend on it.
+This document maps every skill in the ecosystem to its target repository after the Phase 1–2 migration. The goal is to eliminate naming collisions, clarify ownership, and establish a clean dependency graph where `ruby-core-skills` provides shared atomic, process-discipline, and planning skills, and framework repos depend on it.
 
 **Pre-migration totals:**
 - `rails-agent-skills`: 38 skills, 9 agents
@@ -19,11 +19,11 @@ This document maps every skill in the ecosystem to its target repository after t
 - **Total: 85 skills, 23 agents**
 
 **Post-migration totals:**
-- `ruby-core-skills`: 15 skills, 0 agents
+- `ruby-core-skills`: 16 skills, 0 agents
 - `rails-agent-skills`: 28 skills, 9 agents
 - `hanakai-yaku`: 35 skills, 10 agents
 - `agnostic-planning-skills`: 10 skills, 4 agents
-- **Total: 88 skills, 23 agents** (+3 new process-discipline skills)
+- **Total: 89 skills, 23 agents** (+3 new process-discipline skills, +1 planning skill)
 
 ---
 
@@ -46,17 +46,23 @@ These skills are framework-agnostic Ruby knowledge that should not live inside a
 | 9 | `respond-to-review` | `skills/code-quality/respond-to-review/` | `skills/code-quality/respond-to-review/` | Easy | Framework-agnostic process |
 | 10 | `skill-router` | `skills/orchestration/skill-router/` | `skills/orchestration/skill-router/` | Easy | Update routing table to core skills only |
 
-### 1.2 Process-Discipline Skills (NEW — written from scratch)
+### 1.2 Planning Skills (NEW)
+
+| # | Skill | Target Path (core) | Purpose |
+|---|-------|--------------------|---------|
+| 11 | `generate-tdd-tasks` | `skills/planning/generate-tdd-tasks/` | Breaks features into TDD quadruplet task lists with auto-detected conventions, docs, and review tasks |
+
+### 1.3 Process-Discipline Skills (NEW — written from scratch)
 
 These encode universal process knowledge extracted from the common elements of framework-specific skills and agents.
 
 | # | Skill | Extracted From | Target Path (core) | Purpose |
 |---|-------|----------------|--------------------|---------|
-| 11 | `tdd-process` | Rails `write-tests` HARD-GATE + Hanami `tdd-loop` + `CLAUDE.md` cross-cutting mandate | `skills/process/tdd-process/` | Universal Red-Green-Refactor gates and checkpoints |
-| 12 | `refactor-process` | Rails `refactor-code` + Hanami `refactor-code` | `skills/process/refactor-process/` | Characterization tests first, small steps, verify-after-each |
-| 13 | `review-process` | Rails `code-review` + Hanami `review-code` | `skills/process/review-process/` | Severity levels, structured findings, re-review criteria |
-| 14 | `security-review-process` | Rails `security-check` + Hanami `review-security` | `skills/process/security-review-process/` | OWASP checklist, Ruby-level security concerns |
-| 15 | `test-planning-process` | Rails `plan-tests` + Hanami `plan-tests` | `skills/process/test-planning-process/` | Test-selection decision framework |
+| 12 | `tdd-process` | Rails `write-tests` HARD-GATE + Hanami `tdd-loop` + `CLAUDE.md` cross-cutting mandate | `skills/process/tdd-process/` | Universal Red-Green-Refactor gates and checkpoints |
+| 13 | `refactor-process` | Rails `refactor-code` + Hanami `refactor-code` | `skills/process/refactor-process/` | Characterization tests first, small steps, verify-after-each |
+| 14 | `review-process` | Rails `code-review` + Hanami `review-code` | `skills/process/review-process/` | Severity levels, structured findings, re-review criteria |
+| 15 | `security-review-process` | Rails `security-check` + Hanami `review-security` | `skills/process/security-review-process/` | OWASP checklist, Ruby-level security concerns |
+| 16 | `test-planning-process` | Rails `plan-tests` + Hanami `plan-tests` | `skills/process/test-planning-process/` | Test-selection decision framework |
 
 ---
 
@@ -215,17 +221,17 @@ No changes. All 10 skills and 4 agents remain. This repo is already clean and ha
 
 | Repository                 | Skills (post) | Agents | `depends_on`       |
 | ----------------------------| ---------------| --------| --------------------|
-| `ruby-core-skills`         | 15            | 0      | —                  |
-| `rails-agent-skills`       | 28            | 9      | `ruby-core-skills` |
-| `hanakai-yaku`             | 35            | 10     | `ruby-core-skills` |
-| `agnostic-planning-skills` | 10            | 4      | —                  |
-| **Total**                  | **88**        | **23** |                    |
+| `ruby-core-skills`         | 16            | 0      | `agnostic-planning-skills` |
+| `rails-agent-skills`       | 28            | 9      | `ruby-core-skills`         |
+| `hanakai-yaku`             | 35            | 10     | `ruby-core-skills`         |
+| `agnostic-planning-skills` | 10            | 4      | —                          |
+| **Total**                  | **89**        | **23** |                             |
 
 ### 5.2 Dependency Graph
 
 ```mermaid
 flowchart TB
-    core["ruby-core-skills<br/>(15 skills, 0 agents)"]
+    core["ruby-core-skills<br/>(16 skills, 0 agents)"]
     rails["rails-agent-skills<br/>(28 skills, 9 agents)"]
     hanakai["hanakai-yaku<br/>(35 skills, 10 agents)"]
     agnostic["agnostic-planning-skills<br/>(10 skills, 4 agents)"]
@@ -255,6 +261,6 @@ flowchart TB
 - [ ] `rails-agent-skills` `tile.json` contains exactly the 28 skills listed in Section 2
 - [ ] `hanakai-yaku` `tile.json` contains exactly the 35 skills listed in Section 3
 - [ ] `agnostic-planning-skills` `tile.json` contains exactly the 10 skills listed in Section 4
-- [ ] `ruby-core-skills` `tile.json` (Phase 1) contains exactly the 15 skills listed in Section 1
+- [ ] `ruby-core-skills` `tile.json` (Phase 1) contains exactly the 16 skills listed in Section 1
 - [ ] No two repos contain a skill with the same canonical `name:` in frontmatter (within a pack stack)
 - [ ] Every skill moving to core has a `deprecated_skills` entry in its origin repo's `tile.json`

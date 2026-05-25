@@ -2,11 +2,17 @@
 name: integrate-api-client
 license: MIT
 description: >
-  Use when integrating with external APIs in Ruby, creating HTTP clients,
-  or building data pipelines in the user's codebase. This skill defines a
-  code pattern (not live agent browsing or live payload inspection): layered Auth, Client, Fetcher,
-  Builder, and Domain Entity with token caching, retry logic, and test
-  hash factories/fixtures for test data. Trigger words: integrate api, external api, http client, fetcher, builder.
+  Use when integrating with external APIs in Ruby with 5-layer pattern (Auth→Client→Fetcher→
+  Builder→Entity) each tested individually in that order BEFORE implementation, synthetic
+  fixtures/hash factories only (no real vendor payloads, no browsing, no live API checks),
+  Builder allowlists fields via `ATTRIBUTES` and drops instruction-like keys, Auth has
+  `self.default`+`DEFAULT_TIMEOUT`+cached `#token`, Client has nested `Error`+
+  `MISSING_CONFIGURATION_ERROR`+injected HTTP adapter, Fetcher uses `initialize(client,
+  data_builder:, default_query:)` with `MAX_RETRIES`+`RETRY_DELAY_IN_SECONDS`, Entity has
+  `ATTRIBUTES`+`DEFAULT_QUERY`+`.find`/`.search` — and client errors must not include raw
+  response bodies. Change Ruby source/specs only. Token caching and retry logic included.
+  Trigger words: integrate api, external api, http client, fetcher, builder, auth layer,
+  api client layer, layered pattern.
 metadata:
   version: 1.0.0
   user-invocable: "true"
