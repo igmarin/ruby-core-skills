@@ -1,6 +1,6 @@
 {
   "name": "igmarin/ruby-core-skills",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "summary": "Curated library of 15 public Ruby AI agent skills: 10 atomic skills (YARD docs, service objects, calculator pattern, API clients, DDD, bug triage, code review, skill routing) and 5 process-discipline skills (TDD, refactoring, review, security, test planning). Zero agents — this is a foundational library consumed by framework-specific tiles like rails-agent-skills and hanakai-yaku.",
   "docs": "docs/index.md",
   "skills": {
