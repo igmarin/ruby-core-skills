@@ -4,10 +4,11 @@ license: MIT
 description: >
   Selects test boundaries, identifies test cases (happy path, edge case, error), picks the first
   failing test before writing any test code, tests at highest boundary that directly expresses
-  business goal (request vs service vs unit), and requires synthetic test data (never real
-  production values). Use when the user needs to plan test coverage, determine test boundaries,
-  or decide what tests to write before implementation. Trigger words: test plan, planning tests,
-  test boundaries, test matrix, test strategy, first failing test.
+  business goal (request vs service vs unit), requires synthetic test data (never real production
+  values), and runs the failing test skeleton to verify Red before proceeding to `tdd-process`.
+  Use when the user needs to plan test coverage, determine test boundaries, or decide what tests
+  to write before implementation. Trigger words: test plan, planning tests, test boundaries,
+  test matrix, test strategy, first failing test.
 metadata:
   version: 1.0.0
   user-invocable: "true"

@@ -7,10 +7,11 @@ description: >
   BaseService defines `calculate`→`compute_result` if `should_calculate?`, NullService has
   `should_calculate?`=false+`compute_result`=nil, Concrete services override both methods
   and MUST call `super` in `should_calculate?` — and each component is tested in order
-  (Factory→BaseService→NullService→Concrete) without collapsing any verification step.
-  Test coverage includes: named variants, inactive plan, nil plan, and unknown variant contexts.
-  Scaffolds tests per variant. Trigger words: strategy pattern, factory pattern, null object
-  pattern, variant calculator, dispatch table, SERVICE_MAP, no-op fallback.
+  (write spec → run → verify Red → implement → run → verify Green before next component,
+  without collapsing NullService and concrete into one step). Test coverage includes: named
+  variants, inactive plan, nil plan, and unknown variant contexts. Scaffolds tests per variant.
+  Trigger words: strategy pattern, factory pattern, null object pattern, variant calculator,
+  dispatch table, SERVICE_MAP, no-op fallback.
 metadata:
   version: 1.0.0
   user-invocable: "true"

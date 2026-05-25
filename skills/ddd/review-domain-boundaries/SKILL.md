@@ -6,9 +6,10 @@ description: >
   cross-context orchestration, and unclear ownership — use `rg` to find cross-context references
   (e.g., `rg 'Billing.*Fleet' lib/`) and leaked terms, identify misplaced domain models and
   ownership conflicts, propose the smallest credible boundary improvement before large
-  reorganizations. Identifies misplaced domain models, detects cross-context coupling, names
-  ownership conflicts, and recommends the smallest credible boundary improvement. Covers context
-  mapping and leakage detection.
+  reorganizations — output findings first, then open questions and recommended next skills.
+  Identifies misplaced domain models, detects cross-context coupling, names ownership conflicts,
+  and recommends the smallest credible boundary improvement. Covers context mapping and leakage
+  detection.
 metadata:
   version: 1.0.0
   user-invocable: "true"
