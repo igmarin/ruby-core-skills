@@ -3,12 +3,13 @@ name: model-domain
 license: MIT
 description: >
   Use when modeling DDD concepts in Ruby: start from domain invariants and ownership before
-  choosing patterns, prefer default Ruby classes over extra abstractions, entity when identity
-  matters, value object when equality by value is correct, aggregate root guards state transitions
-  as single entry point, domain service for behavior spanning multiple entities, application
-  service orchestrates one use case — only add repository when real persistence boundary exists.
-  Covers mapping of entities, aggregates, value objects, domain services, application services,
-  repositories, and domain events without over-engineering.
+  choosing patterns (document each concept with its invariant example, e.g., cancelled→active
+  state transition guard, and patterns to avoid), prefer default Ruby classes over extra
+  abstractions, entity when identity matters, value object when equality by value is correct,
+  aggregate root guards state transitions as single entry point, domain service for behavior
+  spanning multiple entities, application service orchestrates one use case — only add repository
+  when real persistence boundary exists. Covers mapping of entities, aggregates, value objects,
+  domain services, application services, repositories, and domain events without over-engineering.
 metadata:
   version: 1.0.0
   user-invocable: "true"

@@ -2,15 +2,16 @@
 name: respond-to-review
 license: MIT
 description: >
-  Applies when responding to code review feedback: classify each comment as Correct+Critical,
-  Correct+Suggestion, Correct+Nice-to-have, Incorrect, or Ambiguous via a feedback table —
-  Critical/architecture fixes block merge and MUST trigger re-review, push back with technical
-  evidence on incorrect feedback, never respond with performative agreement (always verify before
-  agreeing or pushing back), clarify ambiguous items before touching code, implement one item
-  at a time with test after each change, and run full suite before requesting re-review.
-  Use when addressing PR comments, pull request feedback, or review comments on Ruby code.
-  Covers evaluating suggestions, avoiding performative agreement, and re-review triggers.
-  Trigger scenarios: respond to reviewer, address review comments, handle pull request feedback.
+  Applies when responding to code review feedback: read all feedback before reacting, VERIFY each
+  suggestion against the actual codebase, classify as Correct+Critical, Correct+Suggestion,
+  Correct+Nice-to-have, Incorrect, or Ambiguous via a feedback table — Critical/architecture fixes
+  block merge and MUST trigger re-review, push back with technical evidence on incorrect feedback,
+  never respond with performative agreement (always verify before agreeing or pushing back),
+  clarify ambiguous items before touching code, implement one item at a time with test after each
+  change, and run full suite before requesting re-review. Use when addressing PR comments, pull
+  request feedback, or review comments on Ruby code. Covers evaluating suggestions, avoiding
+  performative agreement, and re-review triggers. Trigger scenarios: respond to reviewer, address
+  review comments, handle pull request feedback.
 metadata:
   version: 1.0.0
   user-invocable: "true"

@@ -2,7 +2,13 @@
 name: review-process
 license: MIT
 description: >
-  Reviews pull requests and code changesets using structured finding templates with severity levels (Critical/Major/Minor/Nitpick), generates self-review checklists for authors, produces findings reports, and determines re-review criteria. Use when the user requests a code review, asks to review a pull request, or needs a structured code audit with severity-classified findings. Trigger words: code review, review PR, PR review, code audit, structured review, severity levels.
+  Reviews pull requests and code changesets using structured finding templates with severity
+  levels (Critical/Major/Minor/Nitpick), generates self-review checklists for authors, produces
+  findings reports, determines re-review criteria, and performs re-review verification by
+  reviewing the diff against each finding to confirm fixes. Use when the user requests a code
+  review, asks to review a pull request, or needs a structured code audit with severity-classified
+  findings. Trigger words: code review, review PR, PR review, code audit, structured review,
+  severity levels.
 metadata:
   version: 1.0.0
   user-invocable: "true"
