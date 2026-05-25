@@ -2,15 +2,14 @@
 name: implement-calculator-pattern
 license: MIT
 description: >
-  Use when building variant-based calculators with a single entry point that picks the right
-  implementation via SERVICE_MAP routing. Four components: Factory (dispatches via SERVICE_MAP,
-  falls back to NullService for unknown/nil), BaseService (`calculate` → `compute_result` if
-  `should_calculate?`), NullService (`should_calculate?` false, `compute_result` nil), Concrete
-  (override both, call `super` in `should_calculate?`). Single entry point: `Factory.for(entity)`
-  — direct instantiation is FORBIDDEN. Each component tested in order: Factory → BaseService →
-  NullService → Concrete. Do not collapse NullService and concrete into one verification step.
-  Test contexts: named variants, inactive plan, nil plan, unknown variant. Scaffolds tests per
-  variant with SERVICE_MAP routing. Trigger words: strategy pattern, factory pattern, null object
+  Use when building variant-based calculators with SERVICE_MAP routing via
+  `Factory.for(entity)` (ONLY permitted entry point — direct instantiation FORBIDDEN),
+  BaseService defines `calculate`→`compute_result` if `should_calculate?`, NullService has
+  `should_calculate?`=false+`compute_result`=nil, Concrete services override both methods
+  and MUST call `super` in `should_calculate?` — and each component is tested in order
+  (Factory→BaseService→NullService→Concrete) without collapsing any verification step.
+  Test coverage includes: named variants, inactive plan, nil plan, and unknown variant contexts.
+  Scaffolds tests per variant. Trigger words: strategy pattern, factory pattern, null object
   pattern, variant calculator, dispatch table, SERVICE_MAP, no-op fallback.
 metadata:
   version: 1.0.0

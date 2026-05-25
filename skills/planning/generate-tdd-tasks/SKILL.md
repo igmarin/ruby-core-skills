@@ -2,15 +2,14 @@
 name: generate-tdd-tasks
 license: MIT
 description: >
-  Breaks a feature, PRD, or requirement into TDD implementation tasks using the
-  TDD quadruplet pattern: RED (write failing test) → run fail → GREEN (implement) →
-  run pass → REFACTOR. Always creates feature branch as task 0.0, then groups
-  implementation tasks by behavior. Every task list includes public API docs,
-  update documentation, and code review tasks. Output includes Guidance Used and
-  Relevant Files sections. Auto-detects test commands, source directories, and
-  test directories from project conventions. Ruby-first but language-agnostic.
-  Trigger words: tdd task list, tdd tasks, generate tasks, tdd breakdown,
-  implementation tasks, task breakdown, feature tasks, quadruplet pattern.
+  Breaks a feature, PRD, or requirement into TDD implementation tasks with task 0.0 as
+  feature branch creation (MUST be first), each task uses TDD quadruplet (RED test→run
+  fail→GREEN impl→run pass→REFACTOR), includes mandatory public API docs task, update
+  docs task, and code review task, output with `Guidance Used` and `Relevant Files`
+  sections saved to `tasks/tasks-<name>.md`, auto-detects test command/source dir/test
+  dir from project conventions. Ruby-first but language-agnostic. Trigger words: tdd task
+  list, tdd tasks, generate tasks, tdd breakdown, implementation tasks, task breakdown,
+  feature tasks, quadruplet pattern.
 metadata:
   version: 1.0.0
   user-invocable: "true"

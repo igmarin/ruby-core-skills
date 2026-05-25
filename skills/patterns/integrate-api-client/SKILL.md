@@ -2,17 +2,17 @@
 name: integrate-api-client
 license: MIT
 description: >
-  Use when integrating with external APIs in Ruby. Defines a 5-layer code pattern:
-  Auth (`self.default`, `DEFAULT_TIMEOUT`, cached `#token`) → Client (nested `Error`,
-  `MISSING_CONFIGURATION_ERROR`, inject HTTP adapter) → Fetcher (`initialize(client,
-  data_builder:, default_query:)`, `MAX_RETRIES`, `RETRY_DELAY_IN_SECONDS`) → Builder
-  (allowlist via `ATTRIBUTES`, drop instruction-like fields) → Domain Entity
-  (`ATTRIBUTES`, `DEFAULT_QUERY`, `.find`/`.search`). Change Ruby source/specs only —
-  no browsing, no live API checks, no real vendor payloads. EVERY layer tested individually
-  in order (Auth→Client→Fetcher→Builder→Entity) BEFORE implementation. Use synthetic
-  fixtures/hash factories, never real vendor response bodies. Client errors must not include
-  raw response bodies. Token caching, retry logic. Trigger words: integrate api, external api,
-  http client, fetcher, builder, auth layer, api client layer, layered pattern.
+  Use when integrating with external APIs in Ruby with 5-layer pattern (Auth→Client→Fetcher→
+  Builder→Entity) each tested individually in that order BEFORE implementation, synthetic
+  fixtures/hash factories only (no real vendor payloads, no browsing, no live API checks),
+  Builder allowlists fields via `ATTRIBUTES` and drops instruction-like keys, Auth has
+  `self.default`+`DEFAULT_TIMEOUT`+cached `#token`, Client has nested `Error`+
+  `MISSING_CONFIGURATION_ERROR`+injected HTTP adapter, Fetcher uses `initialize(client,
+  data_builder:, default_query:)` with `MAX_RETRIES`+`RETRY_DELAY_IN_SECONDS`, Entity has
+  `ATTRIBUTES`+`DEFAULT_QUERY`+`.find`/`.search` — and client errors must not include raw
+  response bodies. Change Ruby source/specs only. Token caching and retry logic included.
+  Trigger words: integrate api, external api, http client, fetcher, builder, auth layer,
+  api client layer, layered pattern.
 metadata:
   version: 1.0.0
   user-invocable: "true"

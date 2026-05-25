@@ -2,11 +2,12 @@
 name: refactor-process
 license: MIT
 description: >
-  Enforces a disciplined refactoring process for Ruby code: extracts methods, renames
-  symbols, splits classes, inlines variables, and removes duplication — one atomic
-  transformation at a time. Requires passing characterization tests before starting,
-  verifies after every single step, and rolls back immediately on failure.
-  Use when: refactor, clean up code, rewrite class, structure changes, simplify.
+  Enforces a disciplined refactoring process for Ruby code: ONE atomic transformation
+  at a time, characterization tests MUST exist and be Green BEFORE any edit, run tests
+  after EVERY single step, rollback immediately on Red (no debugging in broken state),
+  no behavior changes mixed with refactoring. Covers extract methods, rename symbols,
+  split classes, inline variables, remove duplication. Use when: refactor, clean up code,
+  rewrite class, structure changes, simplify.
 metadata:
   version: 1.0.0
   user-invocable: "true"

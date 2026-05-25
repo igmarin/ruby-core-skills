@@ -2,16 +2,15 @@
 name: create-service-object
 license: MIT
 description: >
-  Use when creating or refactoring Ruby service classes. Entry point: `def self.call(...)`
-  → `new(...).call`. Response ALWAYS `{ success: true/false, response: { ... } }` with
-  error messages as `{ success: false, response: { error: { message: "..." } } }`.
-  Spec at `spec/services/<module>/<name>_spec.rb`. Impl at `services/<module>/<name>.rb`.
-  Error strings as `UPPER_SNAKE_CASE` constants. Module README required even for
-  single-service modules. Tests assert `success:` and `response:` top-level keys.
-  Final artifact includes test command + failure output. MUST write failing test BEFORE
-  implementation. Covers quick-ref table of 9 rules, 4 core patterns (Standard, Batch,
-  Static/Class-only, Orchestrator), `.call` ≤20 lines, YARD on self.call and #call.
-  Trigger words: service object, .call pattern, services, service module, response hash,
+  Use when creating or refactoring Ruby service classes with `def self.call(...)`→`new(...).call`
+  entry point, `{success: true/false, response: {...}}` response contract (error:
+  `{success: false, response: {error: {message: string}}}`), spec at
+  `spec/services/<module>/<name>_spec.rb`, impl at `services/<module>/<name>.rb`,
+  error strings as `UPPER_SNAKE_CASE` constants, mandatory module README even for single-service
+  modules, tests assert `success:` and `response:` keys, test command+failure output in artifact
+  — and MUST write failing test BEFORE implementation. Covers 9 quick-ref rules, 4 core patterns
+  (Standard, Batch, Static/Class-only, Orchestrator), `.call` ≤20 lines, YARD on self.call and
+  #call. Trigger words: service object, .call pattern, services, service module, response hash,
   success/response shape, YARD on self.call, service skeleton, module README, orchestrator.
 metadata:
   version: 1.0.0
