@@ -7,8 +7,9 @@ description: >
   state transition guard, and patterns to avoid), prefer default Ruby classes over extra
   abstractions, entity when identity matters, value object when equality by value is correct,
   aggregate root guards state transitions as single entry point, domain service for behavior
-  spanning multiple entities, application service orchestrates one use case — only add repository
-  when real persistence boundary exists. Covers mapping of entities, aggregates, value objects,
+  spanning multiple entities, application service orchestrates one use case — hand off to
+  test-planning-process and tdd-process before implementation, and only add repository when
+  real persistence boundary exists. Covers mapping of entities, aggregates, value objects,
   domain services, application services, repositories, and domain events without over-engineering.
 metadata:
   version: 1.0.0
