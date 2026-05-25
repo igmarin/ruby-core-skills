@@ -3,7 +3,7 @@ name: skill-router
 license: MIT
 description: >
   Triages and decomposes complex Ruby requests: first response line MUST be
-  "Next skill: skills/<category>/<name>", priority TDD→Planning→Domain discovery→
+  "Next skill: skills/[category]/[name]", priority TDD→Planning→Domain discovery→
   Process/refactor→Domain implementation, use `test-planning-process` when first failing
   test is not obvious, fallback to `define-domain-language` or `model-domain` for ambiguity,
   and all output MUST be in English. Enforces TDD discipline across all code-producing work.

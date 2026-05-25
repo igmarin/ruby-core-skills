@@ -6,7 +6,7 @@ description: >
   entry point, `{success: true/false, response: {...}}` response contract (error:
   `{success: false, response: {error: {message: string}}}`), must catch `StandardError` +
   log with `logger.error` + use `UPPER_SNAKE_CASE` error constants, spec at
-  `spec/services/<module>/<name>_spec.rb`, impl at `services/<module>/<name>.rb`,
+  `spec/services/[module]/[name]_spec.rb`, impl at `services/[module]/[name].rb`,
   mandatory module README even for single-service modules, tests assert `success:` and
   `response:` keys, test command+failure output in artifact — and MUST write failing test
   BEFORE implementation. Covers 9 quick-ref rules, 4 core patterns (Standard, Batch,

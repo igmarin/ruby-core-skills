@@ -6,7 +6,7 @@ description: >
   feature branch creation (MUST be first), each task uses TDD quadruplet (RED test→run
   fail→GREEN impl→run pass→REFACTOR), includes mandatory public API docs task, update
   docs task, and code review task, output with `Guidance Used` and `Relevant Files`
-  sections saved to `tasks/tasks-<name>.md`, auto-detects test command/source dir/test
+  sections saved to `tasks/tasks-[name].md`, auto-detects test command/source dir/test
   dir from project conventions. Ruby-first but language-agnostic. Trigger words: tdd task
   list, tdd tasks, generate tasks, tdd breakdown, implementation tasks, task breakdown,
   feature tasks, quadruplet pattern.
