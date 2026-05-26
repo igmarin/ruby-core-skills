@@ -9,15 +9,13 @@ require 'yaml'
 require 'pathname'
 
 class EcosystemValidator
-  REPOS = {
-    'ruby-core-skills' => { expected_type: 'core' },
-    'rails-agent-skills' => { expected_type: 'framework' },
-    'hanakai-yaku' => { expected_type: 'framework' },
-    'agnostic-planning-skills' => { expected_type: 'planning' },
-    'agent-mcp-runtime' => { expected_type: 'runtime' },
-    'ruby-skill-bench' => { expected_type: 'bench' }
-  }.freeze
 
+
+  # Computes `@workspace_root` via File.expand_path to locate the repository workspace
+  # and sets `@registry_path` by joining that root with 'agent-mcp-runtime' and 'registry.json'.
+  # For example, if run from '/Users/igmarin/Developer/Projects/ruby-core-skills',
+  # `@workspace_root` will be '/Users/igmarin/Developer/Projects'.
+  # @public
   def initialize
     # Try to find registry.json in the same workspace level
     @workspace_root = File.expand_path('../..', __dir__)
@@ -30,8 +28,13 @@ class EcosystemValidator
       exit 1
     end
 
-    registry = JSON.parse(File.read(@registry_path))
-    @packs = registry['packs'] || {}
+    begin
+      @registry = JSON.parse(File.read(@registry_path))
+      @packs = @registry['packs'] || {}
+    rescue JSON::ParserError, IOError => e
+      puts "FAIL: Error reading or parsing registry.json at #{@registry_path}: #{e.message}"
+      exit 1
+    end
 
     @repos_info = {}
     @packs.each do |pack_name, pack_config|
@@ -102,7 +105,12 @@ class EcosystemValidator
       tile = repo_info[:tile]
       skills = tile['skills'] || {}
       skills.each do |skill_name, skill_info|
-        skill_path = File.join(repo_info[:path], skill_info['path'])
+        path = skill_info['path']
+        if path.nil? || path.empty?
+          errors << "Skill '#{skill_name}' in pack '#{pack_name}' is missing path in tile.json"
+          next
+        end
+        skill_path = File.join(repo_info[:path], path)
         skill_md = skill_path.end_with?('SKILL.md') ? skill_path : File.join(skill_path, 'SKILL.md')
         unless File.exist?(skill_md)
           errors << "Skill '#{skill_name}' in pack '#{pack_name}' is missing SKILL.md at #{skill_md}"
@@ -244,8 +252,11 @@ class EcosystemValidator
         metadata = front_matter['metadata'] || {}
         dependencies = metadata['dependencies'] || []
         if dependencies.is_a?(Array)
-          dependencies.each do |dep|
-            next unless dep.is_a?(Hash)
+          dependencies.each_with_index do |dep, idx|
+            unless dep.is_a?(Hash)
+              errors << "Agent '#{agent_name}' in '#{pack_name}' has malformed dependency at index #{idx}: #{dep.inspect}"
+              next
+            end
             source = dep['source']
             skills = dep['skills'] || []
 
@@ -279,8 +290,7 @@ class EcosystemValidator
   def validate_registry_manifest
     # Simple check that the default stack is composed of packs defined in registry
     errors = []
-    registry = JSON.parse(File.read(@registry_path))
-    default_stack = registry['default_stack'] || []
+    default_stack = @registry['default_stack'] || []
     default_stack.each do |pack|
       unless @packs.key?(pack)
         errors << "Default stack pack '#{pack}' is not defined in packs list"

@@ -5,7 +5,9 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
       - name: Validate tile.json
         run: |
           ruby -rjson -e '
@@ -18,7 +20,7 @@ jobs:
             end
             
             # Check skill count matches
-            actual = Dir.glob("skills/*/*/SKILL.md").count + Dir.glob("skills/*/SKILL.md").count
+            actual = Dir.glob("skills/*/{SKILL.md,*/SKILL.md}").count
             declared = tile.fetch("skills", {}).size
             warn "Warning: #{actual} skill dirs vs #{declared} in tile.json" if actual != declared
             

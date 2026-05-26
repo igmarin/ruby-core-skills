@@ -11,7 +11,9 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
       
       - name: Clone ecosystem repos
         run: |
@@ -22,10 +24,10 @@ jobs:
           git clone --depth 1 https://github.com/igmarin/agent-mcp-runtime.git
           git clone --depth 1 https://github.com/igmarin/ruby-skill-bench.git
       
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@a2bbe5b1b236842c1cb7dd11e8e3b51e0a616acc
         with:
           ruby-version: '3.3'
-          bundle-cache: false
+          bundler-cache: false
       
       - name: Run ecosystem validation
         run: |
