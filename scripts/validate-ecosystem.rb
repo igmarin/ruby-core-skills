@@ -223,21 +223,21 @@ class EcosystemValidator
       agents.each do |agent_name, agent_info|
         agent_path = File.join(repo_info[:path], agent_info['path'])
         unless File.exist?(agent_path)
-          errors << "Agent '#{agent_name}' in '#{pack_name}' has missing SKILL.md at #{agent_path}"
+          puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' has missing SKILL.md at #{agent_path}"
           next
         end
 
         content = File.read(agent_path)
         match = content.match(/\A---\s*\n(.*?)\n---/m)
         unless match
-          errors << "Agent '#{agent_name}' in '#{pack_name}' has no YAML front-matter in SKILL.md"
+          puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' has no YAML front-matter in SKILL.md"
           next
         end
 
         begin
           front_matter = YAML.safe_load(match[1])
         rescue StandardError => e
-          errors << "Agent '#{agent_name}' in '#{pack_name}' has invalid YAML front-matter: #{e.message}"
+          puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' has invalid YAML front-matter: #{e.message}"
           next
         end
 
@@ -257,19 +257,19 @@ class EcosystemValidator
             end
 
             if target_repo_info.nil?
-              errors << "Agent '#{agent_name}' in '#{pack_name}' depends on unknown source '#{source}'"
+              puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' depends on unknown source '#{source}'"
               next
             end
 
             target_skills = target_repo_info[:tile]['skills'] || {}
             skills.each do |skill_name|
               unless target_skills.key?(skill_name)
-                errors << "Agent '#{agent_name}' in '#{pack_name}' depends on skill '#{skill_name}' from '#{source}', but it is not defined in that source's tile.json"
+                puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' depends on skill '#{skill_name}' from '#{source}', but it is not defined in that source's tile.json"
               end
             end
           end
         else
-          errors << "Agent '#{agent_name}' in '#{pack_name}' has invalid 'dependencies' in YAML front-matter (must be a list)"
+          puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' has invalid 'dependencies' in YAML front-matter (must be a list)"
         end
       end
     end
