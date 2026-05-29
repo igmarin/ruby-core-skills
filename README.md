@@ -83,7 +83,19 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 
 ## Installation & Usage
 
-Install skills via skills.sh:
+Install skills via tessl.io:
+
+```bash
+npx tessl i igmarin/ruby-core-skills
+```
+
+or with yarn (tessl.io):
+
+```bash
+yarn tessl i igmarin/ruby-core-skills
+```
+
+Or with skills.sh:
 
 ```bash
 npx skills add igmarin/ruby-core-skills
