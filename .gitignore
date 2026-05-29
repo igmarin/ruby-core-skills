@@ -59,3 +59,4 @@ build-iPhoneSimulator/
 evals/
 .tessl/
 tessl-evals/
+.agents/
