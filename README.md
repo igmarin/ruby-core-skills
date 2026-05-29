@@ -52,6 +52,7 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 >
 > [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/igmarin/agnostic-planning-skills/pulls)
 > [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+> [![skills.sh](https://skills.sh/b/igmarin/ruby-core-skills)](https://skills.sh/igmarin/ruby-core-skills)
 > ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/igmarin/ruby-core-skills?utm_source=oss&utm_medium=github&utm_campaign=igmarin%2Fruby-core-skills&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 > [![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Figmarin%2Fruby-core-skills)](https://tessl.io/registry/igmarin/ruby-core-skills)
 
@@ -82,18 +83,26 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 
 ## Installation & Usage
 
-Core skills are consumed by AI agents via the `agent-mcp-runtime` CLI tool.
-
-During development, you can point the runtime to this local directory using the `--registry` flag:
+Install skills via skills.sh:
 
 ```bash
-agent-mcp-runtime --registry ./path/to/ruby-core-skills --task "Review this code"
+npx skills add igmarin/ruby-core-skills
 ```
 
-In production, the runtime uses the central `registry.json` manifest to resolve dependencies automatically. When running a framework pack, the runtime loads the framework's own skills first, falling back to core skills for any general Ruby concerns:
+Or via GitHub CLI (v2.90.0+):
 
 ```bash
-# Resolves Rails agents/skills first, then falls back to core skills
+# Install all skills interactively
+gh skill install igmarin/ruby-core-skills
+
+# Install a specific skill
+gh skill install igmarin/ruby-core-skills tdd-process --scope project
+```
+
+Core skills are also consumed by AI agents via the `agent-mcp-runtime` CLI tool:
+
+```bash
+# Resolves framework skills first, falls back to core skills
 agent-mcp-runtime --pack rails --task "Add full_name to User model"
 ```
 
