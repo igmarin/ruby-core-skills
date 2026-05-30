@@ -6,7 +6,6 @@ require "json"
 require "yaml"
 
 ROOT = File.expand_path("..", __dir__)
-TILE_PATH = File.join(ROOT, "tile.json")
 OUTPUT_ROOT = File.join(ROOT, "tessl-evals")
 
 Instruction = Struct.new(:text, :snippet, :why_given, keyword_init: true)
@@ -171,15 +170,19 @@ def write_skill_eval(skill_name, skill_path)
   write_json(
     File.join(scenario_dir, "criteria.json"),
     {
-      "context" => "Checks whether the final artifact follows the #{skill_name} instructions from the published Ruby Core Skills tile.",
+      "context" => "Checks whether the final artifact follows the #{skill_name} instructions from the published Ruby Core Skills plugin.",
       "type" => "weighted_checklist",
       "checklist" => weighted_checklist(instructions)
     }
   )
 end
 
-tile = read_json(TILE_PATH)
-skills = tile.fetch("skills")
+SKILLS_DIR = File.join(ROOT, "skills")
+skills = Dir.glob("**/SKILL.md", base: SKILLS_DIR).each_with_object({}) do |path, hash|
+  name = File.basename(File.dirname(path))
+  hash[name] = { "path" => "skills/#{path}" }
+end
+
 FileUtils.mkdir_p(OUTPUT_ROOT)
 
 skills.each do |skill_name, spec|

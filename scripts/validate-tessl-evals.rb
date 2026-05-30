@@ -5,8 +5,8 @@ require "json"
 require "set"
 
 ROOT = File.expand_path("..", __dir__)
-TILE_PATH = File.join(ROOT, "tile.json")
 EVAL_ROOT = File.join(ROOT, "tessl-evals")
+SKILLS_DIR = File.join(ROOT, "skills")
 
 def read_json(path)
   JSON.parse(File.read(path))
@@ -20,13 +20,13 @@ def fail_with(message)
 end
 
 def pass_with(message)
-  puts "✓ #{message}"
+  puts "#{message}"
 end
 
 $failures = 0
-tile = read_json(TILE_PATH)
-publishable_skills = tile.fetch("skills")
-expected_names = publishable_skills.keys.to_set
+
+publishable_skill_paths = Dir.glob("**/SKILL.md", base: SKILLS_DIR)
+expected_names = publishable_skill_paths.map { |path| File.basename(File.dirname(path)) }.to_set
 
 unless Dir.exist?(EVAL_ROOT)
   abort "Missing tessl-evals/ directory"
