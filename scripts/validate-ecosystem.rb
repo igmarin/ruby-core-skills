@@ -44,13 +44,25 @@ class EcosystemValidator
       }
     end
 
-    # Load plugin manifest for each repository
+    # Load plugin/tile manifest for each repository
     @repos_info.each do |pack_name, repo_info|
-      unless File.exist?(repo_info[:tile_path])
-        puts "FAIL: plugin manifest not found for #{pack_name} at #{repo_info[:tile_path]}"
+      configured_path = repo_info[:tile_path]
+      tile_path = if File.exist?(configured_path)
+                    configured_path
+                  else
+                    # Fallback: try the other format during transition
+                    alt = configured_path.include?('plugin.json') ?
+                      configured_path.sub('.tessl-plugin/plugin.json', 'tile.json').sub('.tessl-plugin/', '') :
+                      File.join(repo_info[:path], '.tessl-plugin/plugin.json')
+                    File.exist?(alt) ? alt : configured_path
+                  end
+
+      unless File.exist?(tile_path)
+        puts "FAIL: plugin manifest not found for #{pack_name} at #{configured_path}"
         exit 1
       end
-      repo_info[:tile] = JSON.parse(File.read(repo_info[:tile_path]))
+      repo_info[:tile_path] = tile_path
+      repo_info[:tile] = JSON.parse(File.read(tile_path))
     end
 
     errors = []
