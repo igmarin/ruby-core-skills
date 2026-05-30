@@ -10,14 +10,7 @@ require 'pathname'
 
 class EcosystemValidator
 
-
-  # Computes `@workspace_root` via File.expand_path to locate the repository workspace
-  # and sets `@registry_path` by joining that root with 'agent-mcp-runtime' and 'registry.json'.
-  # For example, if run from '/Users/igmarin/Developer/Projects/ruby-core-skills',
-  # `@workspace_root` will be '/Users/igmarin/Developer/Projects'.
-  # @public
   def initialize
-    # Try to find registry.json in the same workspace level
     @workspace_root = File.expand_path('../..', __dir__)
     @registry_path = File.join(@workspace_root, 'agent-mcp-runtime', 'registry.json')
   end
@@ -47,14 +40,14 @@ class EcosystemValidator
       @repos_info[pack_name] = {
         name: pack_config['source'],
         path: repo_path,
-        tile_path: File.join(repo_path, pack_config['tile'] || 'tile.json')
+        tile_path: File.join(repo_path, pack_config['tile'] || '.tessl-plugin/plugin.json')
       }
     end
 
-    # Load tile.json for each repository
+    # Load plugin manifest for each repository
     @repos_info.each do |pack_name, repo_info|
       unless File.exist?(repo_info[:tile_path])
-        puts "FAIL: tile.json not found for #{pack_name} at #{repo_info[:tile_path]}"
+        puts "FAIL: plugin manifest not found for #{pack_name} at #{repo_info[:tile_path]}"
         exit 1
       end
       repo_info[:tile] = JSON.parse(File.read(repo_info[:tile_path]))
@@ -62,28 +55,24 @@ class EcosystemValidator
 
     errors = []
 
-    # Check 1: Every tile.json skill has a directory with SKILL.md
+    # Check 1: Every declared skill has a directory with SKILL.md
     puts "--- Check 1: Skill Directories and SKILL.md ---"
-    errors += validate_tile_skill_directories
+    errors += validate_skill_directories
 
-    # Check 2: deprecated_skills point to valid targets
-    puts "\n--- Check 2: Deprecated Skills Redirects ---"
-    errors += validate_deprecation_targets
-
-    # Check 3: depends_on repos exist and have tile.json
-    puts "\n--- Check 3: Sibling depends_on Repositories ---"
+    # Check 2: depends_on repos exist
+    puts "\n--- Check 2: Pack Dependencies ---"
     errors += validate_dependencies
 
-    # Check 4: No skill name collision within a pack stack
-    puts "\n--- Check 4: Skill Key Uniqueness in Pack Stack ---"
+    # Check 3: No skill name collision within a pack stack
+    puts "\n--- Check 3: Skill Key Uniqueness in Pack Stack ---"
     errors += validate_no_collisions
 
-    # Check 5: Agent dependency declarations are resolvable
-    puts "\n--- Check 5: Agent Dependencies Resolution ---"
+    # Check 4: Agent dependency declarations are resolvable
+    puts "\n--- Check 4: Agent Dependencies Resolution ---"
     errors += validate_agent_dependencies
 
-    # Check 6: registry.json packs all resolve
-    puts "\n--- Check 6: registry.json Manifest Consistency ---"
+    # Check 5: registry.json packs all resolve
+    puts "\n--- Check 5: registry.json Manifest Consistency ---"
     errors += validate_registry_manifest
 
     puts "\n========================================="
@@ -99,49 +88,31 @@ class EcosystemValidator
 
   private
 
-  def validate_tile_skill_directories
-    errors = []
-    @repos_info.each do |pack_name, repo_info|
-      tile = repo_info[:tile]
-      skills = tile['skills'] || {}
-      skills.each do |skill_name, skill_info|
-        path = skill_info['path']
-        if path.nil? || path.empty?
-          errors << "Skill '#{skill_name}' in pack '#{pack_name}' is missing path in tile.json"
-          next
-        end
-        skill_path = File.join(repo_info[:path], path)
-        skill_md = skill_path.end_with?('SKILL.md') ? skill_path : File.join(skill_path, 'SKILL.md')
-        unless File.exist?(skill_md)
-          errors << "Skill '#{skill_name}' in pack '#{pack_name}' is missing SKILL.md at #{skill_md}"
-        end
-      end
+  def skill_dirs_from_manifest(tile, repo_path)
+    skills = tile['skills'] || []
+    case skills
+    when String
+      Dir.glob("**/SKILL.md", base: File.join(repo_path, skills)).map { |p| File.join(skills, File.dirname(p)) }
+    when Array
+      skills.map { |s| s.sub(%r{^\./}, '') }
+    else
+      []
     end
-    errors
   end
 
-  def validate_deprecation_targets
+  def skill_names_from_manifest(tile, repo_path)
+    skill_dirs_from_manifest(tile, repo_path).map { |d| File.basename(d) }
+  end
+
+  def validate_skill_directories
     errors = []
     @repos_info.each do |pack_name, repo_info|
       tile = repo_info[:tile]
-      deprecated = tile['deprecated_skills'] || {}
-      deprecated.each do |skill_name, info|
-        moved_to = info['moved_to']
-        unless moved_to
-          errors << "Deprecated skill '#{skill_name}' in '#{pack_name}' is missing 'moved_to' key"
-          next
-        end
-
-        target_repo_info = @repos_info.values.find { |r| r[:name] == moved_to || r[:name].split('/').last == moved_to.split('/').last }
-        if target_repo_info.nil?
-          errors << "Deprecated skill '#{skill_name}' in '#{pack_name}' moved to unknown repo/pack '#{moved_to}'"
-          next
-        end
-
-        target_skills = target_repo_info[:tile]['skills'] || {}
-        target_skill_name = info['new_name'] || info['moved_to_skill'] || skill_name
-        unless target_skills.key?(target_skill_name)
-          errors << "Deprecated skill '#{skill_name}' in '#{pack_name}' moved to '#{moved_to}' (target skill: '#{target_skill_name}'), but skill is missing in target repo's tile.json"
+      dirs = skill_dirs_from_manifest(tile, repo_info[:path])
+      dirs.each do |dir|
+        skill_path = File.join(repo_info[:path], dir, 'SKILL.md')
+        unless File.exist?(skill_path)
+          errors << "Skill directory '#{dir}' in pack '#{pack_name}' is missing SKILL.md"
         end
       end
     end
@@ -155,21 +126,6 @@ class EcosystemValidator
       depends_on.each do |dep_pack|
         unless @packs.key?(dep_pack)
           errors << "Pack '#{pack_name}' in registry depends on unknown pack '#{dep_pack}'"
-        end
-      end
-    end
-
-    @repos_info.each do |pack_name, repo_info|
-      tile = repo_info[:tile]
-      depends_on = tile['depends_on'] || []
-      depends_on.each do |dep_repo|
-        target_repo_info = @repos_info.values.find { |r| r[:name] == dep_repo || r[:name].split('/').last == dep_repo.split('/').last }
-        if target_repo_info.nil?
-          errors << "Repo '#{repo_info[:name]}' depends on unknown repo '#{dep_repo}'"
-        else
-          unless File.exist?(target_repo_info[:tile_path])
-            errors << "Sibling dependency repo '#{dep_repo}' tile.json is missing"
-          end
         end
       end
     end
@@ -200,9 +156,8 @@ class EcosystemValidator
         repo_info = @repos_info[stack_pack]
         next unless repo_info
 
-        tile = repo_info[:tile]
-        skills = tile['skills'] || {}
-        skills.each_key do |skill_name|
+        names = skill_names_from_manifest(repo_info[:tile], repo_info[:path])
+        names.each do |skill_name|
           if skill_to_repo.key?(skill_name)
             errors << "Skill '#{skill_name}' is defined in both '#{stack_pack}' (#{repo_info[:name]}) and '#{skill_to_repo[skill_name]}'"
           else
@@ -272,10 +227,10 @@ class EcosystemValidator
               next
             end
 
-            target_skills = target_repo_info[:tile]['skills'] || {}
+            target_names = skill_names_from_manifest(target_repo_info[:tile], target_repo_info[:path])
             skills.each do |skill_name|
-              unless target_skills.key?(skill_name)
-                puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' depends on skill '#{skill_name}' from '#{source}', but it is not defined in that source's tile.json"
+              unless target_names.include?(skill_name)
+                puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' depends on skill '#{skill_name}' from '#{source}', but it is not defined in that source's plugin manifest"
               end
             end
           end
@@ -288,7 +243,6 @@ class EcosystemValidator
   end
 
   def validate_registry_manifest
-    # Simple check that the default stack is composed of packs defined in registry
     errors = []
     default_stack = @registry['default_stack'] || []
     default_stack.each do |pack|
