@@ -2,15 +2,15 @@
 name: skill-router
 license: MIT
 description: >
-  Triages and decomposes complex Ruby requests: first response line MUST be
-  "Next skill: skills/[category]/[name]", priority TDD→Planning→Domain discovery→
-  Process/refactor→Domain implementation, use `test-planning-process` when first failing
-  test is not obvious, fallback to `define-domain-language` or `model-domain` for ambiguity,
-  and all output MUST be in English. Enforces TDD discipline across all code-producing work.
-  Use when scope is unclear, best approach uncertain, or request spans multiple concerns.
-  Trigger: where do I start, help me plan a Ruby feature, break this down, what's the best
-  approach, not sure how to approach this, multi-step Ruby task, complex Ruby task,
-  what should I do first.
+  Entry-point orchestrator that triages and decomposes complex Ruby requests into ordered
+  sub-tasks, then delegates to the correct specialised skill — never implements directly.
+  Enforces TDD discipline across all code-producing work. Priority order:
+  TDD→Planning→Domain discovery→Process/refactor→Domain implementation. First response
+  line MUST be "Next skill: skills/[category]/[name]". Falls back to `define-domain-language`
+  for terminology ambiguity or `model-domain` for architecture ambiguity. Use when scope is
+  unclear, best approach uncertain, or request spans multiple concerns. Trigger: where do I
+  start, help me plan a Ruby feature, break this down, what's the best approach, not sure
+  how to approach this, multi-step Ruby task, complex Ruby task, what should I do first.
 metadata:
   user-invocable: "true"
   version: 1.0.0
@@ -100,9 +100,3 @@ skills/process/security-review-process *(if input/secrets touched)* → skills/p
    ```
 
 2. **Language**: Generated artifacts and output MUST be in English unless explicitly requested otherwise.
-
-## Integration
-
-| Skill | When to chain |
-|-------|---------------|
-| **define-domain-language** | Default for ambiguous requirements |

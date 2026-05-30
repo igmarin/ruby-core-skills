@@ -92,18 +92,6 @@ rescue ProductNotFoundError => e
 end
 ```
 
-### Major
-
-**Location:** `app/services/invoice_calculator.rb:L42-L58`
-**Severity:** Major
-**Description:** Tax calculation iterates over line items with an N+1 query — `line_items.each { |li| li.product.tax_rate }` loads each product individually. Under load this will degrade response times significantly.
-**Suggestion:**
-```ruby
-# Eager-load products before iterating
-line_items = order.line_items.includes(:product)
-line_items.each { |li| li.product.tax_rate }
-```
-
 ### Minor
 
 **Location:** `app/models/subscription.rb:L10-L12`
@@ -116,13 +104,6 @@ def days_remaining
   (expires_at.to_date - Date.today).to_i
 end
 ```
-
-### Nitpick
-
-**Location:** `app/controllers/users_controller.rb:L5`
-**Severity:** Nitpick
-**Description:** Trailing whitespace on line 5 violates the project's RuboCop style config (`Layout/TrailingWhitespace`).
-**Suggestion:** Remove the trailing whitespace; consider enabling editor-level auto-trimming to prevent recurrence.
 
 ---
 

@@ -106,15 +106,15 @@ After implementing feedback, decide whether to request a re-review:
 
 ## Output Style
 
-When responding to review feedback, output:
+When responding to review feedback, produce the following sections in order:
 
-1. **Scope** — State that the user received review feedback on their own Ruby code; if the task is asking you to give a review instead, use `review-process`.
-2. **Feedback table** — For each reviewer point, include: restated technical requirement, code checked, classification, decision, and response.
-3. **Verification evidence** — Name the exact file, method, line, spec/test, or behavior checked before agreeing, implementing, or pushing back.
-4. **Reasoned pushback** — When a suggestion is incorrect, use the pushback structure: reviewer concern, codebase constraint/evidence, and alternative or no-change rationale. Never push back without technical evidence.
-5. **Implementation order** — List fixes one item at a time, with relevant test/spec after each logic change and full-suite regression check before re-review.
-6. **Re-review decision** — State whether re-review is mandatory, recommended, or unnecessary based on Critical fixes, logic changes, architecture changes, or cosmetic-only work.
-7. **Language** — Must be in English unless explicitly requested otherwise.
+1. **Scope** — Confirm the task is responding to feedback on the user's own Ruby code; if asked to give a review instead, use `review-process`.
+2. **Feedback table** — One row per reviewer point: restated requirement, code location checked, classification, decision, and planned response.
+3. **Verification evidence** — Exact file, method, line, spec, or behavior checked before agreeing, implementing, or pushing back.
+4. **Reasoned pushback** — For incorrect suggestions: reviewer concern → codebase constraint/evidence → alternative or no-change rationale. Never push back without evidence.
+5. **Implementation order** — Fixes listed one item at a time; relevant test/spec run after each logic change; full-suite check before re-review.
+6. **Re-review decision** — Mandatory, recommended, or unnecessary — based on Critical fixes, logic changes, architecture changes, or cosmetic-only work.
+7. **Language** — English unless explicitly requested otherwise.
 
 ## Integration
 
