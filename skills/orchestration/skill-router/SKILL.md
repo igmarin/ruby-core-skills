@@ -2,15 +2,20 @@
 name: skill-router
 license: MIT
 description: >
-  Triages and decomposes complex Ruby requests: first response line MUST be
-  "Next skill: skills/[category]/[name]", priority TDD→Planning→Domain discovery→
-  Process/refactor→Domain implementation, use `test-planning-process` when first failing
-  test is not obvious, fallback to `define-domain-language` or `model-domain` for ambiguity,
-  and all output MUST be in English. Enforces TDD discipline across all code-producing work.
-  Use when scope is unclear, best approach uncertain, or request spans multiple concerns.
-  Trigger: where do I start, help me plan a Ruby feature, break this down, what's the best
-  approach, not sure how to approach this, multi-step Ruby task, complex Ruby task,
-  what should I do first.
+  Triages and decomposes complex Ruby requests into ordered sub-tasks and routes each to
+  the correct specialised skill. First response line MUST be
+  "Next skill: skills/[category]/[name]". Priority order:
+  TDD→Planning→Domain discovery→Process/refactor→Domain implementation.
+  Fallback to `test-planning-process` when the first failing test is not obvious,
+  `define-domain-language` for terminology ambiguity, or `model-domain` for architectural
+  ambiguity. Enforces TDD discipline across all code-producing work; no implementation
+  code until a failing test exists. Use when scope of a Ruby task is unclear,
+  best approach uncertain, or the request spans multiple concerns — not for tasks that
+  clearly belong to a single sub-skill already. All output in English.
+  Trigger: where do I start with this Ruby feature, help me plan a Ruby feature,
+  break down this Ruby task, what's the best approach for this Ruby problem,
+  not sure how to approach this Ruby work, multi-step Ruby task, complex Ruby task,
+  what should I do first in Ruby.
 metadata:
   user-invocable: "true"
   version: 1.0.0
@@ -23,14 +28,13 @@ metadata:
 
 ```text
 Non-negotiable: no implementation code until a test exists, runs, and fails for the right reason (feature missing, not config/syntax).
-ALWAYS identify the matching skill and name it explicitly as the next skill to use before responding further (see Output Style for the required format).
 ```
 
 ## Core Process
 
 Triages and decomposes any Ruby request into ordered sub-tasks, then delegates to the correct specialized skill.
 
-When a task arrives, identify the matching skill from the table below and route to it using the format defined in **Output Style** before responding further.
+Identify the matching skill from the table below. **Make the routing statement the first substantive line of every response** (see Output Style for the required format), then proceed.
 
 ### Core Skills Catalog
 
@@ -82,7 +86,7 @@ skills/process/security-review-process *(if input/secrets touched)* → skills/p
 
 ## Output Style
 
-1. **Routing statement**: Make the routing statement the first substantive line of every response. For a single skill:
+1. **Routing statement**: First substantive line of every response. For a single skill:
 
    ```text
    Next skill: skills/process/tdd-process
@@ -100,9 +104,3 @@ skills/process/security-review-process *(if input/secrets touched)* → skills/p
    ```
 
 2. **Language**: Generated artifacts and output MUST be in English unless explicitly requested otherwise.
-
-## Integration
-
-| Skill | When to chain |
-|-------|---------------|
-| **define-domain-language** | Default for ambiguous requirements |
