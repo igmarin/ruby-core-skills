@@ -85,6 +85,72 @@ description: >
 
 The regex splits on `?` followed by whitespace. `should_calculate?` is fine (`?=` no space) but `should_calculate? ` with a trailing space would split. Avoid trailing spaces after question marks in the first sentence.
 
+### Rule 6: Stay under the 1024-character limit
+
+The `description` frontmatter field has a **1024-character maximum** (enforced at eval time). This includes indentation whitespace from YAML `>` folding. Backtick-heavy sentences burn through this quickly — be concise:
+
+```yaml
+# Bad — wastes chars on verbose connectors
+Auth has `self.default`, `DEFAULT_TIMEOUT`, and cached `#token`.
+
+# Good — uses `+` and compact phrasing
+Auth has `self.default` + `DEFAULT_TIMEOUT` + cached `#token`.
+```
+
+Check length before running the eval:
+```bash
+ruby -ryaml -e '
+md = File.read("skills/<category>/<skill>/SKILL.md")
+_, yaml, _ = md.split(/^---\s*$/, 3)
+puts YAML.safe_load(yaml)["description"].length
+'
+```
+
+If over 1024, trim backticks, shorten connectors, or move less-critical rules after the first period.
+
+### Rule 7: Use generic patterns — never hardcode domain examples
+
+The first sentence describes the skill's *algorithm*, not a specific domain. Hardcoding examples (e.g., `Billing`, `Fleet`, `Order`) to match an eval instruction creates a fragile dependency and makes the skill look generic to users outside that domain.
+
+**Bad:**
+```
+detects misplaced domain models and ownership conflicts
+(e.g., Billing owns invoice triggers, Fleet owns vehicle state)
+```
+
+**Good:**
+```
+detects misplaced domain models and documents ownership direction
+(which context owns invariants, transitions, and side effects)
+```
+
+Domain-specific examples belong in the SKILL.md body or EXAMPLES.md, where the agent reads them after loading the skill. The first sentence should express the pattern, not the instance.
+
+### Rule 8: Add progressive disclosure hint for extended resources
+
+Many skills generate an instruction like `"Load these files only when their specific content is needed"` — this tests whether the agent uses progressive disclosure. Add a brief hint at the end of the first sentence:
+
+```
+...and load extended resource files only when their content is needed.
+```
+
+This addresses the instruction directly without hardcoding file paths or names.
+
+## Understanding the Scoring System
+
+### Instructions come from the body, not the description
+
+The eval criteria (instructions.json → criteria.json) are extracted from the SKILL.md **body**, not the description. Changing the description only affects the task.md problem statement that the agent sees. The instructions tested against the agent's output remain the same.
+
+This means:
+- **Description changes** improve how well the agent understands what to produce
+- **Body changes** add/remove what criteria are tested
+- Adding a new section to the body can introduce new instruction candidates that may score poorly if the description doesn't hint at them
+
+### Scoring variance across runs
+
+Single-run scores can fluctuate by ±10-15% for the same description due to LLM scorer variance. Run at least 2-3 times and average the results before declaring a change effective or ineffective. Compare runs with the same `--label` to track progress.
+
 ## Workflow: Fixing a Low-Scoring Skill
 
 ### Step 1: Read the instruction JSON
@@ -139,10 +205,8 @@ These are fundamentally invisible in baseline mode. A first sentence can hint at
 
 ## Measurement
 
-Before applying this strategy (v1.0.0): **54% baseline avg**
-After applying (v1.1.0): **87% baseline avg**
-
-Largest single-skill improvements across the repo:
+### v1.0.0 → v1.1.0 (original application)
+**Before: 54% baseline avg → After: 87% baseline avg**
 
 | Skill | Before | After | Delta |
 |-------|--------|-------|-------|
@@ -158,6 +222,20 @@ Largest single-skill improvements across the repo:
 | tdd-process | 67% | 91% | +24 |
 | write-yard-docs | 77% | 89% | +12 |
 | test-planning-process | 75% | 88% | +13 |
+
+### v1.1.0 → v2.0.0 (this session — security + edge-case push)
+**Before: 79% baseline avg → After: 89% baseline avg**
+
+| Skill | Before | After | Delta |
+|-------|--------|-------|-------|
+| respond-to-review | 47% | 98% | +51 |
+| integrate-api-client | 42% | 91% | +49 |
+| review-process | 71% | 100% | +29 |
+| write-yard-docs | 89% | 96% | +7 |
+| test-planning-process | 89% | 91% | +2 |
+| review-domain-boundaries | 76% | 76%* | 0 |
+
+\* At ceiling — the I3 instruction tests a concrete Billing/Fleet ownership example that can't fit in a first sentence. With-context score: 88%.
 
 ## Cross-Repo Applicability
 
