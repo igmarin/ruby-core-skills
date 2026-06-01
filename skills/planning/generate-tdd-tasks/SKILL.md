@@ -20,30 +20,6 @@ metadata:
 
 # Generate TDD Tasks
 
-## Quick Reference
-
-| Rule | Detail |
-|------|--------|
-| **Task 0.0** | Always create feature branch first: `git checkout -b feature/<name>` |
-| **TDD quadruplet** | Each implementation task has 5 sub-steps: RED test → Run fail → GREEN impl → Run pass → REFACTOR |
-| **Auto-detect** | Test command, source directory (`lib/` or `src/`), test directory (`spec/` or `test/`) |
-| **Required tasks** | Public API docs, update existing docs, code review — always included |
-| **Output path** | `tasks/tasks-<feature-name>.md` |
-| **Required sections** | `Guidance Used` and `Relevant Files` at the top |
-| **Language** | English unless explicitly requested otherwise |
-
-## HARD-GATE
-
-```text
-TASK GENERATION GATES:
-1. Feature branch (task 0.0) MUST be the first task in every task list.
-2. Every implementation task MUST use the TDD quadruplet pattern (RED → fail → GREEN → pass → REFACTOR).
-3. Public API documentation, update existing documentation, and code review tasks are MANDATORY — do not omit them.
-4. Guidance Used section MUST explain what conventions/guides/skills drove the breakdown.
-5. Relevant Files section MUST list detected source and test directories and key files.
-6. Output MUST be saved to tasks/tasks-<feature-name>.md unless user specifies otherwise.
-```
-
 ## Core Process
 
 ### Step 1: Project Detection
@@ -73,13 +49,20 @@ Break down the feature/PRD into implementation tasks:
 
 Create `tasks/tasks-<feature-name>.md` with the required structure below.
 
-### Step 4: Validation Checkpoint
+### Step 4: Validation Gates (HARD-GATE)
 
-1. Is task 0.0 the feature branch creation? (yes — mandatory)
-2. Does every impl task use the TDD quadruplet pattern? (yes — mandatory)
-3. Are public API docs, update docs, and code review tasks included? (yes — mandatory)
-4. Do Guidance Used and Relevant Files sections exist? (yes — mandatory)
-5. Is the output path correct? (must be `tasks/tasks-<feature-name>.md`)
+Before saving output, every gate below MUST pass:
+
+```text
+1. Task 0.0 is the feature branch creation — mandatory, must be first.
+2. Every implementation task uses the TDD quadruplet (RED → fail → GREEN → pass → REFACTOR).
+3. Public API documentation, update existing documentation, and code review tasks are present — do not omit them.
+4. Guidance Used section explains what conventions/guides/skills drove the breakdown.
+5. Relevant Files section lists detected source and test directories and key files.
+6. Output is saved to tasks/tasks-<feature-name>.md unless user specifies otherwise.
+```
+
+If any gate fails, correct the task list before saving.
 
 ## Task List Template
 

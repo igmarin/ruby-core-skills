@@ -5,13 +5,18 @@ Shared Ruby development skills and process-discipline knowledge for the AI skill
 
 ## Part of the AI Skill Ecosystem
 
-This repository is a core component of the multi-repo AI Skill Ecosystem:
+This repo is one of 6 in a composable AI skill ecosystem:
 
-1. **`ruby-core-skills` (This repository)**: Contains 16 foundational Ruby programming, planning, and software engineering process-discipline skills. **Contains zero orchestrator workflows.**
-2. **`rails-agent-skills`**: Curated library of Rails-specific atomic skills + 9 orchestrator workflows.
-3. **`hanakai-yaku`**: Curated library of Hanami-specific atomic skills + 10 orchestrator workflows.
-4. **`agnostic-planning-skills`**: Generic project management, planning, and task breakdown skills + 4 orchestrator workflows.
-5. **`agent-mcp-runtime`**: The Rust-based CLI runtime that acts as the composition and resolution engine.
+| Repo | Role |
+|------|------|
+| [**`ruby-core-skills`**](https://github.com/igmarin/ruby-core-skills) | 16 shared Ruby skills + process discipline |
+| [`rails-agent-skills`](https://github.com/igmarin/rails-agent-skills) | 28 Rails-specific skills + 9 orchestrator workflows |
+| [`hanakai-yaku`](https://github.com/igmarin/hanakai-yaku) | 35 Hanami/dry-rb skills + 10 orchestrator workflows |
+| [`agnostic-planning-skills`](https://github.com/igmarin/agnostic-planning-skills) | 10 planning skills + 4 orchestrator workflows |
+| [`agent-mcp-runtime`](https://github.com/igmarin/agent-mcp-runtime) | Rust CLI runtime (pack resolution, MCP) |
+| [`ruby-skill-bench`](https://github.com/igmarin/ruby-skill-bench) | Benchmark/eval engine |
+
+See the [Ecosystem Overview](https://github.com/igmarin/agent-mcp-runtime/blob/main/docs/ecosystem.md) for the full architecture.
 
 ### Dependency Direction
 
@@ -47,6 +52,8 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 >
 > [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/igmarin/agnostic-planning-skills/pulls)
 > [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+> [![skills.sh](https://skills.sh/b/igmarin/ruby-core-skills)](https://skills.sh/igmarin/ruby-core-skills)
+> [![Smithery](https://img.shields.io/badge/Smithery-orange)](https://smithery.ai/skills/ismael-marin/ruby-core-skills)
 > ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/igmarin/ruby-core-skills?utm_source=oss&utm_medium=github&utm_campaign=igmarin%2Fruby-core-skills&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 > [![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Figmarin%2Fruby-core-skills)](https://tessl.io/registry/igmarin/ruby-core-skills)
 
@@ -77,18 +84,38 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 
 ## Installation & Usage
 
-Core skills are consumed by AI agents via the `agent-mcp-runtime` CLI tool.
-
-During development, you can point the runtime to this local directory using the `--registry` flag:
+Install skills via tessl.io:
 
 ```bash
-agent-mcp-runtime --registry ./path/to/ruby-core-skills --task "Review this code"
+npx tessl i igmarin/ruby-core-skills
 ```
 
-In production, the runtime uses the central `registry.json` manifest to resolve dependencies automatically. When running a framework pack, the runtime loads the framework's own skills first, falling back to core skills for any general Ruby concerns:
+or with yarn (tessl.io):
 
 ```bash
-# Resolves Rails agents/skills first, then falls back to core skills
+yarn tessl i igmarin/ruby-core-skills
+```
+
+Or with skills.sh:
+
+```bash
+npx skills add igmarin/ruby-core-skills
+```
+
+Or via GitHub CLI (v2.90.0+):
+
+```bash
+# Install all skills interactively
+gh skill install igmarin/ruby-core-skills
+
+# Install a specific skill
+gh skill install igmarin/ruby-core-skills tdd-process --scope project
+```
+
+Core skills are also consumed by AI agents via the `agent-mcp-runtime` CLI tool:
+
+```bash
+# Resolves framework skills first, falls back to core skills
 agent-mcp-runtime --pack rails --task "Add full_name to User model"
 ```
 

@@ -3,10 +3,11 @@ name: review-process
 license: MIT
 description: >
   Reviews PRs using structured findings with severity levels (Critical/Major/Minor/Nitpick),
-  verifies changeset includes tests for new/modified logic, reviews for correctness+safety+
-  security+domain language adherence, presents structured table of findings by severity,
-  generates self-review checklists for authors, produces findings reports, determines re-review
-  criteria — and performs re-review verification by reviewing the diff against each finding.
+  verifies changeset includes tests for new/modified logic, reviews for correctness + safety +
+  security + domain language adherence, checks for scope creep and authorization gaps (missing
+  checks are Critical), presents structured table of findings by severity, generates
+  self-review checklists for authors, produces findings reports, determines re-review criteria
+  — and performs re-review verification by reviewing the diff against each finding.
   Use when the user requests a code review, asks to review a pull request, or needs a structured
   code audit with severity-classified findings. Trigger words: code review, review PR, PR review,
   code audit, structured review, severity levels.
@@ -22,7 +23,7 @@ Standardized code review process for Ruby code changesets.
 ## Quick Reference
 
 | Severity | Definition | Target Action |
-|----------|------------|---------------|
+|----------|--------------|---------------|
 | **Critical** | Security issue, data corruption risk, crash/unhandled exception | Must resolve; blocks merge |
 | **Major** | Logical flaw, structural issue, design smell, missing tests | High priority to fix before merge |
 | **Minor** | Inefficient query, duplicate code, suboptimal naming, missing YARD | Optional/nice-to-have in this changeset |
@@ -33,18 +34,16 @@ Standardized code review process for Ruby code changesets.
 ```text
 REVIEW GATES:
 1. Every review must classify findings using the standard severity levels (Critical, Major, Minor, Nitpick).
-2. Any Critical finding automatically blocks the review; a re-review is MANDATORY once addressed.
+2. Any Critical finding automatically blocks the review; a re-review is MANDATORY once addressed. DO NOT merge changesets with unresolved Critical issues.
 3. The reviewer must verify that the changeset includes tests for any new or modified logic.
-4. DO NOT merge changesets that contain unresolved Critical issues.
-5. DO NOT approve without reading the diff and verifying edge cases (no LGTM rubber-stamps).
-6. DO NOT give vague feedback — every finding must include a description and a concrete suggestion.
 ```
 
 ## Process Steps
 
 ### Step 1: Context Gathering
-- Read the issue, PR description, or user request to understand the business intent.
-- Identify the changed files and the overall scope.
+- Confirm the stated business intent matches what the code actually does — flag divergence as a Major finding.
+- Check scope creep: flag files changed that are unrelated to the PR's stated purpose.
+- Identify entry points (controllers, jobs, rake tasks) to trace the full call path through the changeset.
 
 ### Step 2: Self-Review Checklists (For Authors)
 - [ ] Tests cover happy paths, boundaries, and error states
@@ -53,7 +52,12 @@ REVIEW GATES:
 - [ ] Syntax checks and linters pass
 
 ### Step 3: Analysis (For Reviewers)
-Review for correctness, safety, security, and adherence to domain language and documentation standards.
+Apply these domain-specific checks beyond generic correctness:
+- **Authorisation:** Verify every action checks policy/permission — missing checks are Critical.
+- **N+1 queries:** Flag `.each` loops that call associations without eager-loading as Major.
+- **Error handling:** Confirm service objects rescue and return structured error responses rather than raising through to the controller.
+- **Domain language:** Confirm new method/class names align with the established ubiquitous language (e.g., `Order`, `Invoice`, `Subscription` — not generic terms like `Record` or `Item`).
+- **Test coverage gate:** Any new public method or branch without a corresponding spec is at minimum a Major finding.
 
 ### Step 4: Write Findings
 For each issue identified, format it as a structured finding:
@@ -72,7 +76,9 @@ Align with the author or reviewer:
 
 ---
 
-## Structured Finding Example
+## Structured Finding Examples
+
+### Critical
 
 **Location:** `lib/orders/creator.rb:L15-L25`
 **Severity:** Critical
@@ -86,3 +92,26 @@ rescue ProductNotFoundError => e
   { success: false, response: { error: { message: "Product not found" } } }
 end
 ```
+
+### Minor
+
+**Location:** `app/models/subscription.rb:L10-L12`
+**Severity:** Minor
+**Description:** Public method `#days_remaining` lacks a YARD doc comment, making it invisible to documentation generators and harder for new contributors to understand intent.
+**Suggestion:**
+```ruby
+# @return [Integer] number of days until the subscription expires
+def days_remaining
+  (expires_at.to_date - Date.today).to_i
+end
+```
+
+---
+
+## Integration
+
+| Context | Next Skill |
+|---------|----------|
+| Addressing review findings | **respond-to-review** |
+| Adding missing tests | **tdd-process** |
+| Cleaning up identified smells | **refactor-process** |

@@ -1,0 +1,35 @@
+name: Ecosystem Validation
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1'  # Weekly Monday 6am UTC
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      
+      - name: Clone ecosystem repos
+        run: |
+          cd ..
+          git clone --depth 1 https://github.com/igmarin/rails-agent-skills.git
+          git clone --depth 1 https://github.com/igmarin/hanakai-yaku.git
+          git clone --depth 1 https://github.com/igmarin/agnostic-planning-skills.git
+          git clone --depth 1 https://github.com/igmarin/agent-mcp-runtime.git
+          git clone --depth 1 https://github.com/igmarin/ruby-skill-bench.git
+      
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: false
+      
+      - name: Run ecosystem validation
+        run: |
+          cd ..
+          ruby ruby-core-skills/scripts/validate-ecosystem.rb

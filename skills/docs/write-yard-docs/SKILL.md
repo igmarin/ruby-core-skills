@@ -5,11 +5,12 @@ description: >
   Use when writing YARD documentation for Ruby public APIs: every public method MUST have
   `@param`, `@return [Hash]`, and `@raise` tags, document `self.call` separately from `#call`,
   list each exception with its own `@raise` tag, use `@example` for module-level constructs,
-  `@see` for cross-references, follow YARD `@return` type annotation conventions, and add
-  explicit YARD sub-tasks after implementation in task lists. Every public method MUST include
-  param, return, and raise tags. For self.call methods, the return tag MUST specify the return
-  type and structure (e.g., return [Hash] with :success and :response keys). Trigger words: YARD,
-  inline docs, method documentation, API docs, public interface, rdoc, return tag, raise tag.
+  `@see` for cross-references, follow YARD `@return` type annotation conventions, add explicit
+  YARD sub-tasks after implementation to task lists, keep all YARD text in English unless
+  requested otherwise, run
+  `yard stats --list-undoc` to verify coverage, and load extended resource files only when
+  their specific content is needed. Trigger words: YARD, inline docs, method documentation,
+  API docs, public interface, rdoc, return tag, raise tag.
 metadata:
   version: 1.0.0
   user-invocable: "true"

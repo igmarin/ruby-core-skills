@@ -1,3 +1,15 @@
+---
+name: ruby-core-skills
+description: >
+  Catalog of 16 shared Ruby development skills covering TDD, refactoring,
+  code review, security review, DDD, YARD documentation, and common design
+  patterns (service objects, calculators, API clients). Routes to specialized
+  skills by category. Use when building Ruby applications, implementing
+  TDD workflows, reviewing code, or needing Ruby-specific process discipline.
+  Trigger: Ruby development, Ruby skill, Ruby TDD, Ruby code review, Ruby
+  design patterns.
+---
+
 # AI Skill Catalog — Ruby Core Skills
 
 This repository serves as the central library of framework-agnostic Ruby skills and process-discipline skills for the AI agent ecosystem.

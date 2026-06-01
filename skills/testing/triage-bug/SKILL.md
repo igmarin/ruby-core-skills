@@ -2,10 +2,10 @@
 name: triage-bug
 license: MIT
 description: >
-  Use when investigating a bug, error, or regression in a Ruby codebase.
+  Use when investigating a bug, error, or regression in a Ruby or Rails codebase.
   Creates a failing reproduction test, isolates the broken code path, and
   produces a minimal fix plan. Trigger words: debug, broken, error, regression,
-  stack trace, failing test, bug report, Ruby bug.
+  stack trace, failing test, bug report, Ruby bug, Rails error, .rb file broken.
 metadata:
   version: 1.0.0
   user-invocable: "true"
@@ -68,9 +68,7 @@ When the report is an order creation failure visible through `POST /orders`, def
     end
   end
   ```
-  *For a Minitest equivalent, see [assets/examples.md](assets/examples.md).*
-
-Do not replace this with a pricing, model-only, or class-only example unless the bug report points there.
+  *For a Minitest equivalent, see [assets/examples.md](assets/examples.md). Do not replace this example with a pricing, model-only, or class-only scenario unless the bug report points there.*
 
 ### Boundary Guide
 

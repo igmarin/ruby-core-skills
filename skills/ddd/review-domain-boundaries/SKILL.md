@@ -3,15 +3,15 @@ name: review-domain-boundaries
 license: MIT
 description: >
   Use when reviewing a Ruby app for DDD (domain-driven design) boundaries, module boundaries,
-  service boundaries, or general code organization review: detect bounded contexts, language leakage,
-  cross-context orchestration, and unclear ownership — use `rg` to find cross-context references
-  (e.g., `rg 'Billing.*Fleet' lib/`) and leaked terms, identify misplaced domain models and
-  ownership conflicts, propose the smallest credible boundary improvement before large
-  reorganizations — output findings first, then open questions and recommended next skills.
-  Identifies misplaced domain models, detects cross-context coupling, names ownership conflicts,
-  and recommends the smallest credible boundary improvement. Covers context mapping and leakage
-  detection. Use when a user asks to review Ruby app architecture, check service or module
-  boundaries, or audit how responsibilities are divided across the codebase.
+  service boundaries, or code organization: detects bounded contexts, language leakage,
+  cross-context orchestration, and unclear ownership — uses `rg` to find cross-context
+  references and leaked terms, identifies misplaced domain models and documents ownership
+  direction (which context owns invariants, transitions, and side effects), proposes the
+  smallest credible
+  boundary improvement before large reorganizations, outputs findings first then open
+  questions then recommended next skills, and loads boundary-leakage examples only when
+  their content is needed. Covers context mapping, leakage detection, and cross-context
+  coupling.
 metadata:
   version: 1.0.0
   user-invocable: "true"
@@ -78,6 +78,20 @@ rg 'invoice|Invoice|Billing' lib/ app/ services/
 - Treating a shared database table as proof of a shared context — storage and domain boundaries are independent concerns.
 - Splitting into new contexts before the business language is stable enough to name them clearly.
 - Mistaking a large Ruby namespace for a bounded context without checking whether it has a single, coherent set of rules and an identifiable owner.
+
+## Ownership Direction
+
+When documenting ownership, state **which context owns which capability** and **what the other context must not do**. Apply to the project's domain, not pre-existing examples.
+
+| Pattern | Good | Bad |
+|---------|------|-----|
+| **State ownership** | `Billing owns invoice state; Fleet never writes invoice columns` | `Billing and Fleet both manage invoice state` |
+| **Trigger ownership** | `Billing owns invoice-generation triggers; Fleet emits events instead` | `Fleet::Vehicle calls Billing::InvoiceGenerator directly` |
+| **Validation ownership** | `Fleet owns vehicle availability rules; Billing queries a read model` | `Billing::InvoiceService checks Fleet::Vehicle.available?` |
+| **Side-effect ownership** | `Billing owns email/sidekiq after invoice creation; Fleet has no invoice callbacks` | `Fleet::Reservation after_save generates an invoice` |
+| **Crossing pattern** | `Fleet publishes ReservationCompleted; Billing subscribes` | `Billing::InvoiceService.new.call(Fleet::Reservation.last)` |
+
+Document the direction explicitly: `Context X owns <capability>; Context Y must not <action>.`
 
 ## Output Style
 

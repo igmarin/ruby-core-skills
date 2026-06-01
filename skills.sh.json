@@ -1,0 +1,70 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Documentation",
+      "description": "Skills for YARD inline documentation.",
+      "skills": [
+        "write-yard-docs"
+      ]
+    },
+    {
+      "title": "Patterns",
+      "description": "Skills for Ruby service objects, calculators, and API client integration.",
+      "skills": [
+        "create-service-object",
+        "implement-calculator-pattern",
+        "integrate-api-client"
+      ]
+    },
+    {
+      "title": "Domain-Driven Design",
+      "description": "Skills for domain language, boundary auditing, and tactical DDD modeling.",
+      "skills": [
+        "define-domain-language",
+        "review-domain-boundaries",
+        "model-domain"
+      ]
+    },
+    {
+      "title": "Testing",
+      "description": "Skills for bug triage and reproduction.",
+      "skills": [
+        "triage-bug"
+      ]
+    },
+    {
+      "title": "Code Quality",
+      "description": "Skills for responding to code review feedback.",
+      "skills": [
+        "respond-to-review"
+      ]
+    },
+    {
+      "title": "Process",
+      "description": "Discipline skills for TDD, refactoring, code review, security review, and test planning.",
+      "skills": [
+        "tdd-process",
+        "refactor-process",
+        "review-process",
+        "security-review-process",
+        "test-planning-process"
+      ]
+    },
+    {
+      "title": "Orchestration",
+      "description": "Skills for triaging and decomposing complex Ruby requests.",
+      "skills": [
+        "skill-router"
+      ]
+    },
+    {
+      "title": "Planning",
+      "description": "Skills for generating TDD task checklists.",
+      "skills": [
+        "generate-tdd-tasks"
+      ]
+    }
+  ]
+}

@@ -137,10 +137,12 @@ Full implementations for all components including multi-variant expansion are in
 **Pitfalls**
 | Pitfall | Fix |
 |---------|-----|
-| SERVICE_MAP key mismatch | Verify keys match exactly what is stored in the database — typos cause silent NullService fallbacks |
-| Missing NullService spec/test | Always add a test context for unknown/nil variants or tests will never catch the fallback regression |
-| Direct service instantiation (`ServiceClass.new(entity)`) | Route through `Factory.for(entity)` — it is the sole public entry point; direct instantiation bypasses the NullService safety net |
+| SERVICE_MAP key mismatch | Keys must match exactly what is stored in the database — typos cause silent NullService fallbacks |
+| Missing NullService spec/test | Always add a context for unknown/nil variants or fallback regressions go undetected |
+| Direct service instantiation | Route through `Factory.for(entity)` — direct instantiation bypasses the NullService safety net |
 | Forgetting `super` in concrete `should_calculate?` | Always call `super` — skipping it removes the base nil/presence guard |
+
+## Further Reading
 
 - [assets/examples.md](assets/examples.md) — Additional worked examples showing alternative domain contexts (e.g., discount calculators, shipping calculators) using the same pattern.
 - [IMPLEMENTATION.md](IMPLEMENTATION.md) — Full Ruby implementations for every component (Factory, BaseService, NullService, Concrete Service), module naming conventions, and multi-variant expansion guidance.
