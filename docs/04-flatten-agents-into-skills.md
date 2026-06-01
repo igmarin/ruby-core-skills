@@ -65,33 +65,33 @@ workflow:
 Each repository will migrate its `agents/` content to the corresponding category folders under `skills/` using `verb-noun` names:
 
 #### 1. `igmarin/rails-agent-skills` Mappings
-* `agents/tdd/SKILL.md` $\rightarrow$ `skills/testing/practice-tdd/SKILL.md`
-* `agents/bug-fix/SKILL.md` $\rightarrow$ `skills/testing/resolve-bug/SKILL.md`
-* `agents/review/SKILL.md` $\rightarrow$ `skills/code-quality/review-code/SKILL.md`
-* `agents/quality/SKILL.md` $\rightarrow$ `skills/code-quality/improve-code-quality/SKILL.md`
-* `agents/setup/SKILL.md` $\rightarrow$ `skills/context/initialize-environment/SKILL.md`
-* `agents/engine/SKILL.md` $\rightarrow$ `skills/engines/integrate-engine/SKILL.md`
-* `agents/graphql/SKILL.md` $\rightarrow$ `skills/api/integrate-graphql-api/SKILL.md`
-* `agents/migration/SKILL.md` $\rightarrow$ `skills/infrastructure/apply-migration/SKILL.md`
-* `agents/background-job/SKILL.md` $\rightarrow$ `skills/infrastructure/schedule-background-job/SKILL.md`
+* `agents/tdd/SKILL.md` → `skills/testing/practice-tdd/SKILL.md`
+* `agents/bug-fix/SKILL.md` → `skills/testing/resolve-bug/SKILL.md`
+* `agents/review/SKILL.md` → `skills/code-quality/review-code/SKILL.md`
+* `agents/quality/SKILL.md` → `skills/code-quality/improve-code-quality/SKILL.md`
+* `agents/setup/SKILL.md` → `skills/context/initialize-environment/SKILL.md`
+* `agents/engine/SKILL.md` → `skills/engines/integrate-engine/SKILL.md`
+* `agents/graphql/SKILL.md` → `skills/api/integrate-graphql-api/SKILL.md`
+* `agents/migration/SKILL.md` → `skills/infrastructure/apply-migration/SKILL.md`
+* `agents/background-job/SKILL.md` → `skills/infrastructure/schedule-background-job/SKILL.md`
 
 #### 2. `igmarin/hanakai-yaku` Mappings
-* `agents/tdd-loop/` $\rightarrow$ `skills/testing/practice-tdd/SKILL.md`
-* `agents/add-background-jobs/` $\rightarrow$ `skills/infrastructure/schedule-background-job/SKILL.md`
-* `agents/add-table-column/` $\rightarrow$ `skills/db/add-table-column/SKILL.md`
-* `agents/build-api-slice/` $\rightarrow$ `skills/slices/build-api-slice/SKILL.md`
-* `agents/build-crud-resource/` $\rightarrow$ `skills/slices/build-crud-resource/SKILL.md`
-* `agents/create-new-slice/` $\rightarrow$ `skills/slices/create-new-slice/SKILL.md`
-* `agents/hanami-setup/` $\rightarrow$ `skills/cli/setup-hanami/SKILL.md`
-* `agents/setup-authentication/` $\rightarrow$ `skills/cross-cutting/configure-authentication/SKILL.md`
-* `agents/slice-lifecycle/` $\rightarrow$ `skills/slices/manage-slice-lifecycle/SKILL.md`
-* `agents/validation-contract/` $\rightarrow$ `skills/dry-rb/validate-data/SKILL.md`
+* `agents/tdd-loop/` → `skills/testing/practice-tdd/SKILL.md`
+* `agents/add-background-jobs/` → `skills/infrastructure/schedule-background-job/SKILL.md`
+* `agents/add-table-column/` → `skills/db/add-table-column/SKILL.md`
+* `agents/build-api-slice/` → `skills/slices/build-api-slice/SKILL.md`
+* `agents/build-crud-resource/` → `skills/slices/build-crud-resource/SKILL.md`
+* `agents/create-new-slice/` → `skills/slices/create-new-slice/SKILL.md`
+* `agents/hanami-setup/` → `skills/cli/setup-hanami/SKILL.md`
+* `agents/setup-authentication/` → `skills/cross-cutting/configure-authentication/SKILL.md`
+* `agents/slice-lifecycle/` → `skills/slices/manage-slice-lifecycle/SKILL.md`
+* `agents/validation-contract/` → `skills/dry-rb/validate-data/SKILL.md`
 
 #### 3. `igmarin/agnostic-planning-skills` Mappings
-* `agents/delivery-lead/` $\rightarrow$ `skills/ceremony/orchestrate-delivery/SKILL.md`
-* `agents/product-owner/` $\rightarrow$ `skills/backlog/manage-product-backlog/SKILL.md`
-* `agents/project-manager/` $\rightarrow$ `skills/execution/manage-project/SKILL.md`
-* `agents/tech-lead/` $\rightarrow$ `skills/execution/guide-technical-design/SKILL.md`
+* `agents/delivery-lead/` → `skills/ceremony/orchestrate-delivery/SKILL.md`
+* `agents/product-owner/` → `skills/backlog/manage-product-backlog/SKILL.md`
+* `agents/project-manager/` → `skills/execution/manage-project/SKILL.md`
+* `agents/tech-lead/` → `skills/execution/guide-technical-design/SKILL.md`
 
 ---
 

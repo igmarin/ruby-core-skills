@@ -39,7 +39,7 @@ This repository serves as the central library of framework-agnostic Ruby skills 
 
 ## 1. Process-Discipline Skills (5)
 
-Process-discipline skills encode universal software engineering principles. They contain zero framework-specific details and are meant to be referenced by framework orchestrator workflows to enforce engineering gates.
+Process-discipline skills encode universal software engineering principles. They contain zero framework-specific details and are meant to be referenced by framework orchestrators to enforce engineering gates.
 
 - [tdd-process](./skills/process/tdd-process/SKILL.md): Standardizes the Red-Green-Refactor loop.
 - [refactor-process](./skills/process/refactor-process/SKILL.md): Guides safe code cleanups under tests.

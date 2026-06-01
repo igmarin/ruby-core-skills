@@ -204,7 +204,7 @@ metadata:
 
 ## 6. Runtime Dependency Resolution Flow
 
-```
+```text
 1. User invokes workflow: agent-mcp-runtime --pack rails use_skill practice-tdd
 2. Runtime loads orchestrator SKILL.md from rails pack
 3. Runtime parses metadata.dependencies and workflow

@@ -137,8 +137,7 @@ These 45 skills are Hanami/dry-rb/ROM-specific and remain in `hanakai-yaku`.
 These 14 skills remain in `agnostic-planning-skills`.
 
 | # | Skill | Category | Path | Type |
-|---|-------|----------|------|------|
-| 1-10 | *(Atomic catalog)* | various | `skills/` | atomic | List unchanged (10 skills) |
+| 1-10 | *(Atomic catalog)* | various | `skills/` | atomic |
 | 11 | `orchestrate-delivery` | ceremony | `skills/ceremony/orchestrate-delivery/` | orchestrator |
 | 12 | `manage-product-backlog` | backlog | `skills/backlog/manage-product-backlog/` | orchestrator |
 | 13 | `manage-project` | execution | `skills/execution/manage-project/` | orchestrator |

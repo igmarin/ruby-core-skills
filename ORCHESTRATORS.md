@@ -12,7 +12,7 @@ This repository serves as a foundational library. Framework-specific repositorie
 
 Each skill lives in its own directory within `skills/` with a `SKILL.md` as the entry point:
 
-```
+```text
 skills/<category>/<skill-name>/
 ├── SKILL.md          # Entry point — always read this first
 ├── EXAMPLES.md       # Concrete input/output examples (when present)

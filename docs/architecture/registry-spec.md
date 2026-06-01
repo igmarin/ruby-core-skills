@@ -24,24 +24,24 @@ The central registry manifest lives in `agent-mcp-runtime` (or a well-known remo
   "packs": {
     "core": {
       "source": "igmarin/ruby-core-skills",
-      "tile": "directory.json",
+      "manifest": "directory.json",
       "always_loaded": true
     },
     "rails": {
       "source": "igmarin/rails-agent-skills",
-      "tile": "directory.json",
+      "manifest": "directory.json",
       "depends_on": ["core"],
       "additional_packs": ["planning"]
     },
     "hanami": {
       "source": "igmarin/hanakai-yaku",
-      "tile": "directory.json",
+      "manifest": "directory.json",
       "depends_on": ["core"],
       "additional_packs": ["planning"]
     },
     "planning": {
       "source": "igmarin/agnostic-planning-skills",
-      "tile": "directory.json"
+      "manifest": "directory.json"
     }
   },
   "default_stack": ["core", "planning"],
@@ -73,7 +73,7 @@ The central registry manifest lives in `agent-mcp-runtime` (or a well-known remo
 | `version` | string | Yes | Registry manifest version. SemVer. |
 | `packs` | object | Yes | Map of pack name → pack definition. |
 | `packs.<name>.source` | string | Yes | GitHub repo slug (`owner/repo`). |
-| `packs.<name>.tile` | string | Yes | Relative path to `directory.json` in the repo. |
+| `packs.<name>.manifest` | string | Yes | Relative path to `directory.json` in the repo. |
 | `packs.<name>.always_loaded` | boolean | No | If `true`, this pack is included in every resolution. Default: `false`. |
 | `packs.<name>.depends_on` | array | No | List of pack names that must be loaded before this pack. |
 | `packs.<name>.additional_packs` | array | No | Packs to auto-include when this pack is selected. |
