@@ -8,7 +8,7 @@
 
 ## 1. Overview
 
-This document specifies the central registry manifest (`registry.json`), pack resolution behavior, deprecation alias format, and `depends_on` validation rules. The runtime (`agent-mcp-runtime`) reads this manifest to resolve skills and agents across the ecosystem.
+This document specifies the central registry manifest (`registry.json`), pack resolution behavior, deprecation alias format, and `depends_on` validation rules. The runtime (`agent-mcp-runtime`) reads this manifest to resolve skills and orchestrators across the ecosystem.
 
 **Key design decision:** Pack-scoped resolution with a flat namespace. Framework packs take priority over core. No skill renames needed.
 
@@ -430,8 +430,8 @@ The pack system affects these MCP tools:
 |------|-----------------|
 | `list_skills` | Returns merged catalog from all loaded packs. Marks deprecated skills with `deprecated: true` and `moved_to` info. |
 | `use_skill` | Resolves via `RegistryResolver::resolve_skill`. Transparently handles deprecated skills with warnings. |
-| `list_agents` | Returns merged agent catalog. Agents from framework packs only (core has no agents). |
-| `use_agent` | Loads agent + its declared dependencies. Validates cross-repo dependency chain. |
+| `list_agents` | **Deprecated**. Returns merged agent catalog. Clients should use `list_skills` instead, which includes both atomic and orchestrator skills. |
+| `use_agent` | **Deprecated**. Loads agent + its declared dependencies. Clients should use `use_skill` instead, which loads both atomic and orchestrator skills with dependency validation. |
 | `list_packs` | Shows available packs from `registry.json` and currently loaded packs. |
 
 ---

@@ -6,14 +6,14 @@ This file provides equivalent instructions to `CLAUDE.md` for Gemini CLI.
 
 `ruby-core-skills` is a curated library of atomic and process-discipline skills for general Ruby development. It teaches AI coding agents (and developers) how to plan, implement, test, and review Ruby code using framework-agnostic conventions.
 
-This repository serves as a foundational library. Framework-specific repositories contain agents that compose and chain skills from this repository.
+This repository serves as a foundational library. Framework-specific repositories contain orchestrator workflows that compose and chain skills from this repository.
 
 ## Skill Catalog
 
-The repository contains 15 skills covering:
+The repository contains 16 skills covering:
 
 - **Process Discipline**: `tdd-process`, `refactor-process`, `review-process`, `security-review-process`, `test-planning-process`
-- **Atomic Ruby Skills**: `write-yard-docs`, `create-service-object`, `implement-calculator-pattern`, `integrate-api-client`, `define-domain-language`, `review-domain-boundaries`, `model-domain`, `triage-bug`, `respond-to-review`, `skill-router`
+- **Atomic Ruby Skills**: `write-yard-docs`, `create-service-object`, `implement-calculator-pattern`, `integrate-api-client`, `define-domain-language`, `review-domain-boundaries`, `model-domain`, `triage-bug`, `respond-to-review`, `skill-router`, `generate-tdd-tasks`
 
 ## How to Discover Skills
 

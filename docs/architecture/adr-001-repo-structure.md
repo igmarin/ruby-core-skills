@@ -100,11 +100,11 @@ Universal process knowledge is extracted into 5 new skills in `ruby-core-skills`
 | `security-review-process` | OWASP checklist, Ruby-level security concerns |
 | `test-planning-process` | Test-selection decision framework |
 
-These are **skills**, not agents. Framework agents compose them with local framework skills.
+These are **skills**, not orchestrators. Framework orchestrators compose them with local framework skills.
 
-### 2.7 No Generic Agents in Core
+### 2.7 No Generic Orchestrators in Core
 
-`ruby-core-skills` contains **zero agents**. A "generic TDD agent" without framework context is too abstract to be useful — it cannot know which test runner, assertion library, or directory conventions to use. The valuable shared part is the *process discipline* (encoded as skills), not the orchestration (which stays in framework repos).
+`ruby-core-skills` contains **zero orchestrator workflows**. A "generic TDD orchestrator" without framework context is too abstract to be useful — it cannot know which test runner, assertion library, or directory conventions to use. The valuable shared part is the *process discipline* (encoded as skills), not the orchestration (which stays in framework repos).
 
 ---
 

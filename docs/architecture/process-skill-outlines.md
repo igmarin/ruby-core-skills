@@ -9,7 +9,7 @@
 
 ## 1. Overview
 
-Process-discipline skills encode universal workflow knowledge — the "how to think about" a process — without any framework-specific content. They live in `ruby-core-skills` and are composed by framework agents to enforce discipline (hard gates, checkpoints) while retaining framework context.
+Process-discipline skills encode universal workflow knowledge — the "how to think about" a process — without any framework-specific content. They live in `ruby-core-skills` and are composed by framework orchestrator workflows to enforce discipline (hard gates, checkpoints) while retaining framework context.
 
 **General format for each process skill:**
 
@@ -271,13 +271,13 @@ Decision framework for choosing what type of test to write and where. This skill
 |----------|-------|
 | **User-invocable** | Yes (`metadata.user-invocable: "true"`) |
 | **Type** | `process-discipline` |
-| **Agents** | None (process skills are not agents) |
+| **Orchestrators** | None (process skills are not orchestrators) |
 | **Framework references** | None (no "Rails", "Hanami", "ActiveRecord", "ROM" in skill body) |
 | **Hard gates** | Explicit, numbered, non-negotiable |
 
-### 7.2 How Framework Agents Compose Process Skills
+### 7.2 How Framework Orchestrators Compose Process Skills
 
-**Example: Rails `tdd` agent workflow**
+**Example: Rails `practice-tdd` orchestrator workflow**
 
 ```text
 Phase 1: load-context (local)          → Rails schema, routes, patterns
@@ -291,7 +291,7 @@ Phase 5: write-yard-docs (core)         → Document public Ruby API
          code-review (local)           → Rails-specific review
 ```
 
-**Example: Hanami `tdd-loop` agent workflow**
+**Example: Hanami `practice-tdd` orchestrator workflow**
 
 ```text
 Phase 1: load-context (local)          → Slices, providers, routes

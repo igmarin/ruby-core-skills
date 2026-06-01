@@ -7,10 +7,10 @@ Shared Ruby development skills and process-discipline knowledge for the AI skill
 
 This repository is a core component of the multi-repo AI Skill Ecosystem:
 
-1. **`ruby-core-skills` (This repository)**: Contains 16 foundational Ruby programming, planning, and software engineering process-discipline skills. **Contains zero agents.**
-2. **`rails-agent-skills`**: Curated library of Rails-specific skills + 9 specialized agents that compose core processes.
-3. **`hanakai-yaku`**: Curated library of Hanami-specific skills + 10 specialized agents.
-4. **`agnostic-planning-skills`**: Generic project management, planning, and task breakdown skills + 4 agents.
+1. **`ruby-core-skills` (This repository)**: Contains 16 foundational Ruby programming, planning, and software engineering process-discipline skills. **Contains zero orchestrator workflows.**
+2. **`rails-agent-skills`**: Curated library of Rails-specific atomic skills + 9 orchestrator workflows.
+3. **`hanakai-yaku`**: Curated library of Hanami-specific atomic skills + 10 orchestrator workflows.
+4. **`agnostic-planning-skills`**: Generic project management, planning, and task breakdown skills + 4 orchestrator workflows.
 5. **`agent-mcp-runtime`**: The Rust-based CLI runtime that acts as the composition and resolution engine.
 
 ### Dependency Direction
@@ -23,9 +23,9 @@ flowchart BT
         atomic["atomic skills"]
     end
 
-    rails["rails-agent-skills<br/>(skills+agents)"]
-    hanakai["hanakai-yaku<br/>(skills+agents)"]
-    agnostic["agnostic-planning-skills<br/>(skills+agents)"]
+    rails["rails-agent-skills<br/>(atomic+orchestrator)"]
+    hanakai["hanakai-yaku<br/>(atomic+orchestrator)"]
+    agnostic["agnostic-planning-skills<br/>(atomic+orchestrator)"]
 
     rails --> core
     hanakai --> core

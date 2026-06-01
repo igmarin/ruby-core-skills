@@ -32,6 +32,5 @@
     "patterns": "skills/patterns/",
     "testing": "skills/testing/",
     "process": "skills/process/"
-  },
-  "agents": {}
+  }
 }
