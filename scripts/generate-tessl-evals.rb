@@ -6,7 +6,7 @@ require "json"
 require "yaml"
 
 ROOT = File.expand_path("..", __dir__)
-TILE_PATH = File.join(ROOT, "tile.json")
+PLUGIN_PATH = File.join(ROOT, ".tessl-plugin", "plugin.json")
 OUTPUT_ROOT = File.join(ROOT, "tessl-evals")
 
 Instruction = Struct.new(:text, :snippet, :why_given, keyword_init: true)
@@ -178,13 +178,14 @@ def write_skill_eval(skill_name, skill_path)
   )
 end
 
-tile = read_json(TILE_PATH)
-skills = tile.fetch("skills")
+plugin = read_json(PLUGIN_PATH)
+skills = plugin.fetch("skills")
 FileUtils.mkdir_p(OUTPUT_ROOT)
 
-skills.each do |skill_name, spec|
-  skill_path = spec.fetch("path")
-  write_skill_eval(skill_name, skill_path)
+skills.each do |skill_path|
+  skill_name = File.basename(File.dirname(skill_path))
+  clean_path = skill_path.sub(/\A\.\//, "")
+  write_skill_eval(skill_name, clean_path)
 end
 
 puts "Generated Tessl eval source for #{skills.length} publishable skills in tessl-evals/"

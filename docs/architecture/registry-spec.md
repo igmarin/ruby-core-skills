@@ -24,24 +24,24 @@ The central registry manifest lives in `agent-mcp-runtime` (or a well-known remo
   "packs": {
     "core": {
       "source": "igmarin/ruby-core-skills",
-      "tile": "tile.json",
+      "tile": "directory.json",
       "always_loaded": true
     },
     "rails": {
       "source": "igmarin/rails-agent-skills",
-      "tile": "tile.json",
+      "tile": "directory.json",
       "depends_on": ["core"],
       "additional_packs": ["planning"]
     },
     "hanami": {
       "source": "igmarin/hanakai-yaku",
-      "tile": "tile.json",
+      "tile": "directory.json",
       "depends_on": ["core"],
       "additional_packs": ["planning"]
     },
     "planning": {
       "source": "igmarin/agnostic-planning-skills",
-      "tile": "tile.json"
+      "tile": "directory.json"
     }
   },
   "default_stack": ["core", "planning"],
@@ -73,7 +73,7 @@ The central registry manifest lives in `agent-mcp-runtime` (or a well-known remo
 | `version` | string | Yes | Registry manifest version. SemVer. |
 | `packs` | object | Yes | Map of pack name → pack definition. |
 | `packs.<name>.source` | string | Yes | GitHub repo slug (`owner/repo`). |
-| `packs.<name>.tile` | string | Yes | Relative path to `tile.json` in the repo. |
+| `packs.<name>.tile` | string | Yes | Relative path to `directory.json` in the repo. |
 | `packs.<name>.always_loaded` | boolean | No | If `true`, this pack is included in every resolution. Default: `false`. |
 | `packs.<name>.depends_on` | array | No | List of pack names that must be loaded before this pack. |
 | `packs.<name>.additional_packs` | array | No | Packs to auto-include when this pack is selected. |
@@ -213,7 +213,7 @@ If a skill name exists in both a framework pack and core (e.g., hypothetical fut
 
 At startup, the runtime validates that every loaded pack's dependencies are satisfied:
 
-1. For each pack in the active stack, read its `depends_on` array (from `tile.json` or `registry.json`).
+1. For each pack in the active stack, read its `depends_on` array (from `directory.json` or `registry.json`).
 2. Verify that every dependency is present in the active stack.
 3. If a dependency is missing, emit a WARNING (not fatal):
    ```
@@ -225,12 +225,12 @@ At startup, the runtime validates that every loaded pack's dependencies are sati
 
 If `depends_on` chains form a cycle (e.g., core depends on rails, rails depends on core), the runtime logs an ERROR and exits:
 ```text
-"Circular dependency detected: core → rails → core. Check registry.json and tile.json files."
+"Circular dependency detected: core → rails → core. Check registry.json and directory.json files."
 ```
 
-### 5.3 `depends_on` in `tile.json`
+### 5.3 `depends_on` in `directory.json`
 
-Each framework repo's `tile.json` declares its dependency on core:
+Each framework repo's `directory.json` declares its dependency on core:
 
 ```json
 {
@@ -247,9 +247,9 @@ The runtime uses this for validation. The `depends_on` field is an array of repo
 
 ## 6. Deprecation Alias Format
 
-When skills are removed from framework repos in Phase 2, the origin repo's `tile.json` contains a `deprecated_skills` section. This provides a soft landing for existing users.
+When skills are removed from framework repos in Phase 2, the origin repo's `directory.json` contains a `deprecated_skills` section. This provides a soft landing for existing users.
 
-### 6.1 `tile.json` Deprecation Section
+### 6.1 `directory.json` Deprecation Section
 
 ```json
 {
@@ -350,8 +350,8 @@ agent-mcp-runtime --pack rails --registry ./my-local-skills --task "Test my new 
 - `--registry` accepts a local directory path.
 - Multiple `--registry` flags are allowed. They are searched in declaration order.
 - Local registries have **highest priority** — they override even framework packs.
-- The directory must contain a valid `tile.json` at its root.
-- If the local `tile.json` has a skill with the same name as a pack skill, the local version wins.
+- The directory must contain a valid `directory.json` at its root.
+- If the local `directory.json` has a skill with the same name as a pack skill, the local version wins.
 
 ### 7.2 Use Cases
 

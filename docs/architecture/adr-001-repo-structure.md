@@ -61,7 +61,7 @@ The runtime attempts to auto-detect the framework from the working directory (`G
 
 ### 2.4 Dependency Declaration
 
-Framework repos declare their dependency on `ruby-core-skills` via `depends_on` in `tile.json`:
+Framework repos declare their dependency on `ruby-core-skills` via `depends_on` in `directory.json`:
 
 ```json
 {
@@ -74,7 +74,7 @@ Framework repos declare their dependency on `ruby-core-skills` via `depends_on` 
 
 ### 2.5 Deprecation Aliases
 
-When skills are removed from framework repos, `deprecated_skills` entries in `tile.json` provide a soft landing:
+When skills are removed from framework repos, `deprecated_skills` entries in `directory.json` provide a soft landing:
 
 ```json
 {

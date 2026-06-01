@@ -2,14 +2,16 @@
 name: review-domain-boundaries
 license: MIT
 description: >
-  Use when reviewing a Ruby app for DDD boundaries: detect bounded contexts, language leakage,
+  Use when reviewing a Ruby app for DDD (domain-driven design) boundaries, module boundaries,
+  service boundaries, or general code organization review: detect bounded contexts, language leakage,
   cross-context orchestration, and unclear ownership — use `rg` to find cross-context references
   (e.g., `rg 'Billing.*Fleet' lib/`) and leaked terms, identify misplaced domain models and
   ownership conflicts, propose the smallest credible boundary improvement before large
   reorganizations — output findings first, then open questions and recommended next skills.
   Identifies misplaced domain models, detects cross-context coupling, names ownership conflicts,
   and recommends the smallest credible boundary improvement. Covers context mapping and leakage
-  detection.
+  detection. Use when a user asks to review Ruby app architecture, check service or module
+  boundaries, or audit how responsibilities are divided across the codebase.
 metadata:
   version: 1.0.0
   user-invocable: "true"

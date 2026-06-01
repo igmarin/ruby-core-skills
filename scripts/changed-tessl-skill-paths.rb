@@ -5,13 +5,14 @@ require "json"
 require "set"
 
 ROOT = File.expand_path("..", __dir__)
-tile = JSON.parse(File.read(File.join(ROOT, "tile.json")))
-publishable_paths = tile.fetch("skills").values.map { |spec| spec.fetch("path") }
+plugin = JSON.parse(File.read(File.join(ROOT, ".tessl-plugin", "plugin.json")))
+publishable_paths = plugin.fetch("skills")
 changed_files = STDIN.read.lines.map(&:strip).reject(&:empty?)
 
 changed_skill_paths = publishable_paths.select do |skill_path|
-  skill_dir = File.dirname(skill_path)
-  changed_files.any? { |path| path == skill_path || path.start_with?("#{skill_dir}/") }
+  clean_skill_path = skill_path.sub(/\A\.\//, "")
+  skill_dir = File.dirname(clean_skill_path)
+  changed_files.any? { |path| path == clean_skill_path || path.start_with?("#{skill_dir}/") }
 end
 
 puts changed_skill_paths.join("\n")

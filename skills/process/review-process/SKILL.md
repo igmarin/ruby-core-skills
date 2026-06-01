@@ -36,6 +36,8 @@ REVIEW GATES:
 2. Any Critical finding automatically blocks the review; a re-review is MANDATORY once addressed.
 3. The reviewer must verify that the changeset includes tests for any new or modified logic.
 4. DO NOT merge changesets that contain unresolved Critical issues.
+5. DO NOT approve without reading the diff and verifying edge cases (no LGTM rubber-stamps).
+6. DO NOT give vague feedback — every finding must include a description and a concrete suggestion.
 ```
 
 ## Process Steps
@@ -84,19 +86,3 @@ rescue ProductNotFoundError => e
   { success: false, response: { error: { message: "Product not found" } } }
 end
 ```
-
----
-
-## Anti-Patterns
-
-- **Cosmetic Bias:** Focusing on nitpicks while ignoring logical flaws, structural smells, or missing tests
-- **Performative Reviews:** LGTM approvals without reading the diff, running tests, or verifying edge cases
-- **Vague Feedback:** Comments like "this looks weird" or "fix this" without explanation or clear alternatives
-
-## Integration
-
-| Context | Next Skill |
-|---------|-----------|
-| Addressing review findings | **respond-to-review** |
-| Adding missing tests | **tdd-process** |
-| Cleaning up identified smells | **refactor-process** |

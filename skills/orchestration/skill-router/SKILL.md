@@ -7,10 +7,11 @@ description: >
   Process/refactor→Domain implementation, use `test-planning-process` when first failing
   test is not obvious, fallback to `define-domain-language` or `model-domain` for ambiguity,
   and all output MUST be in English. Enforces TDD discipline across all code-producing work.
-  Use when scope is unclear, best approach uncertain, or request spans multiple concerns.
-  Trigger: where do I start, help me plan a Ruby feature, break this down, what's the best
-  approach, not sure how to approach this, multi-step Ruby task, complex Ruby task,
-  what should I do first.
+  Use when scope is unclear, best approach uncertain, or a Ruby request spans multiple concerns.
+  Trigger: where do I start on this Ruby feature, help me plan a Ruby feature, break down
+  this Ruby task, what's the best approach for this Ruby code, not sure how to approach
+  this Ruby problem, multi-step Ruby task, complex Ruby task, what should I implement first
+  in Ruby, how do I structure this Rails feature.
 metadata:
   user-invocable: "true"
   version: 1.0.0
@@ -32,16 +33,10 @@ metadata:
 
 ```text
 Non-negotiable: no implementation code until a test exists, runs, and fails for the right reason (feature missing, not config/syntax).
-ALWAYS identify the matching skill and name it explicitly as the next skill to use before responding further.
+ALWAYS identify the matching skill and name it explicitly as the next skill to use before responding further (see Output Style for the required format).
 ```
 
 ## Core Process
-
-Triages and decomposes any Ruby request into ordered sub-tasks, then delegates to the correct specialized skill. Enforces the test-first/TDD mandate across all code-producing work.
-
-When a task arrives, identify the matching skill from the tables below and **name it explicitly as the next skill to use** before responding further.
-
-In an active response, make the routing statement, such as `Next skill: skills/process/tdd-process` or `Next skill: skills/patterns/create-service-object`, the first substantive line before analysis or implementation. When multiple skills may apply, immediately follow the routing line with one concise priority/chain statement, such as `Priority: tdd-process > write-yard-docs; Chain: tdd-process then write-yard-docs`, before any analysis or implementation.
 
 ### Core Skills Catalog
 
@@ -80,8 +75,6 @@ Use `test-planning-process` when the first failing test is not obvious.
 
 ### Typical Workflows
 
-Sub-skills are invoked by stating their name as the next skill to apply, e.g. *"Next skill: skills/process/tdd-process"*, before proceeding with that skill's instructions.
-
 **TDD Feature Loop** *(primary daily workflow)*:
 skills/process/test-planning-process → skills/process/tdd-process → skills/docs/write-yard-docs → PR
 
@@ -99,20 +92,20 @@ skills/process/security-review-process *(if input/secrets touched)* → skills/p
 
 ## Output Style
 
-1. **Routing statement**: Clearly state the next skill being invoked as the first substantive line of the response.
+1. **Routing statement**: The first substantive line of every response MUST name the next skill being invoked using this exact format:
 
    ```text
    Next skill: skills/process/tdd-process
-   
+
    This is a feature request. I will start by writing a failing test scenario.
    ```
 
-   Put this routing statement before any deeper analysis. If multiple skills apply, immediately follow it with one concise priority/chain statement before analysis or implementation:
+   If multiple skills apply, immediately follow the routing line with one concise priority/chain statement before any analysis or implementation:
 
    ```text
    Next skill: skills/process/security-review-process
    Priority: security-review-process > review-process; Chain: security-review-process then review-process.
-   
+
    This pull request contains custom parser rules and input validation, so we will perform a security review first followed by general code review.
    ```
 

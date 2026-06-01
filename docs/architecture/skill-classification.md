@@ -179,7 +179,7 @@ flowchart TB
 
 ## Appendix A — Verification Checklist
 
-- [ ] `rails-agent-skills` `tile.json` contains exactly the 37 skills listed in Section 2 (under `"skills"`)
-- [ ] `hanakai-yaku` `tile.json` contains exactly the 45 skills listed in Section 3 (under `"skills"`)
-- [ ] `agnostic-planning-skills` `tile.json` contains exactly the 14 skills listed in Section 4 (under `"skills"`)
-- [ ] `ruby-core-skills` `tile.json` contains exactly the 16 skills listed in Section 1 (under `"skills"`)
+- [ ] `rails-agent-skills` `.tessl-plugin/plugin.json` / `directory.json` contains exactly the 37 skills listed in Section 2 (under `"skills"`)
+- [ ] `hanakai-yaku` `.tessl-plugin/plugin.json` / `directory.json` contains exactly the 45 skills listed in Section 3 (under `"skills"`)
+- [ ] `agnostic-planning-skills` `.tessl-plugin/plugin.json` / `directory.json` contains exactly the 14 skills listed in Section 4 (under `"skills"`)
+- [ ] `ruby-core-skills` `.tessl-plugin/plugin.json` / `directory.json` contains exactly the 16 skills listed in Section 1 (under `"skills"`)

@@ -102,7 +102,7 @@ To make this a clean, major upgrade, all configuration files, registries, and do
 #### 1. Manifest & Code Updates (All Repos)
 * **Delete `agents.json`**: Completely remove from all repos.
 * **Delete `agents/` folders**: Ensure no references or subfolders remain.
-* **Update `tile.json`**: Move all agent records from `"agents": {}` to the `"skills": {}` section under their new names and paths.
+* **Update `.tessl-plugin/plugin.json`**: Add/move all skill paths to the `"skills": []` array under their new paths.
 * **Update `directory.json` / `registry.json`**: Update references to match the new category folder structure.
 * **Bump Major Versions**: All three repos must bump to version `7.0.0` to reflect this breaking change.
 
@@ -140,7 +140,7 @@ Use this checklist during execution to ensure a clean process:
 - [ ] Remove obsolete files:
   - [ ] `rm agents.json`
   - [ ] `rm -rf agents/`
-- [ ] Update `tile.json` / `directory.json` to place the skill under `"skills"` with its new name and path.
+- [ ] Update `.tessl-plugin/plugin.json` / `directory.json` to place the skill under `"skills"` with its new name and path.
 - [ ] Rename/rewrite `AGENTS.md` to `ORCHESTRATORS.md`.
 - [ ] Update `README.md`, `CLAUDE.md`, and `GEMINI.md` to match the new counts, categories, and unified skill terminology.
 - [ ] Update specs and ADRs in `docs/architecture/` with updated names, paths, and metadata definitions.

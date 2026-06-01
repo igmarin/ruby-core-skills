@@ -60,3 +60,13 @@ build-iPhoneSimulator/
 evals/
 .tessl/
 tessl-evals/
+directory.json
+tessl_generations.log
+
+# Agent & IDE Caches/Configs
+.agents/
+.claude/
+.codex/
+.cursor/
+.github/skills/
+.vscode/

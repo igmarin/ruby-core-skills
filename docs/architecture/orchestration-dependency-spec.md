@@ -71,7 +71,7 @@ workflow:
 | `type` | string | Yes | Set to `orchestrator` to mark this skill as a workflow. |
 | `metadata.dependencies` | array | No | List of dependency groups. Absent = no external dependencies. |
 | `metadata.dependencies[].source` | string | Yes | `self` for same-repo skills, or the repo slug (`owner/repo`) for external skills. |
-| `metadata.dependencies[].skills` | array | Yes | List of skill canonical names (from `tile.json` keys). |
+| `metadata.dependencies[].skills` | array | Yes | List of skill canonical names (from `directory.json` keys or `.tessl-plugin/plugin.json` paths). |
 | `workflow.phases` | array | Yes | The list of logical phases representing the sequential workflow. |
 | `workflow.phases[].actions` | array | Yes | Ordered list of discrete actions to execute in this phase. |
 | `workflow.phases[].actions[].required_skills` | array | Yes | Atomic skills needed to complete this action step. |

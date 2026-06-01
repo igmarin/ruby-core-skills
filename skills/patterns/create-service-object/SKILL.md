@@ -122,7 +122,6 @@ Every service-object task produces these artifacts:
 4. **Module README** — `services/<module_name>/README.md`, required even for single-service modules.
 5. **Spec file** — `spec/services/<module_name>/<service_name>_spec.rb` (or equivalent test runner file), written and failing BEFORE implementation (see HARD-GATE). Tests must assert `success:` and `response:` top-level keys and the meaningful payload shape.
 6. **Stateless pattern decision** — State whether instance state is required. If not, use Pattern 3 (no `initialize`, no instance variables).
-7. **Language** — YARD, README, and error messages in English unless the user requests otherwise.
 
 For class-only services (Pattern 3), document public class methods in YARD; if the class returns a non-standard shape (e.g. `nil` / error string), document that explicitly in YARD and the README.
 
