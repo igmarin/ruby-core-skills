@@ -1,0 +1,23 @@
+{
+  "name": "igmarin/ruby-core-skills",
+  "version": "1.1.0",
+  "description": "Curated library of 16 public Ruby AI agent skills: 10 atomic skills (YARD docs, service objects, calculator pattern, API clients, DDD, bug triage, code review, skill routing), 5 process-discipline skills (TDD, refactoring, review, security, test planning), and 1 planning skill (TDD task generation). Zero agents — this is a foundational library consumed by framework-specific tiles like rails-agent-skills and hanakai-yaku.",
+  "skills": [
+    "./skills/docs/write-yard-docs/SKILL.md",
+    "./skills/patterns/create-service-object/SKILL.md",
+    "./skills/patterns/implement-calculator-pattern/SKILL.md",
+    "./skills/patterns/integrate-api-client/SKILL.md",
+    "./skills/ddd/define-domain-language/SKILL.md",
+    "./skills/ddd/review-domain-boundaries/SKILL.md",
+    "./skills/ddd/model-domain/SKILL.md",
+    "./skills/testing/triage-bug/SKILL.md",
+    "./skills/code-quality/respond-to-review/SKILL.md",
+    "./skills/orchestration/skill-router/SKILL.md",
+    "./skills/process/tdd-process/SKILL.md",
+    "./skills/process/refactor-process/SKILL.md",
+    "./skills/process/review-process/SKILL.md",
+    "./skills/process/security-review-process/SKILL.md",
+    "./skills/process/test-planning-process/SKILL.md",
+    "./skills/planning/generate-tdd-tasks/SKILL.md"
+  ]
+}
