@@ -5,6 +5,7 @@ require "json"
 require "set"
 
 ROOT = File.expand_path("..", __dir__)
+
 EVAL_ROOT = File.join(ROOT, "tessl-evals")
 SKILLS_DIR = File.join(ROOT, "skills")
 
@@ -24,7 +25,6 @@ def pass_with(message)
 end
 
 $failures = 0
-
 publishable_skill_paths = Dir.glob("**/SKILL.md", base: SKILLS_DIR)
 expected_names = publishable_skill_paths.map { |path| File.basename(File.dirname(path)) }.to_set
 

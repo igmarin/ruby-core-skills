@@ -61,7 +61,7 @@ The runtime attempts to auto-detect the framework from the working directory (`G
 
 ### 2.4 Dependency Declaration
 
-Framework repos declare their dependency on `ruby-core-skills` via `depends_on` in `tile.json`:
+Framework repos declare their dependency on `ruby-core-skills` via `depends_on` in `directory.json`:
 
 ```json
 {
@@ -74,7 +74,7 @@ Framework repos declare their dependency on `ruby-core-skills` via `depends_on` 
 
 ### 2.5 Deprecation Aliases
 
-When skills are removed from framework repos, `deprecated_skills` entries in `tile.json` provide a soft landing:
+When skills are removed from framework repos, `deprecated_skills` entries in `directory.json` provide a soft landing:
 
 ```json
 {
@@ -100,11 +100,11 @@ Universal process knowledge is extracted into 5 new skills in `ruby-core-skills`
 | `security-review-process` | OWASP checklist, Ruby-level security concerns |
 | `test-planning-process` | Test-selection decision framework |
 
-These are **skills**, not agents. Framework agents compose them with local framework skills.
+These are **skills**, not orchestrators. Framework orchestrators compose them with local framework skills.
 
-### 2.7 No Generic Agents in Core
+### 2.7 No Generic Orchestrators in Core
 
-`ruby-core-skills` contains **zero agents**. A "generic TDD agent" without framework context is too abstract to be useful — it cannot know which test runner, assertion library, or directory conventions to use. The valuable shared part is the *process discipline* (encoded as skills), not the orchestration (which stays in framework repos).
+`ruby-core-skills` contains **zero orchestrator workflows**. A "generic TDD orchestrator" without framework context is too abstract to be useful — it cannot know which test runner, assertion library, or directory conventions to use. The valuable shared part is the *process discipline* (encoded as skills), not the orchestration (which stays in framework repos).
 
 ---
 

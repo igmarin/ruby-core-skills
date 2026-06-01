@@ -21,7 +21,7 @@ The ecosystem follows a strict hierarchical dependency model:
 
 ```mermaid
 flowchart TB
-    subgraph tier1["Tier 1: Agents"]
+    subgraph tier1["Tier 1: Orchestrators"]
         a["Lives in framework repos<br/>(e.g. rails-agent-skills)<br/>Composes workflows by chaining multiple skills"]
     end
     subgraph tier2["Tier 2: Framework Skills"]
@@ -52,13 +52,13 @@ Unlike atomic skills (which define concrete file skeletons and patterns), proces
 
 ---
 
-## 4. How Framework Agents Consume Core Skills
+## 4. How Framework Orchestrators Consume Core Skills
 
-Framework-specific agents chain core process-discipline skills with their own local skills to create unified workflows.
+Framework-specific orchestrators chain core process-discipline skills with their own local skills to create unified workflows.
 
-### Example: Rails `tdd` Agent Workflow
+### Example: Rails `practice-tdd` Orchestrator Workflow
 
-The Rails `tdd` agent (in `rails-agent-skills`) orchestrates a feature build by executing this chain:
+The Rails `practice-tdd` orchestrator (in `rails-agent-skills`) orchestrates a feature build by executing this chain:
 
 1. **`load-context`** (Rails-specific): Discovers ActiveRecord schema and routes.
 2. **`plan-tests`** (Rails-specific): Selects the RSpec request or model file.

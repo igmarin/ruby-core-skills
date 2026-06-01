@@ -1,3 +1,4 @@
+.DS_Store
 *.gem
 *.rbc
 /.config
@@ -59,4 +60,12 @@ build-iPhoneSimulator/
 evals/
 .tessl/
 tessl-evals/
+tessl_generations.log
+
+# Agent & IDE Caches/Configs
 .agents/
+.claude/
+.codex/
+.cursor/
+.github/skills/
+.vscode/

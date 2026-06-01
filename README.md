@@ -9,10 +9,10 @@ This repo is one of 6 in a composable AI skill ecosystem:
 
 | Repo | Role |
 |------|------|
-| [**`ruby-core-skills`**](https://github.com/igmarin/ruby-core-skills) | 15 shared Ruby skills + process discipline |
-| [`rails-agent-skills`](https://github.com/igmarin/rails-agent-skills) | 28 Rails-specific skills + 9 agents |
-| [`hanakai-yaku`](https://github.com/igmarin/hanakai-yaku) | 35 Hanami/dry-rb skills + 10 agents |
-| [`agnostic-planning-skills`](https://github.com/igmarin/agnostic-planning-skills) | 10 planning skills + 4 agents |
+| [**`ruby-core-skills`**](https://github.com/igmarin/ruby-core-skills) | 16 shared Ruby skills + process discipline |
+| [`rails-agent-skills`](https://github.com/igmarin/rails-agent-skills) | 28 Rails-specific skills + 9 orchestrator workflows |
+| [`hanakai-yaku`](https://github.com/igmarin/hanakai-yaku) | 35 Hanami/dry-rb skills + 10 orchestrator workflows |
+| [`agnostic-planning-skills`](https://github.com/igmarin/agnostic-planning-skills) | 10 planning skills + 4 orchestrator workflows |
 | [`agent-mcp-runtime`](https://github.com/igmarin/agent-mcp-runtime) | Rust CLI runtime (pack resolution, MCP) |
 | [`ruby-skill-bench`](https://github.com/igmarin/ruby-skill-bench) | Benchmark/eval engine |
 
@@ -28,9 +28,9 @@ flowchart BT
         atomic["atomic skills"]
     end
 
-    rails["rails-agent-skills<br/>(skills+agents)"]
-    hanakai["hanakai-yaku<br/>(skills+agents)"]
-    agnostic["agnostic-planning-skills<br/>(skills+agents)"]
+    rails["rails-agent-skills<br/>(atomic+orchestrator)"]
+    hanakai["hanakai-yaku<br/>(atomic+orchestrator)"]
+    agnostic["agnostic-planning-skills<br/>(atomic+orchestrator)"]
 
     rails --> core
     hanakai --> core

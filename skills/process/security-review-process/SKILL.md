@@ -87,6 +87,6 @@ system("rm", "-rf", params[:path])
 ## Integration
 
 | Context | Next Skill |
-|---------|-----------|
+|---------|----------|
 | Standard code reviews | **review-process** |
 | General TDD loops | **tdd-process** |
