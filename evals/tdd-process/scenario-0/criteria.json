@@ -1,0 +1,36 @@
+{
+  "context": "Checks whether the final artifact follows the tdd-process instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: Write a failing test for the target behavior",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: Run the test suite on that specific file",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-3",
+      "description": "The submitted artifact follows this skill instruction: **Gate:** Failure must be on the assertion — not a syntax or configuration error",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-4",
+      "description": "The submitted artifact follows this skill instruction: Write the minimal code required to pass the test — nothing more",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-5",
+      "description": "The submitted artifact follows this skill instruction: Run the test suite after each micro-change",
+      "max_score": 16
+    },
+    {
+      "name": "instruction-6",
+      "description": "The submitted artifact follows this skill instruction: **Gate:** Tests must remain green throughout",
+      "max_score": 16
+    }
+  ]
+}

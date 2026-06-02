@@ -1,5 +1,6 @@
 ---
 name: review-domain-boundaries
+type: atomic
 license: MIT
 description: >
   Use when reviewing a Ruby app for DDD (domain-driven design) boundaries, module boundaries,

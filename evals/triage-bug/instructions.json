@@ -1,0 +1,18 @@
+{
+  "target_skill": "triage-bug",
+  "source_path": "skills/testing/triage-bug/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "Work through each step in order. The final triage output must include all seven named outputs below.",
+      "original_snippets": "Work through each step in order. The final triage output must include all seven named outputs below.",
+      "relevant_when": "When a user asks for Ruby work that should trigger triage-bug.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "*For a Minitest equivalent, see [assets/examples.md](assets/examples.md). Do not replace this example with a pricing, model-only, or class-only scenario unless the bug report points there.*",
+      "original_snippets": "*For a Minitest equivalent, see [assets/examples.md](assets/examples.md). Do not replace this example with a pricing, model-only, or class-only scenario unless the bug report points there.*",
+      "relevant_when": "When a user asks for Ruby work that should trigger triage-bug.",
+      "why_given": "preference"
+    }
+  ]
+}

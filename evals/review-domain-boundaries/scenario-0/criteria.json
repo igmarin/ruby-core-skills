@@ -1,0 +1,41 @@
+{
+  "context": "Checks whether the final artifact follows the review-domain-boundaries instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: **Check ownership:** Decide which context should own invariants, transitions, and external side effects.",
+      "max_score": 15
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: Use search tools to find cross-context references before reading code manually:",
+      "max_score": 15
+    },
+    {
+      "name": "instruction-3",
+      "description": "The submitted artifact follows this skill instruction: When documenting ownership, state **which context owns which capability** and **what the other context must not do**. Apply to the project's domain, not pre-existing examples.",
+      "max_score": 14
+    },
+    {
+      "name": "instruction-4",
+      "description": "The submitted artifact follows this skill instruction: Document the direction explicitly: `Context X owns <capability>; Context Y must not <action>.`",
+      "max_score": 14
+    },
+    {
+      "name": "instruction-5",
+      "description": "The submitted artifact follows this skill instruction: Include the ownership direction when it matters (e.g. Billing should own invoice-generation triggers; Fleet should not trigger invoices from `Fleet::Vehicle`).",
+      "max_score": 14
+    },
+    {
+      "name": "instruction-6",
+      "description": "The submitted artifact follows this skill instruction: **Structure**: Write findings first, then list open questions and recommended next skills.",
+      "max_score": 14
+    },
+    {
+      "name": "instruction-7",
+      "description": "The submitted artifact follows this skill instruction: Load only when a concrete boundary-leakage example is needed:",
+      "max_score": 14
+    }
+  ]
+}

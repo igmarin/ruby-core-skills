@@ -1,0 +1,36 @@
+{
+  "context": "Checks whether the final artifact follows the test-planning-process instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: The first failing test MUST be identified explicitly in the plan before writing it.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: All test data must be synthetic; never use real production values or API payloads in test plans.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-3",
+      "description": "The submitted artifact follows this skill instruction: **Request / API Boundary:** Use when verifying HTTP statuses, headers, query parsing, or JSON payload structures.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-4",
+      "description": "The submitted artifact follows this skill instruction: **Service / Business Boundary:** Use when validating domain invariants, complex calculations, or coordination between objects.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-5",
+      "description": "The submitted artifact follows this skill instruction: **Unit Boundary:** Use when verifying low-level calculations, state changes on a single object, or formatting logic.",
+      "max_score": 16
+    },
+    {
+      "name": "instruction-6",
+      "description": "The submitted artifact follows this skill instruction: Run the skeleton as-is — it should fail (Red). Proceed to `tdd-process` to make it pass.",
+      "max_score": 16
+    }
+  ]
+}

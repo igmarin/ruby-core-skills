@@ -1,5 +1,6 @@
 ---
 name: tdd-process
+type: atomic
 license: MIT
 description: >
   Enforces Red-Green-Refactor with hard gates: Red phase writes failing test that MUST

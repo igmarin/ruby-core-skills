@@ -1,0 +1,24 @@
+{
+  "target_skill": "refactor-process",
+  "source_path": "skills/process/refactor-process/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "Run the existing tests for the class or module.",
+      "original_snippets": "Run the existing tests for the class or module.",
+      "relevant_when": "When a user asks for Ruby work that should trigger refactor-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Verify all tests are Green before proceeding.",
+      "original_snippets": "Verify all tests are Green before proceeding.",
+      "relevant_when": "When a user asks for Ruby work that should trigger refactor-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "*Action:* Run tests immediately. Confirm Green.",
+      "original_snippets": "*Action:* Run tests immediately. Confirm Green.",
+      "relevant_when": "When a user asks for Ruby work that should trigger refactor-process.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

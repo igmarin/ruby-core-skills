@@ -1,5 +1,6 @@
 ---
 name: ruby-core-skills
+type: catalog
 description: >
   Catalog of 16 shared Ruby development skills covering TDD, refactoring,
   code review, security review, DDD, YARD documentation, and common design

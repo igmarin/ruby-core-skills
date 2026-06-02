@@ -57,9 +57,7 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 # Tessl
-evals/
 .tessl/
-tessl-evals/
 tessl_generations.log
 
 # Agent & IDE Caches/Configs
@@ -69,3 +67,5 @@ tessl_generations.log
 .cursor/
 .github/skills/
 .vscode/
+
+tessl-evals/

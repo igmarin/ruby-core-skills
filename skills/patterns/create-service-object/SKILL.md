@@ -1,5 +1,6 @@
 ---
 name: create-service-object
+type: atomic
 license: MIT
 description: >
   Use when creating or refactoring Ruby service classes following the `def self.call(...)` →

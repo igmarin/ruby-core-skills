@@ -1,5 +1,6 @@
 ---
 name: test-planning-process
+type: atomic
 license: MIT
 description: >
   Selects test boundaries, identifies test cases (happy path, edge case, error), picks the first

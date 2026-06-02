@@ -1,0 +1,48 @@
+{
+  "target_skill": "write-yard-docs",
+  "source_path": "skills/docs/write-yard-docs/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "Use this skill when documenting Ruby classes and public methods with YARD.",
+      "original_snippets": "Use this skill when documenting Ruby classes and public methods with YARD.",
+      "relevant_when": "When a user asks for Ruby work that should trigger write-yard-docs.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "All YARD text must be in English unless user explicitly requests otherwise.",
+      "original_snippets": "All YARD text must be in English unless user explicitly requests otherwise.",
+      "relevant_when": "When a user asks for Ruby work that should trigger write-yard-docs.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Task lists MUST include explicit YARD sub-tasks after implementation.",
+      "original_snippets": "Task lists MUST include explicit YARD sub-tasks after implementation.",
+      "relevant_when": "When a user asks for Ruby work that should trigger write-yard-docs.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Add Method-Level Docs:** For every public method, add `@param` (and `@option` for hash arguments), `@return`, and `@raise` tags. For `.call` methods or complex returns, the `@return` tag MUST specify the exact structure.",
+      "original_snippets": "**Add Method-Level Docs:** For every public method, add `@param` (and `@option` for hash arguments), `@return`, and `@raise` tags. For `.call` methods or complex returns, the `@return` tag MUST specify the exact structure.",
+      "relevant_when": "When a user asks for Ruby work that should trigger write-yard-docs.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Verify Completeness:** Run `yard stats --list-undoc` and `yard doc` to ensure no public surfaces are missing documentation.",
+      "original_snippets": "**Verify Completeness:** Run `yard stats --list-undoc` and `yard doc` to ensure no public surfaces are missing documentation.",
+      "relevant_when": "When a user asks for Ruby work that should trigger write-yard-docs.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Task-list handoff:** When producing or reviewing tasks, add explicit YARD sub-tasks after implementation for every new or changed public Ruby API. If the output is only a documentation artifact (not a task list), state that future task lists must include those YARD sub-tasks.",
+      "original_snippets": "**Task-list handoff:** When producing or reviewing tasks, add explicit YARD sub-tasks after implementation for every new or changed public Ruby API. If the output is only a documentation artifact (not a task list), state that future task lists must include those YARD sub-tasks.",
+      "relevant_when": "When a user asks for Ruby work that should trigger write-yard-docs.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Load these files only when their specific content is needed:",
+      "original_snippets": "Load these files only when their specific content is needed:",
+      "relevant_when": "When a user asks for Ruby work that should trigger write-yard-docs.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

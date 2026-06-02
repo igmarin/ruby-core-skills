@@ -1,0 +1,30 @@
+{
+  "target_skill": "security-review-process",
+  "source_path": "skills/process/security-review-process/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "Verify every parameter is explicitly allowlisted and type-coerced if necessary.",
+      "original_snippets": "Verify every parameter is explicitly allowlisted and type-coerced if necessary.",
+      "relevant_when": "When a user asks for Ruby work that should trigger security-review-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Verify no raw SQL strings are built via string interpolation (`#{}`).",
+      "original_snippets": "Verify no raw SQL strings are built via string interpolation (`#{}`).",
+      "relevant_when": "When a user asks for Ruby work that should trigger security-review-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Avoid dynamic shell commands via backticks, `system()`, or `exec()`. If necessary, pass arguments as separate array items.",
+      "original_snippets": "Avoid dynamic shell commands via backticks, `system()`, or `exec()`. If necessary, pass arguments as separate array items.",
+      "relevant_when": "When a user asks for Ruby work that should trigger security-review-process.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Verify sensitive data (passwords, tokens, personal identifiers) is filtered/redacted from log output.",
+      "original_snippets": "Verify sensitive data (passwords, tokens, personal identifiers) is filtered/redacted from log output.",
+      "relevant_when": "When a user asks for Ruby work that should trigger security-review-process.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

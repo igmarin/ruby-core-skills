@@ -1,0 +1,21 @@
+{
+  "context": "Checks whether the final artifact follows the refactor-process instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: Run the existing tests for the class or module.",
+      "max_score": 34
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: Verify all tests are Green before proceeding.",
+      "max_score": 33
+    },
+    {
+      "name": "instruction-3",
+      "description": "The submitted artifact follows this skill instruction: *Action:* Run tests immediately. Confirm Green.",
+      "max_score": 33
+    }
+  ]
+}

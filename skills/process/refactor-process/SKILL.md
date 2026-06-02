@@ -1,5 +1,6 @@
 ---
 name: refactor-process
+type: atomic
 license: MIT
 description: >
   Enforces a disciplined refactoring process for Ruby code: ONE atomic transformation

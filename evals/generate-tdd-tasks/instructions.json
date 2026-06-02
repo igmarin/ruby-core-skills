@@ -1,0 +1,66 @@
+{
+  "target_skill": "generate-tdd-tasks",
+  "source_path": "skills/planning/generate-tdd-tasks/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "**Test command** — Check config files. Ruby: `bundle exec rspec` if `Gemfile` has `rspec`. Python: `pytest`. JS/TS: `npm test` / `yarn test`. Rust: `cargo test`. Go: `go test ./...`.",
+      "original_snippets": "**Test command** — Check config files. Ruby: `bundle exec rspec` if `Gemfile` has `rspec`. Python: `pytest`. JS/TS: `npm test` / `yarn test`. Rust: `cargo test`. Go: `go test ./...`.",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Create `tasks/tasks-<feature-name>.md` with the required structure below.",
+      "original_snippets": "Create `tasks/tasks-<feature-name>.md` with the required structure below.",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Before saving output, every gate below MUST pass:",
+      "original_snippets": "Before saving output, every gate below MUST pass:",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Task 0.0 is the feature branch creation — mandatory, must be first.",
+      "original_snippets": "Task 0.0 is the feature branch creation — mandatory, must be first.",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "[ ] **0.0 Create feature branch**",
+      "original_snippets": "[ ] **0.0 Create feature branch**",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "[ ] 1.1 Write failing test for `<behavior>`",
+      "original_snippets": "[ ] 1.1 Write failing test for `<behavior>`",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "[ ] 1.2 Run test — verify failure",
+      "original_snippets": "[ ] 1.2 Run test — verify failure",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "[ ] 1.4 Run test — verify success",
+      "original_snippets": "[ ] 1.4 Run test — verify success",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "[ ] **N+2.0 Code Review**",
+      "original_snippets": "[ ] **N+2.0 Code Review**",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "[ ] N+2.2 Run full test suite — all green",
+      "original_snippets": "[ ] N+2.2 Run full test suite — all green",
+      "relevant_when": "When a user asks for Ruby work that should trigger generate-tdd-tasks.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

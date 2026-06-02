@@ -5,6 +5,21 @@ All notable changes to `ruby-core-skills` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-06-01
+
+### Added
+- `type: atomic` frontmatter to all 16 atomic skills
+- `type: catalog` to root SKILL.md
+
+### Changed
+- Switched `.tessl-plugin/plugin.json` to `"skills": "./skills/"` auto-discovery
+- Merged `tessl-evals/` → `evals/` directory
+- Synced version: `directory.json` and `plugin.json` now at 1.2.0
+- Updated `.gitignore` and `.tesslignore` for new evals layout
+
+### Removed
+- `agents.json` (empty, already deleted)
+
 ## [Unreleased]
 
 ### Added

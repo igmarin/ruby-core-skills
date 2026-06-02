@@ -1,0 +1,72 @@
+{
+  "target_skill": "create-service-object",
+  "source_path": "skills/patterns/create-service-object/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "EVERY service object MUST have its test written and validated BEFORE implementation.",
+      "original_snippets": "EVERY service object MUST have its test written and validated BEFORE implementation.",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Write the spec/test for .call (with contexts for success, error, edge cases)",
+      "original_snippets": "Write the spec/test for .call (with contexts for success, error, edge cases)",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Run the spec/test — verify it fails because the service does not exist yet",
+      "original_snippets": "Run the spec/test — verify it fails because the service does not exist yet",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "The final artifact must include the test command and the failure message",
+      "original_snippets": "The final artifact must include the test command and the failure message",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "before implementation. Use the observed failure when available; otherwise show",
+      "original_snippets": "before implementation. Use the observed failure when available; otherwise show",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Write Spec (Test-First):** Create the spec/test file at `spec/services/<module_name>/<service_name>_spec.rb` (or `test/services/`). Cover success and error paths for `.call`. Run it to confirm it fails (see HARD-GATE). Tests must assert `success:` and `response:` top-level keys and the meaningful payload shape.",
+      "original_snippets": "**Write Spec (Test-First):** Create the spec/test file at `spec/services/<module_name>/<service_name>_spec.rb` (or `test/services/`). Cover success and error paths for `.call`. Run it to confirm it fails (see HARD-GATE). Tests must assert `success:` and `response:` top-level keys and the meaningful payload shape.",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Define Service Skeleton:** Create `services/<module_name>/<service_name>.rb` with the correct module namespace.",
+      "original_snippets": "**Define Service Skeleton:** Create `services/<module_name>/<service_name>.rb` with the correct module namespace.",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Implement Contract:** Implement `self.call` and `#call`. Response must always be `{ success: true, response: { ... } }` or `{ success: false, response: { error: { message: '...' } } }`. Keep `call` ≤ 20 lines; extract sub-services if longer. Validate inputs at top of `call`; return error hash if invalid. Return serialized data only — no raw persistence model objects (e.g. ActiveRecord, ROM) in `response`.",
+      "original_snippets": "**Implement Contract:** Implement `self.call` and `#call`. Response must always be `{ success: true, response: { ... } }` or `{ success: false, response: { error: { message: '...' } } }`. Keep `call` ≤ 20 lines; extract sub-services if longer. Validate inputs at top of `call`; return error hash if invalid. Return serialized data only — no raw persistence model objects (e.g. ActiveRecord, ROM) in `response`.",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Handle Errors and Logging:** Catch `StandardError` (and domain exceptions). Log with the application logger (e.g., `logger.error`). Use `UPPER_SNAKE_CASE` constants for all user-facing error strings — never inline in a `rescue`. Never re-raise to caller.",
+      "original_snippets": "**Handle Errors and Logging:** Catch `StandardError` (and domain exceptions). Log with the application logger (e.g., `logger.error`). Use `UPPER_SNAKE_CASE` constants for all user-facing error strings — never inline in a `rescue`. Never re-raise to caller.",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Write Module README:** Generate `services/<module_name>/README.md` explaining domain context. Required even for single-service modules.",
+      "original_snippets": "**Write Module README:** Generate `services/<module_name>/README.md` explaining domain context. Required even for single-service modules.",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Load these files only when their specific content is needed:",
+      "original_snippets": "Load these files only when their specific content is needed:",
+      "relevant_when": "When a user asks for Ruby work that should trigger create-service-object.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 ---
 name: skill-router
+type: atomic
 license: MIT
 description: >
   Entry-point orchestrator that triages and decomposes complex Ruby requests into ordered

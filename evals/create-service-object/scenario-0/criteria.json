@@ -1,0 +1,56 @@
+{
+  "context": "Checks whether the final artifact follows the create-service-object instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: EVERY service object MUST have its test written and validated BEFORE implementation.",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: Write the spec/test for .call (with contexts for success, error, edge cases)",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-3",
+      "description": "The submitted artifact follows this skill instruction: Run the spec/test — verify it fails because the service does not exist yet",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-4",
+      "description": "The submitted artifact follows this skill instruction: The final artifact must include the test command and the failure message",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-5",
+      "description": "The submitted artifact follows this skill instruction: before implementation. Use the observed failure when available; otherwise show",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-6",
+      "description": "The submitted artifact follows this skill instruction: **Write Spec (Test-First):** Create the spec/test file at `spec/services/<module_name>/<service_name>_spec.rb` (or `test/services/`). Cover success and error paths for `.call`. Run it to confirm it fails (see HARD-GATE). Tests must assert `success:` and `response:` top-level keys and the meaningful payload shape.",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-7",
+      "description": "The submitted artifact follows this skill instruction: **Define Service Skeleton:** Create `services/<module_name>/<service_name>.rb` with the correct module namespace.",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-8",
+      "description": "The submitted artifact follows this skill instruction: **Implement Contract:** Implement `self.call` and `#call`. Response must always be `{ success: true, response: { ... } }` or `{ success: false, response: { error: { message: '...' } } }`. Keep `call` ≤ 20 lines; extract sub-services if longer. Validate inputs at top of `call`; return error hash if invalid. Return serialized data only — no raw persistence model objects (e.g. ActiveRecord, ROM) in `response`.",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-9",
+      "description": "The submitted artifact follows this skill instruction: **Handle Errors and Logging:** Catch `StandardError` (and domain exceptions). Log with the application logger (e.g., `logger.error`). Use `UPPER_SNAKE_CASE` constants for all user-facing error strings — never inline in a `rescue`. Never re-raise to caller.",
+      "max_score": 10
+    },
+    {
+      "name": "instruction-10",
+      "description": "The submitted artifact follows this skill instruction: **Write Module README:** Generate `services/<module_name>/README.md` explaining domain context. Required even for single-service modules.",
+      "max_score": 10
+    }
+  ]
+}

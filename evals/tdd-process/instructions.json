@@ -1,0 +1,42 @@
+{
+  "target_skill": "tdd-process",
+  "source_path": "skills/process/tdd-process/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "Write a failing test for the target behavior",
+      "original_snippets": "Write a failing test for the target behavior",
+      "relevant_when": "When a user asks for Ruby work that should trigger tdd-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Run the test suite on that specific file",
+      "original_snippets": "Run the test suite on that specific file",
+      "relevant_when": "When a user asks for Ruby work that should trigger tdd-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Gate:** Failure must be on the assertion — not a syntax or configuration error",
+      "original_snippets": "**Gate:** Failure must be on the assertion — not a syntax or configuration error",
+      "relevant_when": "When a user asks for Ruby work that should trigger tdd-process.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Write the minimal code required to pass the test — nothing more",
+      "original_snippets": "Write the minimal code required to pass the test — nothing more",
+      "relevant_when": "When a user asks for Ruby work that should trigger tdd-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Run the test suite after each micro-change",
+      "original_snippets": "Run the test suite after each micro-change",
+      "relevant_when": "When a user asks for Ruby work that should trigger tdd-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Gate:** Tests must remain green throughout",
+      "original_snippets": "**Gate:** Tests must remain green throughout",
+      "relevant_when": "When a user asks for Ruby work that should trigger tdd-process.",
+      "why_given": "preference"
+    }
+  ]
+}

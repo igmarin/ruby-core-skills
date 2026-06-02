@@ -1,5 +1,6 @@
 ---
 name: write-yard-docs
+type: atomic
 license: MIT
 description: >
   Use when writing YARD documentation for Ruby public APIs: every public method MUST have

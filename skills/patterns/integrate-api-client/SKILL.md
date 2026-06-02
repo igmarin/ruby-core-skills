@@ -1,5 +1,6 @@
 ---
 name: integrate-api-client
+type: atomic
 license: MIT
 description: >
   Use when integrating with external APIs in Ruby using a strict 5-layer pattern:

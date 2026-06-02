@@ -1,0 +1,16 @@
+{
+  "context": "Checks whether the final artifact follows the triage-bug instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: Work through each step in order. The final triage output must include all seven named outputs below.",
+      "max_score": 50
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: *For a Minitest equivalent, see [assets/examples.md](assets/examples.md). Do not replace this example with a pricing, model-only, or class-only scenario unless the bug report points there.*",
+      "max_score": 50
+    }
+  ]
+}

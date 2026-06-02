@@ -1,0 +1,11 @@
+{
+  "context": "Checks whether the final artifact follows the skill-router instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: **Language**: Generated artifacts and output MUST be in English unless explicitly requested otherwise.",
+      "max_score": 100
+    }
+  ]
+}

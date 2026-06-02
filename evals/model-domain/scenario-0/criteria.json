@@ -1,0 +1,36 @@
+{
+  "context": "Checks whether the final artifact follows the model-domain instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: **Identify invariants:** Ask: what must always be true after any state change? What breaks if two callers mutate the same state simultaneously? Decide which object or boundary must keep each rule true.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: **Choose the aggregate entry point:** Name the object that guards state transitions and consistency. Ask: is there exactly one place a caller must go to change this state?",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-3",
+      "description": "The submitted artifact follows this skill instruction: **Verify with tests:** Hand off to `test-planning-process` and `tdd-process` before implementation.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-4",
+      "description": "The submitted artifact follows this skill instruction: **Invariant or ownership reason** — the rule that must stay true and the exact object responsible for enforcing it",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-5",
+      "description": "The submitted artifact follows this skill instruction: **Invariant:** An Order must never transition from `cancelled` back to `active`, and its total must always reflect current line items. `Order` is the single entry point; no external caller may mutate line items or status directly.",
+      "max_score": 16
+    },
+    {
+      "name": "instruction-6",
+      "description": "The submitted artifact follows this skill instruction: **Avoid:** Do not extract an `OrderService` just to hold `place` and `cancel` — that behavior belongs on the aggregate. Do not introduce `OrderRepository` unless a non-standard database persistence backend is required.",
+      "max_score": 16
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "target_skill": "review-process",
+  "source_path": "skills/process/review-process/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "Every review must classify findings using the standard severity levels (Critical, Major, Minor, Nitpick).",
+      "original_snippets": "Every review must classify findings using the standard severity levels (Critical, Major, Minor, Nitpick).",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-process.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "The reviewer must verify that the changeset includes tests for any new or modified logic.",
+      "original_snippets": "The reviewer must verify that the changeset includes tests for any new or modified logic.",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-process.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Check scope creep: flag files changed that are unrelated to the PR's stated purpose.",
+      "original_snippets": "Check scope creep: flag files changed that are unrelated to the PR's stated purpose.",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Authorisation:** Verify every action checks policy/permission — missing checks are Critical.",
+      "original_snippets": "**Authorisation:** Verify every action checks policy/permission — missing checks are Critical.",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Review Findings Report:** Present the structured table of findings categorized by severity.",
+      "original_snippets": "**Review Findings Report:** Present the structured table of findings categorized by severity.",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Re-Review Verification:** Once fixes are made, review the diff specifically addressing the findings and state the new status.",
+      "original_snippets": "**Re-Review Verification:** Once fixes are made, review the diff specifically addressing the findings and state the new status.",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-process.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 ---
 name: model-domain
+type: atomic
 license: MIT
 description: >
   Use when modeling DDD concepts in Ruby: start from domain invariants and ownership before

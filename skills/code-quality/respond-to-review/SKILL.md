@@ -1,5 +1,6 @@
 ---
 name: respond-to-review
+type: atomic
 license: MIT
 description: >
   Applies when responding to code review feedback: read all feedback before reacting, VERIFY each

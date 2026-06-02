@@ -1,5 +1,6 @@
 ---
 name: security-review-process
+type: atomic
 license: MIT
 description: >
   Standardizes security review procedures for Ruby code mapped to OWASP Top 10:

@@ -1,0 +1,14 @@
+{
+  "target_skill": "review-domain-boundaries",
+  "total_scenarios": 1,
+  "instructions_coverage": {
+    "total_instructions": 7,
+    "instructions_tested": 7,
+    "coverage_percentage": 100
+  },
+  "reason_distribution": {
+    "new knowledge": 4,
+    "preference": 2,
+    "reminder": 1
+  }
+}

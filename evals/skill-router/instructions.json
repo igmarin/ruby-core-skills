@@ -1,0 +1,12 @@
+{
+  "target_skill": "skill-router",
+  "source_path": "skills/orchestration/skill-router/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "**Language**: Generated artifacts and output MUST be in English unless explicitly requested otherwise.",
+      "original_snippets": "**Language**: Generated artifacts and output MUST be in English unless explicitly requested otherwise.",
+      "relevant_when": "When a user asks for Ruby work that should trigger skill-router.",
+      "why_given": "preference"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "context": "Checks whether the final artifact follows the security-review-process instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: Verify every parameter is explicitly allowlisted and type-coerced if necessary.",
+      "max_score": 25
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: Verify no raw SQL strings are built via string interpolation (`#{}`).",
+      "max_score": 25
+    },
+    {
+      "name": "instruction-3",
+      "description": "The submitted artifact follows this skill instruction: Avoid dynamic shell commands via backticks, `system()`, or `exec()`. If necessary, pass arguments as separate array items.",
+      "max_score": 25
+    },
+    {
+      "name": "instruction-4",
+      "description": "The submitted artifact follows this skill instruction: Verify sensitive data (passwords, tokens, personal identifiers) is filtered/redacted from log output.",
+      "max_score": 25
+    }
+  ]
+}

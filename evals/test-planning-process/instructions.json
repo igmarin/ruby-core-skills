@@ -1,0 +1,42 @@
+{
+  "target_skill": "test-planning-process",
+  "source_path": "skills/process/test-planning-process/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "The first failing test MUST be identified explicitly in the plan before writing it.",
+      "original_snippets": "The first failing test MUST be identified explicitly in the plan before writing it.",
+      "relevant_when": "When a user asks for Ruby work that should trigger test-planning-process.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "All test data must be synthetic; never use real production values or API payloads in test plans.",
+      "original_snippets": "All test data must be synthetic; never use real production values or API payloads in test plans.",
+      "relevant_when": "When a user asks for Ruby work that should trigger test-planning-process.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Request / API Boundary:** Use when verifying HTTP statuses, headers, query parsing, or JSON payload structures.",
+      "original_snippets": "**Request / API Boundary:** Use when verifying HTTP statuses, headers, query parsing, or JSON payload structures.",
+      "relevant_when": "When a user asks for Ruby work that should trigger test-planning-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Service / Business Boundary:** Use when validating domain invariants, complex calculations, or coordination between objects.",
+      "original_snippets": "**Service / Business Boundary:** Use when validating domain invariants, complex calculations, or coordination between objects.",
+      "relevant_when": "When a user asks for Ruby work that should trigger test-planning-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Unit Boundary:** Use when verifying low-level calculations, state changes on a single object, or formatting logic.",
+      "original_snippets": "**Unit Boundary:** Use when verifying low-level calculations, state changes on a single object, or formatting logic.",
+      "relevant_when": "When a user asks for Ruby work that should trigger test-planning-process.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Run the skeleton as-is — it should fail (Red). Proceed to `tdd-process` to make it pass.",
+      "original_snippets": "Run the skeleton as-is — it should fail (Red). Proceed to `tdd-process` to make it pass.",
+      "relevant_when": "When a user asks for Ruby work that should trigger test-planning-process.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "context": "Checks whether the final artifact follows the review-process instructions from the published Ruby Core Skills plugin.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "instruction-1",
+      "description": "The submitted artifact follows this skill instruction: Every review must classify findings using the standard severity levels (Critical, Major, Minor, Nitpick).",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-2",
+      "description": "The submitted artifact follows this skill instruction: The reviewer must verify that the changeset includes tests for any new or modified logic.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-3",
+      "description": "The submitted artifact follows this skill instruction: Check scope creep: flag files changed that are unrelated to the PR's stated purpose.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-4",
+      "description": "The submitted artifact follows this skill instruction: **Authorisation:** Verify every action checks policy/permission — missing checks are Critical.",
+      "max_score": 17
+    },
+    {
+      "name": "instruction-5",
+      "description": "The submitted artifact follows this skill instruction: **Review Findings Report:** Present the structured table of findings categorized by severity.",
+      "max_score": 16
+    },
+    {
+      "name": "instruction-6",
+      "description": "The submitted artifact follows this skill instruction: **Re-Review Verification:** Once fixes are made, review the diff specifically addressing the findings and state the new status.",
+      "max_score": 16
+    }
+  ]
+}

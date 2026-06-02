@@ -1,5 +1,6 @@
 ---
 name: generate-tdd-tasks
+type: atomic
 license: MIT
 description: >
   Breaks a feature, PRD, or requirement into TDD implementation tasks with task 0.0 as

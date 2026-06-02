@@ -1,0 +1,13 @@
+{
+  "target_skill": "create-service-object",
+  "total_scenarios": 1,
+  "instructions_coverage": {
+    "total_instructions": 11,
+    "instructions_tested": 10,
+    "coverage_percentage": 91
+  },
+  "reason_distribution": {
+    "preference": 5,
+    "new knowledge": 6
+  }
+}

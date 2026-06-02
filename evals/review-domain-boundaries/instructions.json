@@ -1,0 +1,48 @@
+{
+  "target_skill": "review-domain-boundaries",
+  "source_path": "skills/ddd/review-domain-boundaries/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "**Check ownership:** Decide which context should own invariants, transitions, and external side effects.",
+      "original_snippets": "**Check ownership:** Decide which context should own invariants, transitions, and external side effects.",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-domain-boundaries.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Use search tools to find cross-context references before reading code manually:",
+      "original_snippets": "Use search tools to find cross-context references before reading code manually:",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-domain-boundaries.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "When documenting ownership, state **which context owns which capability** and **what the other context must not do**. Apply to the project's domain, not pre-existing examples.",
+      "original_snippets": "When documenting ownership, state **which context owns which capability** and **what the other context must not do**. Apply to the project's domain, not pre-existing examples.",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-domain-boundaries.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Document the direction explicitly: `Context X owns <capability>; Context Y must not <action>.`",
+      "original_snippets": "Document the direction explicitly: `Context X owns <capability>; Context Y must not <action>.`",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-domain-boundaries.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Include the ownership direction when it matters (e.g. Billing should own invoice-generation triggers; Fleet should not trigger invoices from `Fleet::Vehicle`).",
+      "original_snippets": "Include the ownership direction when it matters (e.g. Billing should own invoice-generation triggers; Fleet should not trigger invoices from `Fleet::Vehicle`).",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-domain-boundaries.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "**Structure**: Write findings first, then list open questions and recommended next skills.",
+      "original_snippets": "**Structure**: Write findings first, then list open questions and recommended next skills.",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-domain-boundaries.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Load only when a concrete boundary-leakage example is needed:",
+      "original_snippets": "Load only when a concrete boundary-leakage example is needed:",
+      "relevant_when": "When a user asks for Ruby work that should trigger review-domain-boundaries.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

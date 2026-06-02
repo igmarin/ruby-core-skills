@@ -1,0 +1,24 @@
+{
+  "target_skill": "define-domain-language",
+  "source_path": "skills/ddd/define-domain-language/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "**Choose canonical terms:** Prefer the clearest business term; keep aliases only as migration notes or search hints.",
+      "original_snippets": "**Choose canonical terms:** Prefer the clearest business term; keep aliases only as migration notes or search hints.",
+      "relevant_when": "When a user asks for Ruby work that should trigger define-domain-language.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "**Define each term:** Write one short definition, expected invariants, and related concepts.",
+      "original_snippets": "**Define each term:** Write one short definition, expected invariants, and related concepts.",
+      "relevant_when": "When a user asks for Ruby work that should trigger define-domain-language.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Load only when the task needs examples or a reusable glossary schema:",
+      "original_snippets": "Load only when the task needs examples or a reusable glossary schema:",
+      "relevant_when": "When a user asks for Ruby work that should trigger define-domain-language.",
+      "why_given": "new knowledge"
+    }
+  ]
+}

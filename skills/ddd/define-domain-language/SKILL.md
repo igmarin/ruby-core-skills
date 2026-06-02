@@ -1,5 +1,6 @@
 ---
 name: define-domain-language
+type: atomic
 license: MIT
 description: >
   Use when a Ruby feature, bug, or architecture discussion has fuzzy

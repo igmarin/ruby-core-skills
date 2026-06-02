@@ -1,5 +1,6 @@
 ---
 name: review-process
+type: atomic
 license: MIT
 description: >
   Reviews PRs using structured findings with severity levels (Critical/Major/Minor/Nitpick),

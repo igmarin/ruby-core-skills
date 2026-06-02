@@ -1,0 +1,42 @@
+{
+  "target_skill": "model-domain",
+  "source_path": "skills/ddd/model-domain/SKILL.md",
+  "instructions": [
+    {
+      "instruction": "**Identify invariants:** Ask: what must always be true after any state change? What breaks if two callers mutate the same state simultaneously? Decide which object or boundary must keep each rule true.",
+      "original_snippets": "**Identify invariants:** Ask: what must always be true after any state change? What breaks if two callers mutate the same state simultaneously? Decide which object or boundary must keep each rule true.",
+      "relevant_when": "When a user asks for Ruby work that should trigger model-domain.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Choose the aggregate entry point:** Name the object that guards state transitions and consistency. Ask: is there exactly one place a caller must go to change this state?",
+      "original_snippets": "**Choose the aggregate entry point:** Name the object that guards state transitions and consistency. Ask: is there exactly one place a caller must go to change this state?",
+      "relevant_when": "When a user asks for Ruby work that should trigger model-domain.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Verify with tests:** Hand off to `test-planning-process` and `tdd-process` before implementation.",
+      "original_snippets": "**Verify with tests:** Hand off to `test-planning-process` and `tdd-process` before implementation.",
+      "relevant_when": "When a user asks for Ruby work that should trigger model-domain.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "**Invariant or ownership reason** — the rule that must stay true and the exact object responsible for enforcing it",
+      "original_snippets": "**Invariant or ownership reason** — the rule that must stay true and the exact object responsible for enforcing it",
+      "relevant_when": "When a user asks for Ruby work that should trigger model-domain.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Invariant:** An Order must never transition from `cancelled` back to `active`, and its total must always reflect current line items. `Order` is the single entry point; no external caller may mutate line items or status directly.",
+      "original_snippets": "**Invariant:** An Order must never transition from `cancelled` back to `active`, and its total must always reflect current line items. `Order` is the single entry point; no external caller may mutate line items or status directly.",
+      "relevant_when": "When a user asks for Ruby work that should trigger model-domain.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "**Avoid:** Do not extract an `OrderService` just to hold `place` and `cancel` — that behavior belongs on the aggregate. Do not introduce `OrderRepository` unless a non-standard database persistence backend is required.",
+      "original_snippets": "**Avoid:** Do not extract an `OrderService` just to hold `place` and `cancel` — that behavior belongs on the aggregate. Do not introduce `OrderRepository` unless a non-standard database persistence backend is required.",
+      "relevant_when": "When a user asks for Ruby work that should trigger model-domain.",
+      "why_given": "preference"
+    }
+  ]
+}

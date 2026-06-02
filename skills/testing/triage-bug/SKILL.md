@@ -1,5 +1,6 @@
 ---
 name: triage-bug
+type: atomic
 license: MIT
 description: >
   Use when investigating a bug, error, or regression in a Ruby or Rails codebase.

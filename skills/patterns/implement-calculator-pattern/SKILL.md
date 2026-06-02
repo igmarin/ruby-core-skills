@@ -1,5 +1,6 @@
 ---
 name: implement-calculator-pattern
+type: atomic
 license: MIT
 description: >
   Use when building variant-based calculators with SERVICE_MAP routing via
