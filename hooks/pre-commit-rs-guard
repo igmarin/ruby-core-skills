@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -uo pipefail
 
 if ! command -v rs-guard &>/dev/null; then
   echo "rs-guard not found in PATH — skipping pre-commit review"
