@@ -17,6 +17,10 @@ if [ ! -s "$DIFF_FILE" ]; then
   exit 0
 fi
 
-rs-guard --dry-run --diff-file "$DIFF_FILE" || true
+if rs-guard --dry-run --diff-file "$DIFF_FILE" 2>&1; then
+  echo "✓ rs-guard review passed (no critical issues)"
+else
+  echo "⚠ rs-guard review flagged potential issues (advisory only, commit not blocked)"
+fi
 
 exit 0

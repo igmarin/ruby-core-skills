@@ -27,13 +27,15 @@ jobs:
       - name: Install rs-guard
         run: |
           curl -fsSL -o rs-guard https://github.com/nebulaideas/rs-guard/releases/download/v1.0.0/rs-guard
+          curl -fsSL -o rs-guard.sha256 https://github.com/nebulaideas/rs-guard/releases/download/v1.0.0/rs-guard.sha256
+          sha256sum --check rs-guard.sha256
           chmod +x rs-guard
           sudo mv rs-guard /usr/local/bin/
           rs-guard --version
 
       - name: Generate diff
         run: |
-          git diff --no-color "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > pr-diff.txt
+          git diff --no-color "${{ github.event.pull_request.base.sha }}"..."${{ github.event.pull_request.head.sha }}" > pr-diff.txt
           echo "Diff size: $(wc -c < pr-diff.txt) bytes"
 
       - name: Run rs-guard review
