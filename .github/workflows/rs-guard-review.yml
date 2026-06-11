@@ -25,7 +25,11 @@ jobs:
           persist-credentials: false
 
       - name: Install rs-guard
-        run: cargo install rs-guard --locked
+        run: |
+          curl -fsSL -o rs-guard https://github.com/nebulaideas/rs-guard/releases/download/v1.0.0/rs-guard
+          chmod +x rs-guard
+          sudo mv rs-guard /usr/local/bin/
+          rs-guard --version
 
       - name: Generate diff
         run: |
