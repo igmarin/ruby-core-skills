@@ -1,7 +1,6 @@
-[review]
-prompt_file = ".github/review-prompt.md"
 provider = "deepseek"
+model = "deepseek-chat"
 temperature = 0.1
 
-[provider.deepseek]
-model = "deepseek-chat"
+[providers.deepseek]
+api_key_env = "DEEPSEEK_API_KEY"
