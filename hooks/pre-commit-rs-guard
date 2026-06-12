@@ -6,6 +6,11 @@ if ! command -v rs-guard &>/dev/null; then
   exit 0
 fi
 
+if [ -z "${DEEPSEEK_API_KEY:-}" ]; then
+  echo "DEEPSEEK_API_KEY not set — skipping pre-commit review"
+  exit 0
+fi
+
 echo "Running rs-guard pre-commit review (advisory)..."
 
 DIFF_FILE=$(mktemp)
