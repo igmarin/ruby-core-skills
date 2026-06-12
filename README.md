@@ -112,13 +112,6 @@ gh skill install igmarin/ruby-core-skills
 gh skill install igmarin/ruby-core-skills tdd-process --scope project
 ```
 
-Core skills are also consumed by AI agents via the `agent-mcp-runtime` CLI tool:
-
-```bash
-# Resolves framework skills first, falls back to core skills
-agent-mcp-runtime --pack rails --task "Add full_name to User model"
-```
-
 ---
 
 ## License
