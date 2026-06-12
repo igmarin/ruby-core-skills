@@ -1,0 +1,6 @@
+provider = "deepseek"
+model = "deepseek-v4-flash"
+temperature = 0.1
+
+[providers.deepseek]
+api_key_env = "DEEPSEEK_API_KEY"

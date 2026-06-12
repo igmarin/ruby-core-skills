@@ -69,3 +69,7 @@ tessl_generations.log
 .vscode/
 
 tessl-evals/
+
+# rs-guard
+pr-diff.txt
+.rs-guard/

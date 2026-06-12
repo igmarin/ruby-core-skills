@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -uo pipefail
+
+if ! command -v rs-guard &>/dev/null; then
+  echo "rs-guard not found in PATH — skipping pre-commit review"
+  exit 0
+fi
+
+if [ -z "${DEEPSEEK_API_KEY:-}" ]; then
+  echo "DEEPSEEK_API_KEY not set — skipping pre-commit review"
+  exit 0
+fi
+
+echo "Running rs-guard pre-commit review (advisory)..."
+
+DIFF_FILE=$(mktemp)
+trap 'rm -f "$DIFF_FILE"' EXIT
+git diff --cached > "$DIFF_FILE"
+
+if [ ! -s "$DIFF_FILE" ]; then
+  echo "No staged changes — skipping review"
+  exit 0
+fi
+
+if rs-guard --dry-run --diff-file "$DIFF_FILE" 2>&1; then
+  echo "✓ rs-guard review passed (no critical issues)"
+else
+  echo "⚠ rs-guard review flagged potential issues (advisory only, commit not blocked)"
+fi
+
+exit 0
