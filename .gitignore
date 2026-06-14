@@ -73,3 +73,8 @@ tessl-evals/
 # rs-guard
 pr-diff.txt
 .rs-guard/
+.kiro/
+report.json
+LEAN-CTX.md
+.github/hooks/
+.github/mcp.json

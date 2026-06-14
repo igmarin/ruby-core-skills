@@ -78,7 +78,7 @@ rg 'invoice|Invoice|Billing' lib/ app/ services/
 
 - Treating a shared database table as proof of a shared context — storage and domain boundaries are independent concerns.
 - Splitting into new contexts before the business language is stable enough to name them clearly.
-- Mistaking a large Ruby namespace for a bounded context without checking whether it has a single, coherent set of rules and an identifiable owner.
+- Mistaking a large Ruby namespace for a bounded context — confirm with stakeholders that it has a single, coherent set of rules and an identifiable owner before proposing structural changes.
 
 ## Ownership Direction
 

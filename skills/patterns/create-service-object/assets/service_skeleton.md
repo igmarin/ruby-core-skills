@@ -79,12 +79,10 @@ end
 # frozen_string_literal: true
 
 class ValidatorName
-  RULE = 'Description of the rule'
-
   # @param input [Hash]
   # @return [nil, String] nil if valid, error message otherwise
   def self.validate(input)
-    return RULE if input[:field].nil? || input[:field].to_s.empty?
+    return 'Field is required' if input[:field].nil? || input[:field].to_s.empty?
     nil
   end
 end
