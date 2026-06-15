@@ -19,7 +19,7 @@ module ModuleName
     def call
       return { success: false, response: { error: { message: MISSING_PARAM } } } if @key1.nil? || @key1.to_s.empty?
 
-      # TODO: implement business logic
+      # DOMAIN LOGIC: validate business rules, call repository, return result
       { success: true, response: {} }
     rescue StandardError => e
       logger.error(e.message)
