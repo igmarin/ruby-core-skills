@@ -81,8 +81,11 @@ end
 class ValidatorName
   REQUIRED_FIELD_MESSAGE = 'Field is required'
 
-  # @param input [Hash]
-  # @return [nil, String] nil if valid, error message otherwise
+  # Validate that required fields are present
+  #
+  # @param input [Hash] the input attributes
+  # @return [nil] if valid
+  # @return [String] error message if invalid
   def self.validate(input)
     return REQUIRED_FIELD_MESSAGE if input[:field].nil? || input[:field].to_s.empty?
     nil
