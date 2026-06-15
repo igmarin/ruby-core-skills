@@ -79,10 +79,12 @@ end
 # frozen_string_literal: true
 
 class ValidatorName
+  REQUIRED_FIELD_MESSAGE = 'Field is required'
+
   # @param input [Hash]
   # @return [nil, String] nil if valid, error message otherwise
   def self.validate(input)
-    return 'Field is required' if input[:field].nil? || input[:field].to_s.empty?
+    return REQUIRED_FIELD_MESSAGE if input[:field].nil? || input[:field].to_s.empty?
     nil
   end
 end

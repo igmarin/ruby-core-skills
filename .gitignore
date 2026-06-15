@@ -73,8 +73,21 @@ tessl-evals/
 # rs-guard
 pr-diff.txt
 .rs-guard/
+
+# Kiro IDE (local dev)
 .kiro/
+
+# Skill inspector report output
 report.json
+
+# Lean-ctx generated docs
 LEAN-CTX.md
+
+# Local GitHub hooks (not shared)
 .github/hooks/
+
+# Local MCP server config
 .github/mcp.json
+rs-guard-metrics.json
+review-result.txt
+.rs-guard/cache
