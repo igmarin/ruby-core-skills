@@ -1,6 +1,6 @@
 {
   "name": "igmarin/ruby-core-skills",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "description": "Curated library of 16 public Ruby AI agent skills covering TDD, refactoring, code review, security review, DDD, YARD documentation, and common design patterns.",
   "skills": [
