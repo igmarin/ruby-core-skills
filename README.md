@@ -55,7 +55,6 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 > [![skills.sh](https://skills.sh/b/igmarin/ruby-core-skills)](https://skills.sh/igmarin/ruby-core-skills)
 > [![Smithery](https://img.shields.io/badge/Smithery-orange)](https://smithery.ai/skills/ismael-marin/ruby-core-skills)
 > ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/igmarin/ruby-core-skills?utm_source=oss&utm_medium=github&utm_campaign=igmarin%2Fruby-core-skills&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
-> [![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Figmarin%2Fruby-core-skills)](https://tessl.io/registry/igmarin/ruby-core-skills)
 
 ---
 
@@ -84,25 +83,21 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 
 ## Installation & Usage
 
-Install skills via tessl.io:
+### Install with skills.sh
+
+Requires [skills.sh](https://www.skills.sh/) CLI.
 
 ```bash
-npx tessl i igmarin/ruby-core-skills
+# Install all skills
+npx skills add igmarin/ruby-core-skills --full-depth --all
+
+# Install a specific skill (e.g., tdd-process)
+npx skills add igmarin/ruby-core-skills@tdd-process --full-depth
 ```
 
-or with yarn (tessl.io):
+### Install with GitHub CLI
 
-```bash
-yarn tessl i igmarin/ruby-core-skills
-```
-
-Or with skills.sh:
-
-```bash
-npx skills add igmarin/ruby-core-skills
-```
-
-Or via GitHub CLI (v2.90.0+):
+Requires [GitHub CLI](https://cli.github.com/) v2.90.0+ with `gh skill`.
 
 ```bash
 # Install all skills interactively
@@ -111,6 +106,8 @@ gh skill install igmarin/ruby-core-skills
 # Install a specific skill
 gh skill install igmarin/ruby-core-skills tdd-process --scope project
 ```
+
+### agent-mcp-runtime
 
 Core skills are also consumed by AI agents via the `agent-mcp-runtime` CLI tool:
 

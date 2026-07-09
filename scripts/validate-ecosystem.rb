@@ -40,29 +40,20 @@ class EcosystemValidator
       @repos_info[pack_name] = {
         name: pack_config['source'],
         path: repo_path,
-        tile_path: File.join(repo_path, pack_config['tile'] || '.tessl-plugin/plugin.json')
+        pack_config: pack_config
       }
     end
 
-    # Load plugin/tile manifest for each repository
+    # Load skill manifest for each repository (tile → manifest → directory.json)
     @repos_info.each do |pack_name, repo_info|
-      configured_path = repo_info[:tile_path]
-      tile_path = if File.exist?(configured_path)
-                    configured_path
-                  else
-                    # Fallback: try the other format during transition
-                    alt = configured_path.include?('plugin.json') ?
-                      configured_path.sub('.tessl-plugin/plugin.json', 'tile.json').sub('.tessl-plugin/', '') :
-                      File.join(repo_info[:path], '.tessl-plugin/plugin.json')
-                    File.exist?(alt) ? alt : configured_path
-                  end
+      manifest_path = resolve_manifest_path(repo_info)
 
-      unless File.exist?(tile_path)
-        puts "FAIL: plugin manifest not found for #{pack_name} at #{configured_path}"
+      unless File.exist?(manifest_path)
+        puts "FAIL: skill manifest not found for #{pack_name} (tried tile/manifest/directory.json under #{repo_info[:path]})"
         exit 1
       end
-      repo_info[:tile_path] = tile_path
-      repo_info[:tile] = JSON.parse(File.read(tile_path))
+      repo_info[:manifest_path] = manifest_path
+      repo_info[:manifest] = JSON.parse(File.read(manifest_path))
     end
 
     errors = []
@@ -100,27 +91,59 @@ class EcosystemValidator
 
   private
 
-  def skill_dirs_from_manifest(tile, repo_path)
-    skills = tile['skills'] || []
+  # Prefer pack_config tile path, then pack_config manifest, then directory.json.
+  def resolve_manifest_path(repo_info)
+    pack_config = repo_info[:pack_config]
+    repo_path = repo_info[:path]
+    candidates = []
+
+    if pack_config['tile']
+      candidates << File.join(repo_path, pack_config['tile'])
+    end
+    if pack_config['manifest']
+      candidates << File.join(repo_path, pack_config['manifest'])
+    end
+    candidates << File.join(repo_path, 'directory.json')
+
+    candidates.find { |path| File.exist?(path) } || candidates.last
+  end
+
+  # Returns array of skill directory paths relative to repo root.
+  def skill_dirs_from_manifest(manifest, repo_path)
+    skills = manifest['skills']
     case skills
     when String
-      Dir.glob("**/SKILL.md", base: File.join(repo_path, skills)).map { |p| File.join(skills, File.dirname(p)) }
+      Dir.glob('**/SKILL.md', base: File.join(repo_path, skills)).map { |p| File.join(skills, File.dirname(p)) }
     when Array
       skills.map { |s| s.sub(%r{^\./}, '') }
+    when Hash
+      skills.map do |_name, entry|
+        path = entry.is_a?(Hash) ? entry['path'] : entry
+        next unless path
+
+        File.dirname(path.sub(%r{^\./}, ''))
+      end.compact
     else
       []
     end
   end
 
-  def skill_names_from_manifest(tile, repo_path)
-    skill_dirs_from_manifest(tile, repo_path).map { |d| File.basename(d) }
+  # Returns skill names: Hash keys when present, else basenames of skill dirs.
+  def skill_names_from_manifest(manifest, repo_path)
+    skills = manifest['skills']
+    case skills
+    when Hash
+      skills.keys
+    else
+      skill_dirs_from_manifest(manifest, repo_path).map { |d| File.basename(d) }
+    end
   end
 
   def validate_skill_directories
     errors = []
     @repos_info.each do |pack_name, repo_info|
-      tile = repo_info[:tile]
-      dirs = skill_dirs_from_manifest(tile, repo_info[:path])
+      manifest = repo_info[:manifest]
+      dirs = skill_dirs_from_manifest(manifest, repo_info[:path])
       dirs.each do |dir|
         skill_path = File.join(repo_info[:path], dir, 'SKILL.md')
         unless File.exist?(skill_path)
@@ -168,7 +191,7 @@ class EcosystemValidator
         repo_info = @repos_info[stack_pack]
         next unless repo_info
 
-        names = skill_names_from_manifest(repo_info[:tile], repo_info[:path])
+        names = skill_names_from_manifest(repo_info[:manifest], repo_info[:path])
         names.each do |skill_name|
           if skill_to_repo.key?(skill_name)
             errors << "Skill '#{skill_name}' is defined in both '#{stack_pack}' (#{repo_info[:name]}) and '#{skill_to_repo[skill_name]}'"
@@ -239,10 +262,10 @@ class EcosystemValidator
               next
             end
 
-            target_names = skill_names_from_manifest(target_repo_info[:tile], target_repo_info[:path])
+            target_names = skill_names_from_manifest(target_repo_info[:manifest], target_repo_info[:path])
             skills.each do |skill_name|
               unless target_names.include?(skill_name)
-                puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' depends on skill '#{skill_name}' from '#{source}', but it is not defined in that source's plugin manifest"
+                puts "Checking Agent"; errors << "Agent '#{agent_name}' in '#{pack_name}' depends on skill '#{skill_name}' from '#{source}', but it is not defined in that source's skill manifest"
               end
             end
           end

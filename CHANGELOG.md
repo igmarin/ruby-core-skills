@@ -10,7 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Ecosystem validator script (`scripts/validate-ecosystem.rb`) to run cross-repo checks.
 - GitHub Actions workflow (`.github/workflows/ecosystem-validation.yml`) to run the ecosystem validator.
-- GitHub Actions workflow (`.github/workflows/tile-check.yml`) to perform local `tile.json` integrity validation.
+
+### Changed
+- Ecosystem validator resolves skill inventories from `directory.json` (with optional `tile` / `manifest` paths from the registry) instead of Tessl plugin manifests.
+
+### Removed
+- Tessl integration: publish and review GitHub Actions workflows, `.tessl-plugin/`, `tessl.json`, `.tesslignore`, Tessl eval scripts, and generated `tessl-evals/` usage.
+- Tessl registry badge and tessl.io install instructions from README.
 
 ## [1.1.8] - 2026-05-30
 

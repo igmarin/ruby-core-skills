@@ -34,7 +34,7 @@ name: verb-noun-action
 type: orchestrator
 license: MIT
 description: >
-  Single-sentence summary of the workflow action, optimized for Tessl baseline scores.
+  Single-sentence summary of the workflow action, optimized for skill routing (see docs/skill-description-strategy.md).
   Trigger words: ...
 metadata:
   version: 1.0.0
@@ -102,8 +102,7 @@ To make this a clean, major upgrade, all configuration files, registries, and do
 #### 1. Manifest & Code Updates (All Repos)
 * **Delete `agents.json`**: Completely remove from all repos.
 * **Delete `agents/` folders**: Ensure no references or subfolders remain.
-* **Update `.tessl-plugin/plugin.json`**: Add/move all skill paths to the `"skills": []` array under their new paths.
-* **Update `directory.json` / `registry.json`**: Update references to match the new category folder structure.
+* **Update `directory.json` / `registry.json`**: Add/move all skill entries under `"skills"` and update paths to match the new category folder structure.
 * **Bump Major Versions**: All three repos must bump to version `7.0.0` to reflect this breaking change.
 
 #### 2. Documentation Updates (ruby-core-skills & others)
@@ -135,16 +134,16 @@ Use this checklist during execution to ensure a clean process:
 - [ ] Update frontmatter metadata:
   - [ ] Add `type: orchestrator`.
   - [ ] Add the standardized `workflow` YAML block with phases, actions, sub-skills, and gates.
-  - [ ] Optimize the `description` first-sentence format for Tessl baseline scores.
+  - [ ] Optimize the `description` first-sentence format (see `docs/skill-description-strategy.md`).
 - [ ] Update occurrences of `# <Name> Agent` to `# <Name> Workflow` or `# <Name> Action` in the file headers and contents.
 - [ ] Remove obsolete files:
   - [ ] `rm agents.json`
   - [ ] `rm -rf agents/`
-- [ ] Update `.tessl-plugin/plugin.json` / `directory.json` to place the skill under `"skills"` with its new name and path.
+- [ ] Update `directory.json` to place the skill under `"skills"` with its new name and path.
 - [ ] Rename/rewrite `AGENTS.md` to `ORCHESTRATORS.md`.
 - [ ] Update `README.md`, `CLAUDE.md`, and `GEMINI.md` to match the new counts, categories, and unified skill terminology.
 - [ ] Update specs and ADRs in `docs/architecture/` with updated names, paths, and metadata definitions.
-- [ ] Verify using baseline generators and validators:
-  - [ ] Run `ruby scripts/validate-tessl-evals.rb` (if available) or target validators.
-  - [ ] Ensure all markdown links (`file:///...`) point to active, valid paths.
+- [ ] Verify:
+  - [ ] Run `ruby scripts/validate-ecosystem.rb` when sibling packs are available.
+  - [ ] Ensure all markdown links point to active, valid paths.
 - [ ] Commit changes, bump version to `7.0.0` in package files, and request pull request review.
