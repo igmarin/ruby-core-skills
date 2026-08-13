@@ -81,6 +81,8 @@ Framework repos depend on core skills. `ruby-core-skills` does not know about an
 
 ---
 
+Eval scenarios for `model-domain`, `triage-bug`, and `create-service-object` live in [`personal-evals/`](personal-evals/).
+
 ## Installation & Usage
 
 ### Install with skills.sh

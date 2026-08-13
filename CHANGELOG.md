@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `personal-evals/` for `model-domain`, `triage-bug`, and `create-service-object` (moved from rails-agent-skills).
+- `scripts/validate-evals.sh` and a CI `evals` job.
 - Ecosystem validator script (`scripts/validate-ecosystem.rb`) to run cross-repo checks.
 - GitHub Actions workflow (`.github/workflows/ecosystem-validation.yml`) to run the ecosystem validator.
 
