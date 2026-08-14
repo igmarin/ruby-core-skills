@@ -66,3 +66,10 @@ evals/
 .cursor/
 .github/skills/
 .vscode/
+
+# AI code intelligence artifacts
+.codegraph/
+graphify-out/
+repomix-output.xml
+repomix-output.md
+.rs_guard/

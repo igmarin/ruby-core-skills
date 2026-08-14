@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "postToolUse": [],
+    "preToolUse": []
+  },
+  "version": 1
+}
