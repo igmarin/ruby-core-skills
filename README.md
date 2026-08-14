@@ -89,12 +89,16 @@ Eval scenarios for `model-domain`, `triage-bug`, and `create-service-object` liv
 
 Requires [skills.sh](https://www.skills.sh/) CLI.
 
+<div align="center">
+  <sub><b>⚠️ Important:</b> The root <code>SKILL.md</code> at the repo root is a catalog/orchestrator entry, <u>not</u> a standalone skill. Without <code>--full-depth</code>, the <code>skills</code> CLI treats it as the only skill. Use <code>--all</code> to discover and install all 16 nested skills under <code>skills/<category>/<name>/</code>.</sub>
+</div>
+
 ```bash
-# Install all skills
+# Install ALL skills (non-interactive)
 npx skills add igmarin/ruby-core-skills --full-depth --all
 
-# Install a specific skill (e.g., tdd-process)
-npx skills add igmarin/ruby-core-skills@tdd-process --full-depth
+# Interactive: pick which skills to install
+npx skills add igmarin/ruby-core-skills
 ```
 
 ### Install with GitHub CLI
