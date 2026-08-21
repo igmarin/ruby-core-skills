@@ -16,7 +16,7 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Chain:** `triage-bug` → `tdd-process`
 >
-> **Next skill: skills/testing/triage-bug**
+> **Next skill: skills/triage-bug**
 
 ### 2. Create Service Object
 
@@ -26,7 +26,7 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Chain:** `integrate-api-client` (API client layers) → `create-service-object` (sync coordination) → `tdd-process` (spec/test implementation)
 >
-> **Next skill: skills/patterns/integrate-api-client**
+> **Next skill: skills/integrate-api-client**
 
 ### 3. Documenting Code
 
@@ -36,7 +36,7 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Chain:** `write-yard-docs`
 >
-> **Next skill: skills/docs/write-yard-docs**
+> **Next skill: skills/write-yard-docs**
 
 ---
 
@@ -50,7 +50,7 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Chain:** `define-domain-language` → `model-domain` → `test-planning-process` → `tdd-process`
 >
-> **Next skill: skills/ddd/define-domain-language**
+> **Next skill: skills/define-domain-language**
 
 ### 5. Multi-Concern Review
 
@@ -60,7 +60,7 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Chain:** `security-review-process` (authentication/input handling) → `review-process` (general code review)
 >
-> **Next skill: skills/process/security-review-process**
+> **Next skill: skills/security-review-process**
 >
 > **Priority: security-review-process > review-process; Chain: security-review-process then review-process.**
 
@@ -72,7 +72,7 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Chain:** `define-domain-language` → `review-domain-boundaries` → `model-domain` → `test-planning-process` → `tdd-process`
 >
-> **Next skill: skills/ddd/define-domain-language**
+> **Next skill: skills/define-domain-language**
 
 ---
 
@@ -86,7 +86,7 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Chain:** `define-domain-language` → (assess findings) → route to appropriate skill
 >
-> **Next skill: skills/ddd/define-domain-language**
+> **Next skill: skills/define-domain-language**
 
 ### 8. Ambiguous — Which Test Skill?
 
@@ -96,7 +96,7 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Disambiguation:** Ask: "Do you know which behavior to test first, or should we figure that out?" If unclear, default to `test-planning-process`.
 >
-> **Next skill: skills/process/test-planning-process**
+> **Next skill: skills/test-planning-process**
 
 ---
 
@@ -110,4 +110,4 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Chain:** `test-planning-process` → `tdd-process` (write characterization tests) → **[GATE: tests pass on current code]** → `refactor-process`
 >
-> **Next skill: skills/process/test-planning-process**
+> **Next skill: skills/test-planning-process**

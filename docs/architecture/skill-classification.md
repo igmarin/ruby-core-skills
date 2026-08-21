@@ -35,22 +35,22 @@ These skills are framework-agnostic Ruby knowledge that should not live inside a
 
 | # | Skill | Current Path (rails) | Target Path (core) | Difficulty | Verification |
 |---|-------|----------------------|--------------------|------------|------------|
-| 1 | `write-yard-docs` | `skills/patterns/write-yard-docs/` | `skills/docs/write-yard-docs/` | Easy | No Rails references found |
-| 2 | `create-service-object` | `skills/patterns/create-service-object/` | `skills/patterns/create-service-object/` | Easy | PORO `.call` pattern |
-| 3 | `implement-calculator-pattern` | `skills/patterns/implement-calculator-pattern/` | `skills/patterns/implement-calculator-pattern/` | Easy | Pure Ruby strategy/factory |
-| 4 | `integrate-api-client` | `skills/api/integrate-api-client/` | `skills/patterns/integrate-api-client/` | Easy | HTTP/Faraday layers |
-| 5 | `define-domain-language` | `skills/ddd/define-domain-language/` | `skills/ddd/define-domain-language/` | Easy | DDD glossary process |
-| 6 | `review-domain-boundaries` | `skills/ddd/review-domain-boundaries/` | `skills/ddd/review-domain-boundaries/` | Easy | Bounded context review |
-| 7 | `model-domain` | `skills/ddd/model-domain/` | `skills/ddd/model-domain/` | Medium | De-Rails-ify examples |
-| 8 | `triage-bug` | `skills/testing/triage-bug/` | `skills/testing/triage-bug/` | Medium | Generalize Rails-specific examples |
-| 9 | `respond-to-review` | `skills/code-quality/respond-to-review/` | `skills/code-quality/respond-to-review/` | Easy | Framework-agnostic process |
-| 10 | `skill-router` | `skills/orchestration/skill-router/` | `skills/orchestration/skill-router/` | Easy | Update routing table to core skills only |
+| 1 | `write-yard-docs` | `skills/patterns/write-yard-docs/` | `skills/write-yard-docs/` | Easy | No Rails references found |
+| 2 | `create-service-object` | `skills/create-service-object/` | `skills/create-service-object/` | Easy | PORO `.call` pattern |
+| 3 | `implement-calculator-pattern` | `skills/implement-calculator-pattern/` | `skills/implement-calculator-pattern/` | Easy | Pure Ruby strategy/factory |
+| 4 | `integrate-api-client` | `skills/api/integrate-api-client/` | `skills/integrate-api-client/` | Easy | HTTP/Faraday layers |
+| 5 | `define-domain-language` | `skills/define-domain-language/` | `skills/define-domain-language/` | Easy | DDD glossary process |
+| 6 | `review-domain-boundaries` | `skills/review-domain-boundaries/` | `skills/review-domain-boundaries/` | Easy | Bounded context review |
+| 7 | `model-domain` | `skills/model-domain/` | `skills/model-domain/` | Medium | De-Rails-ify examples |
+| 8 | `triage-bug` | `skills/triage-bug/` | `skills/triage-bug/` | Medium | Generalize Rails-specific examples |
+| 9 | `respond-to-review` | `skills/respond-to-review/` | `skills/respond-to-review/` | Easy | Framework-agnostic process |
+| 10 | `skill-router` | `skills/skill-router/` | `skills/skill-router/` | Easy | Update routing table to core skills only |
 
 ### 1.2 Planning Skills (NEW)
 
 | # | Skill | Target Path (core) | Purpose |
 |---|-------|--------------------|---------|
-| 11 | `generate-tdd-tasks` | `skills/planning/generate-tdd-tasks/` | Breaks features into TDD quadruplet task lists with auto-detected conventions, docs, and review tasks |
+| 11 | `generate-tdd-tasks` | `skills/generate-tdd-tasks/` | Breaks features into TDD quadruplet task lists with auto-detected conventions, docs, and review tasks |
 
 ### 1.3 Process-Discipline Skills (NEW)
 
@@ -58,11 +58,11 @@ These encode universal process knowledge extracted from the common elements of f
 
 | # | Skill | Extracted From | Target Path (core) | Purpose |
 |---|-------|----------------|--------------------|---------|
-| 12 | `tdd-process` | Rails `write-tests` HARD-GATE + Hanami `tdd-loop` | `skills/process/tdd-process/` | Universal Red-Green-Refactor gates and checkpoints |
-| 13 | `refactor-process` | Rails `refactor-code` + Hanami `refactor-code` | `skills/process/refactor-process/` | Characterization tests first, small steps, verify-after-each |
-| 14 | `review-process` | Rails `code-review` + Hanami `review-code` | `skills/process/review-process/` | Severity levels, structured findings, re-review criteria |
-| 15 | `security-review-process` | Rails `security-check` + Hanami `review-security` | `skills/process/security-review-process/` | OWASP checklist, Ruby-level security concerns |
-| 16 | `test-planning-process` | Rails `plan-tests` + Hanami `plan-tests` | `skills/process/test-planning-process/` | Test-selection decision framework |
+| 12 | `tdd-process` | Rails `write-tests` HARD-GATE + Hanami `tdd-loop` | `skills/tdd-process/` | Universal Red-Green-Refactor gates and checkpoints |
+| 13 | `refactor-process` | Rails `refactor-code` + Hanami `refactor-code` | `skills/refactor-process/` | Characterization tests first, small steps, verify-after-each |
+| 14 | `review-process` | Rails `code-review` + Hanami `review-code` | `skills/review-process/` | Severity levels, structured findings, re-review criteria |
+| 15 | `security-review-process` | Rails `security-check` + Hanami `review-security` | `skills/security-review-process/` | OWASP checklist, Ruby-level security concerns |
+| 16 | `test-planning-process` | Rails `plan-tests` + Hanami `plan-tests` | `skills/test-planning-process/` | Test-selection decision framework |
 
 ---
 

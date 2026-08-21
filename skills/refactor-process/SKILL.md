@@ -98,5 +98,5 @@ end
 | Context | Next Skill |
 |---------|----------|
 | Establishing baseline coverage | [test-planning-process](../test-planning-process/SKILL.md) → [tdd-process](../tdd-process/SKILL.md) |
-| Documenting newly extracted APIs | [write-yard-docs](../../docs/write-yard-docs/SKILL.md) |
+| Documenting newly extracted APIs | [write-yard-docs](../write-yard-docs/SKILL.md) |
 | Post-refactoring review | [review-process](../review-process/SKILL.md) |

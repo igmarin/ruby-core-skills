@@ -6,7 +6,7 @@ description: >
   sub-tasks, then delegates to the correct specialised skill — never implements directly.
   Enforces TDD discipline across all code-producing work. Priority order:
   TDD→Planning→Domain discovery→Process/refactor→Domain implementation. First response
-  line MUST be "Next skill: skills/[category]/[name]". Falls back to `define-domain-language`
+  line MUST be "Next skill: skills/<name>". Falls back to `define-domain-language`
   for terminology ambiguity or `model-domain` for architecture ambiguity. Use when scope is
   unclear, best approach uncertain, or request spans multiple concerns. Trigger: where do I
   start, help me plan a Ruby feature, break this down, what's the best approach, not sure
@@ -66,13 +66,13 @@ Priority: TDD → Planning → Domain discovery → Process/refactor → Domain 
 Sub-skills are invoked by stating their name as the next skill to apply (see **Output Style**) before proceeding with that skill's instructions.
 
 **TDD Feature Loop** *(primary daily workflow)*:
-skills/process/test-planning-process → skills/process/tdd-process → skills/docs/write-yard-docs → PR
+skills/test-planning-process → skills/tdd-process → skills/write-yard-docs → PR
 
 **Bug fix:**
-skills/testing/triage-bug → **[GATE: reproduction test fails]** → skills/process/tdd-process → fix → verify passes
+skills/triage-bug → **[GATE: reproduction test fails]** → skills/tdd-process → fix → verify passes
 
 **Multi-concern review:**
-skills/process/security-review-process *(if input/secrets touched)* → skills/process/review-process *(general code review)*
+skills/security-review-process *(if input/secrets touched)* → skills/review-process *(general code review)*
 
 ## Extended Resources
 
@@ -85,7 +85,7 @@ skills/process/security-review-process *(if input/secrets touched)* → skills/p
 1. **Routing statement**: Make the routing statement the first substantive line of every response. For a single skill:
 
    ```text
-   Next skill: skills/process/tdd-process
+   Next skill: skills/tdd-process
 
    This is a feature request. I will start by writing a failing test scenario.
    ```
@@ -93,7 +93,7 @@ skills/process/security-review-process *(if input/secrets touched)* → skills/p
    When multiple skills apply, immediately follow the routing line with one concise priority/chain statement before any analysis or implementation:
 
    ```text
-   Next skill: skills/process/security-review-process
+   Next skill: skills/security-review-process
    Priority: security-review-process > review-process; Chain: security-review-process then review-process.
 
    This pull request contains custom parser rules and input validation, so we will perform a security review first followed by general code review.

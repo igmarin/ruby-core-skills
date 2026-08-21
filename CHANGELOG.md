@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Flattened skills to `skills/<name>/SKILL.md` so `npx skills add` can pick all or one. Removed root `SKILL.md`.
+
 ### Added
 - `personal-evals/` for `model-domain`, `triage-bug`, and `create-service-object` (moved from rails-agent-skills).
 - `scripts/validate-evals.sh` and a CI `evals` job.

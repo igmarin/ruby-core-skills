@@ -14,7 +14,7 @@ For any skill:
 
 ```bash
 # Inspect the description frontmatter
-head -20 skills/<category>/<skill-name>/SKILL.md
+head -20 skills/<skill-name>/SKILL.md
 
 # Measure description length (see Rule 6)
 ruby -ryaml -e '

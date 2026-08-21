@@ -10,10 +10,10 @@ This repository serves as a foundational library. Framework-specific repositorie
 
 ## How Skills Are Organized
 
-Each skill lives in its own directory within `skills/` with a `SKILL.md` as the entry point:
+Each skill lives at `skills/<name>/SKILL.md`:
 
 ```text
-skills/<category>/<skill-name>/
+skills/<skill-name>/
 ├── SKILL.md          # Entry point — always read this first
 ├── EXAMPLES.md       # Concrete input/output examples (when present)
 ├── TESTING.md        # Test templates and spec checklists (when present)
@@ -24,18 +24,18 @@ Read `SKILL.md` first. Load supporting files only when the skill links to them a
 
 ## Skill Selection
 
-Load the skill that best matches the current task. The bootstrap skill `skill-router` routes to specialized skills. All skills are organized by category in `skills/<category>/`:
+Load the skill that best matches the current task. The bootstrap skill `skill-router` routes to specialized skills. Layout is flat (`skills/<name>/`). Display groups live in `skills.sh.json`.
 
-| Category | Path | Skills | Type |
-|----------|------|--------|------|
-| **Docs** | `skills/docs/` | `write-yard-docs` | Atomic |
-| **Patterns** | `skills/patterns/` | `create-service-object`, `implement-calculator-pattern`, `integrate-api-client` | Atomic |
-| **DDD** | `skills/ddd/` | `define-domain-language`, `review-domain-boundaries`, `model-domain` | Atomic |
-| **Testing** | `skills/testing/` | `triage-bug` | Atomic |
-| **Code Quality** | `skills/code-quality/` | `respond-to-review` | Atomic |
-| **Orchestration** | `skills/orchestration/` | `skill-router` | Atomic |
-| **Planning** | `skills/planning/` | `generate-tdd-tasks` | Atomic |
-| **Process** | `skills/process/` | `tdd-process`, `refactor-process`, `review-process`, `security-review-process`, `test-planning-process` | Process Rule |
+| Category | Skills | Type |
+|----------|--------|------|
+| **Docs** | `write-yard-docs` | Atomic |
+| **Patterns** | `create-service-object`, `implement-calculator-pattern`, `integrate-api-client` | Atomic |
+| **DDD** | `define-domain-language`, `review-domain-boundaries`, `model-domain` | Atomic |
+| **Testing** | `triage-bug` | Atomic |
+| **Code Quality** | `respond-to-review` | Atomic |
+| **Orchestration** | `skill-router` | Atomic |
+| **Planning** | `generate-tdd-tasks` | Atomic |
+| **Process** | `tdd-process`, `refactor-process`, `review-process`, `security-review-process`, `test-planning-process` | Process Rule |
 
 ## Non-Negotiable Workflow Rule
 

@@ -31,10 +31,10 @@ Reference skills by their canonical `name` from YAML frontmatter:
 - `refactor-process`
 
 File paths (for reference only):
-- `skills/docs/write-yard-docs/SKILL.md`
-- `skills/patterns/create-service-object/SKILL.md`
-- `skills/process/tdd-process/SKILL.md`
-- `skills/process/refactor-process/SKILL.md`
+- `skills/write-yard-docs/SKILL.md`
+- `skills/create-service-object/SKILL.md`
+- `skills/tdd-process/SKILL.md`
+- `skills/refactor-process/SKILL.md`
 
 ## TDD Gate Enforcement
 

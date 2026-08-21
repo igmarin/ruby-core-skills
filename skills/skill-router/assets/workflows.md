@@ -6,7 +6,7 @@ Extended workflow definitions for specialized scenarios. See SKILL.md for the pr
 
 ## Feature (DDD-first)
 
-skills/ddd/define-domain-language → skills/ddd/review-domain-boundaries → skills/ddd/model-domain → skills/process/test-planning-process → skills/process/tdd-process
+skills/define-domain-language → skills/review-domain-boundaries → skills/model-domain → skills/test-planning-process → skills/tdd-process
 
 Use when: Domain modeling is required before implementation, or the feature involves complex bounded contexts.
 
@@ -14,7 +14,7 @@ Use when: Domain modeling is required before implementation, or the feature invo
 
 ## Code review + response
 
-skills/process/review-process → skills/code-quality/respond-to-review
+skills/review-process → skills/respond-to-review
 
 Use when: Reviewing code changesets and addressing reviewer feedback.
 
@@ -22,7 +22,7 @@ Use when: Reviewing code changesets and addressing reviewer feedback.
 
 ## Refactoring
 
-skills/process/refactor-process → **[GATE: characterization tests pass on current code]** → refactor → verify still pass
+skills/refactor-process → **[GATE: characterization tests pass on current code]** → refactor → verify still pass
 
 Use when: Modifying internal structure of code without changing its external behavior.
 
@@ -30,4 +30,4 @@ Use when: Modifying internal structure of code without changing its external beh
 
 ## Security Audit
 
-skills/process/security-review-process → skills/process/review-process
+skills/security-review-process → skills/review-process
