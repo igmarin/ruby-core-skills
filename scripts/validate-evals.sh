@@ -77,7 +77,7 @@ while IFS= read -r scenario_dir; do
         if target_type == "persona"
           File.join(root, "skills", "personas", target_name, "SKILL.md")
         else
-          Dir[File.join(root, "skills", "*", target_name, "SKILL.md")].first
+          Dir[File.join(root, "skills", "**", target_name, "SKILL.md")].first
         end
 
       abort "target SKILL.md not found for #{target_name}" unless target_path && File.file?(target_path)
