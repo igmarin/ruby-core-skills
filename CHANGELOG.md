@@ -1,17 +1,14 @@
 # Changelog
 
-## Unreleased
-
-- Preserve catalog identities while linking every skill to a portable execution contract: existing authorization, truthful test evidence, project conventions, and resumable handoffs.
-- Repair routing and instruction contradictions without changing supported capabilities.
-
-
 All notable changes to `ruby-core-skills` will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+- Preserve catalog identities while linking every skill to a portable execution contract: existing authorization, truthful test evidence, project conventions, and resumable handoffs.
+- Repair routing and instruction contradictions without changing supported capabilities.
 
 ### Changed
 - Flattened skills to `skills/<name>/SKILL.md` so `npx skills add` can pick all or one. Removed root `SKILL.md`.

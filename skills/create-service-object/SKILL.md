@@ -37,7 +37,7 @@ See tdd-process for the full gate cycle.
 
 ## Core Process
 
-1. **Write Spec (Test-First):** Create the spec/test file at `spec/services/<module_name>/<service_name>_spec.rb` (or `test/services/`). Cover success and error paths for `.call`. Run it to confirm it fails (see HARD-GATE). Tests must assert `success:` and `response:` top-level keys and the meaningful payload shape.
+1. **Write Spec (Test-First):** Create the spec/test file at `spec/services/<module_name>/<service_name>_spec.rb` (or `test/services/`). Cover success and error paths for `.call`. Run it to confirm it fails (see HARD-GATE). For a new service without an established result convention, assert `success:` and `response:` top-level keys; preserve the existing public result shape for established services.
 2. **Define Service Skeleton:** Create `services/<module_name>/<service_name>.rb` with the correct module namespace.
 3. **Select Pattern:** Choose Standard, Batch, Class-only (Pattern 3), or Orchestrator based on requirements. State whether instance state is required — if not, use Pattern 3 (no `initialize`, no instance variables).
 4. **Implement Contract:** Implement `self.call` and `#call`. Preserve the existing public result contract; for a new service without a convention, use `{ success: true, response: { ... } }` or `{ success: false, response: { error: { message: '...' } } }`. Keep `call` ≤ 20 lines; extract sub-services if longer. Validate inputs at top of `call`; return error hash if invalid. Return serialized data only — no raw persistence model objects (e.g. ActiveRecord, ROM) in `response`.
@@ -67,8 +67,7 @@ def call
   # ... processing ...
   { success: true, response: { data: result } }
 rescue DomainError => e
-  logger.error("Processing Error: #{e.message}")
-  logger.error(e.backtrace.join("\n"))
+  logger.error({ event: "service.processing_failed", error_class: e.class.name, backtrace: Array(e.backtrace).first(5) }.to_json)
   { success: false, response: { error: { message: ERROR_MESSAGE } } }
 end
 ```
@@ -79,7 +78,7 @@ def call
   results = @items.each_with_object({ successful: [], failed: [] }) do |item, acc|
     # process...
   rescue DomainError => e
-    logger.error("Unexpected item error: #{e.message}")
+    logger.error({ event: "service.processing_failed", error_class: e.class.name, backtrace: Array(e.backtrace).first(5) }.to_json)
     acc[:failed] << { sku: item[:sku], error: e.message }
   end
   { success: true, response: results }

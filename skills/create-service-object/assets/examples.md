@@ -31,7 +31,7 @@ results = items.each_with_object({ successful: [], failed: [] }) do |item, acc|
   process_item(item)
   acc[:successful] << item[:sku]
 rescue DomainError => e
-  logger.error("Item error: #{e.message}")
+  logger.error({ event: "service.processing_failed", error_class: e.class.name, backtrace: Array(e.backtrace).first(5) }.to_json)
   acc[:failed] << { sku: item[:sku], error: e.message }
 end
 { success: true, response: results }

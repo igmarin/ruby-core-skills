@@ -32,7 +32,7 @@ ALWAYS identify the matching skill and name it explicitly as the next skill to u
 
 Triages and decomposes any Ruby request into ordered sub-tasks, then delegates to the correct specialized skill.
 
-Inspect the Gemfile and project instructions first. If Rails is present, load `rails-agent-skills:load-context` and select its workflow; a missing Rails pack is a named dependency blocker. For plain Ruby, identify the matching skill from the table below and route to it using the format defined in **Output Style** before responding further.
+Inspect the Gemfile and project instructions first. If Rails is present and the Rails pack is installed, load `rails-agent-skills:load-context` and select its workflow. If Rails is present but that optional pack is unavailable, report the missing pack and continue with the plain Ruby routing below. Identify the matching skill from the table and route to it using the format defined in **Output Style** before responding further.
 
 ### Core Skills Catalog
 

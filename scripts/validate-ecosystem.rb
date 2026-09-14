@@ -16,6 +16,9 @@ class EcosystemValidator
     @registry_path = registry_path && File.expand_path(registry_path)
   end
 
+  # Validate the local pack manifest and, when requested, its sibling registry.
+  # Exits with status 0 when all checks pass and status 1 when validation fails.
+  # @return [void]
   def validate
     if @registry_path && !File.exist?(@registry_path)
       puts "FAIL: registry.json not found at #{@registry_path}"
@@ -31,8 +34,9 @@ class EcosystemValidator
         @registry = { 'packs' => { manifest.fetch('name') => { 'source' => manifest.fetch('name') } } }
       end
       @packs = @registry['packs'] || {}
-    rescue JSON::ParserError, IOError => e
-      puts "FAIL: Error reading or parsing registry.json at #{@registry_path}: #{e.message}"
+    rescue JSON::ParserError, IOError, KeyError => e
+      source = @registry_path || File.expand_path('../directory.json', __dir__)
+      puts "FAIL: Error reading or parsing manifest at #{source}: #{e.message}"
       exit 1
     end
 

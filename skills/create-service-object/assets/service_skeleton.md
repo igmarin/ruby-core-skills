@@ -31,12 +31,10 @@ module ModuleName
       end
       { success: true, response: { record: result } }
     rescue ValidationError => e
-      logger.error("Validation Error: #{e.message}")
-      logger.error(e.backtrace.join("\n"))
+      logger.error({ event: "service.validation_failed", error_class: e.class.name, backtrace: Array(e.backtrace).first(5) }.to_json)
       { success: false, response: { error: { message: e.message } } }
     rescue DomainError => e
-      logger.error("Processing Error: #{e.message}")
-      logger.error(e.backtrace.join("\n"))
+      logger.error({ event: "service.processing_failed", error_class: e.class.name, backtrace: Array(e.backtrace).first(5) }.to_json)
       { success: false, response: { error: { message: PROCESSING_FAILED } } }
     end
   end
