@@ -3,6 +3,7 @@
 1) Simple usage from controller
 
 ```ruby
+# DomainError is the project-defined recoverable business error.
 result = AnimalTransfers::TransferService.call(source_shelter_id: 1, target_shelter_id: 2, tag_number: 'ABC-123')
 if result[:success]
   render json: result[:response], status: :ok
@@ -29,7 +30,7 @@ return workspace_result unless workspace_result[:success]
 results = items.each_with_object({ successful: [], failed: [] }) do |item, acc|
   process_item(item)
   acc[:successful] << item[:sku]
-rescue StandardError => e
+rescue DomainError => e
   logger.error("Item error: #{e.message}")
   acc[:failed] << { sku: item[:sku], error: e.message }
 end

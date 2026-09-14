@@ -3,7 +3,7 @@ name: write-yard-docs
 license: MIT
 description: >
   Use when writing YARD documentation for Ruby public APIs: every public method MUST have
-  `@param`, `@return [Hash]`, and `@raise` tags, document `self.call` separately from `#call`,
+  applicable `@param`, accurately typed `@return`, and escaping-exception `@raise` tags, document `self.call` separately from `#call`,
   list each exception with its own `@raise` tag, use `@example` for module-level constructs,
   `@see` for cross-references, follow YARD `@return` type annotation conventions, add explicit
   YARD sub-tasks after implementation to task lists, keep all YARD text in English unless
@@ -17,6 +17,8 @@ metadata:
   origin: "Extracted from igmarin/rails-agent-skills v5.1.17"
 ---
 # Write YARD Docs
+
+Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
 
 Use this skill when documenting Ruby classes and public methods with YARD.
 
@@ -50,7 +52,7 @@ Task lists MUST include explicit YARD sub-tasks after implementation.
 1. **Identify Public Surfaces:** Locate all new or modified public classes, modules, and methods.
 2. **Add Class-Level Docs:** Provide a one-line summary describing the responsibility of the class or module.
 3. **Add Method-Level Docs:** For every public method, add `@param` (and `@option` for hash arguments), `@return`, and `@raise` tags. For `.call` methods or complex returns, the `@return` tag MUST specify the exact structure.
-4. **Document Exceptions:** List each exception separately with its own `@raise` tag, even if the method rescues it internally.
+4. **Document Exceptions:** List each exception separately with its own `@raise` tag, only when it can escape to callers. Describe converted error results under `@return`.
 5. **Verify Completeness:** Run `yard stats --list-undoc` and `yard doc` to ensure no public surfaces are missing documentation.
 6. **Task-list handoff:** When producing or reviewing tasks, add explicit YARD sub-tasks after implementation for every new or changed public Ruby API. If the output is only a documentation artifact (not a task list), state that future task lists must include those YARD sub-tasks.
 

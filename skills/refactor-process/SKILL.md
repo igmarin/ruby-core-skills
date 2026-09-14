@@ -15,6 +15,8 @@ metadata:
 ---
 # Refactor Process
 
+Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
+
 ## Quick Reference
 
 | Aspect | Rule |

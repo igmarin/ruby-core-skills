@@ -18,6 +18,8 @@ metadata:
 ---
 # Model Domain
 
+Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
+
 ## Quick Reference
 
 | DDD concept | Ruby default | Avoid by default | Typical home |

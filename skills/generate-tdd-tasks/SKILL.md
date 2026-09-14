@@ -20,6 +20,8 @@ metadata:
 
 # Generate TDD Tasks
 
+Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
+
 ## Core Process
 
 ### Step 1: Project Detection

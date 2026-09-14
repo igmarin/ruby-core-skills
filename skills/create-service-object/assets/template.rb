@@ -21,10 +21,7 @@ module ModuleName
 
       # TODO: replace with domain logic — see create-service-object SKILL.md (patterns, response contract).
       { success: true, response: {} }
-    rescue StandardError => e
-      logger.error(e.message)
-      logger.error(e.backtrace.first(5).join("\n"))
-      { success: false, response: { error: { message: e.message } } }
+
     end
   end
 end

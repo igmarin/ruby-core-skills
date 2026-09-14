@@ -2,27 +2,34 @@
 # frozen_string_literal: true
 
 # Ecosystem Integrity Validator
-# Run from a directory containing all 6 repos as siblings, or from the root of the workspace.
+# Defaults to standalone validation. Pass --registry PATH for a sibling-pack audit.
 
 require 'json'
 require 'yaml'
 require 'pathname'
+require 'optparse'
 
 class EcosystemValidator
 
-  def initialize
+  def initialize(registry_path: nil)
     @workspace_root = File.expand_path('../..', __dir__)
-    @registry_path = File.join(@workspace_root, 'agent-mcp-runtime', 'registry.json')
+    @registry_path = registry_path && File.expand_path(registry_path)
   end
 
   def validate
-    unless File.exist?(@registry_path)
+    if @registry_path && !File.exist?(@registry_path)
       puts "FAIL: registry.json not found at #{@registry_path}"
       exit 1
     end
 
     begin
-      @registry = JSON.parse(File.read(@registry_path))
+      if @registry_path
+        @registry = JSON.parse(File.read(@registry_path))
+      else
+        puts 'Local pack only; external dependencies are checked when packaging or with --registry PATH.'
+        manifest = JSON.parse(File.read(File.expand_path('../directory.json', __dir__)))
+        @registry = { 'packs' => { manifest.fetch('name') => { 'source' => manifest.fetch('name') } } }
+      end
       @packs = @registry['packs'] || {}
     rescue JSON::ParserError, IOError => e
       puts "FAIL: Error reading or parsing registry.json at #{@registry_path}: #{e.message}"
@@ -32,7 +39,7 @@ class EcosystemValidator
     @repos_info = {}
     @packs.each do |pack_name, pack_config|
       repo_name = pack_config['source'].split('/').last
-      repo_path = File.join(@workspace_root, repo_name)
+      repo_path = @registry_path ? File.join(@workspace_root, repo_name) : File.expand_path('..', __dir__)
       unless Dir.exist?(repo_path)
         puts "FAIL: Sibling repository #{repo_name} does not exist at #{repo_path}"
         exit 1
@@ -289,4 +296,10 @@ class EcosystemValidator
   end
 end
 
-EcosystemValidator.new.validate if __FILE__ == $PROGRAM_NAME
+if __FILE__ == $PROGRAM_NAME
+  options = {}
+  OptionParser.new do |parser|
+    parser.on('--registry PATH', 'Audit an explicit sibling-pack registry') { |path| options[:registry_path] = path }
+  end.parse!
+  EcosystemValidator.new(**options).validate
+end

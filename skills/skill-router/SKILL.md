@@ -3,9 +3,9 @@ name: skill-router
 license: MIT
 description: >
   Entry-point orchestrator that triages and decomposes complex Ruby requests into ordered
-  sub-tasks, then delegates to the correct specialised skill — never implements directly.
+  sub-tasks, then loads the correct specialised procedure and continues authorized work.
   Enforces TDD discipline across all code-producing work. Priority order:
-  TDD→Planning→Domain discovery→Process/refactor→Domain implementation. First response
+  Context→Task classification→Relevant workflow→Required test gate→Implementation. First response
   line MUST be "Next skill: skills/<name>". Falls back to `define-domain-language`
   for terminology ambiguity or `model-domain` for architecture ambiguity. Use when scope is
   unclear, best approach uncertain, or request spans multiple concerns. Trigger: where do I
@@ -19,6 +19,8 @@ metadata:
 ---
 # Skill Router
 
+Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
+
 ## HARD-GATE
 
 ```text
@@ -30,7 +32,7 @@ ALWAYS identify the matching skill and name it explicitly as the next skill to u
 
 Triages and decomposes any Ruby request into ordered sub-tasks, then delegates to the correct specialized skill.
 
-When a task arrives, identify the matching skill from the table below and route to it using the format defined in **Output Style** before responding further.
+Inspect the Gemfile and project instructions first. If Rails is present, load `rails-agent-skills:load-context` and select its workflow; a missing Rails pack is a named dependency blocker. For plain Ruby, identify the matching skill from the table below and route to it using the format defined in **Output Style** before responding further.
 
 ### Core Skills Catalog
 
@@ -56,7 +58,7 @@ When a task arrives, identify the matching skill from the table below and route 
 When multiple skills could apply, state this priority rule immediately after the routing statement:
 
 ```text
-Priority: TDD → Planning → Domain discovery → Process/refactor → Domain implementation.
+Priority: inspect context → resolve necessary ambiguity → select workflow → satisfy its test gate → implement.
 ```
 
 **Fallback for ambiguous requests:** If no clear skill match, label this explicitly as `Fallback: define-domain-language` or `Fallback: model-domain` depending on whether terminology or architecture is the source of ambiguity.

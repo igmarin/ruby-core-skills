@@ -18,6 +18,8 @@ metadata:
 ---
 # Review Process
 
+Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
+
 Standardized code review process for Ruby code changesets.
 
 ## Quick Reference
