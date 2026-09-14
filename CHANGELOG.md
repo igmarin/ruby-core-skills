@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Preserve catalog identities while linking every skill to a portable execution contract: existing authorization, truthful test evidence, project conventions, and resumable handoffs.
+- Repair routing and instruction contradictions without changing supported capabilities.
+
 ### Changed
 - Flattened skills to `skills/<name>/SKILL.md` so `npx skills add` can pick all or one. Removed root `SKILL.md`.
 

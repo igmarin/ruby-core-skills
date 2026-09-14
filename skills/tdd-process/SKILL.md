@@ -3,7 +3,7 @@ name: tdd-process
 license: MIT
 description: >
   Enforces Red-Green-Refactor with hard gates: Red phase writes failing test that MUST
-  fail on assertion (not syntax/config) and presents test+failure before proceeding,
+  fail for missing behavior (not syntax/config) and presents test+failure before proceeding,
   runs tests on the specific file (not full suite) after each phase, Green phase writes
   minimal code to pass and stops there, Refactor phase runs test after each micro-change
   and MUST stay Green throughout. Generates failing test cases, validates test failure
@@ -17,12 +17,14 @@ metadata:
 ---
 # TDD Process
 
+Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
+
 ## Process Steps
 
 ### Step 1: Red Phase
 - Write a failing test for the target behavior
 - Run the test suite on that specific file
-- **Gate:** Failure must be on the assertion — not a syntax or configuration error
+- **Gate:** Failure must demonstrate missing behavior (an assertion or missing API), not a syntax or configuration error
 - **Checkpoint:** Present the test code and failure output before proceeding to implementation
 
 ### Step 2: Green Phase

@@ -30,21 +30,13 @@ jobs:
         with:
           persist-credentials: false
       
-      - name: Clone ecosystem repos
-        run: |
-          cd ..
-          git clone --depth 1 https://github.com/igmarin/rails-agent-skills.git
-          git clone --depth 1 https://github.com/igmarin/hanakai-yaku.git
-          git clone --depth 1 https://github.com/igmarin/agnostic-planning-skills.git
-          git clone --depth 1 https://github.com/igmarin/agent-mcp-runtime.git
-          git clone --depth 1 https://github.com/igmarin/ruby-skill-bench.git
-      
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
           bundler-cache: false
       
       - name: Run ecosystem validation
-        run: |
-          cd ..
-          ruby ruby-core-skills/scripts/validate-ecosystem.rb
+        run: ruby scripts/validate-ecosystem.rb
+
+      - name: Verify standalone checkout regression
+        run: ruby spec/validate_ecosystem_spec.rb

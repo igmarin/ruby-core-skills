@@ -3,6 +3,7 @@
 module ModuleName
   class ServiceName
     MISSING_PARAM = 'Missing required parameter'
+    PROCESSING_FAILED = 'Processing could not be completed'
 
     # @param params [Hash] :key1, :key2
     # @return [Hash] { success: Boolean, response: Hash }
@@ -21,10 +22,9 @@ module ModuleName
 
       # TODO: replace with domain logic — see create-service-object SKILL.md (patterns, response contract).
       { success: true, response: {} }
-    rescue StandardError => e
-      logger.error(e.message)
-      logger.error(e.backtrace.first(5).join("\n"))
-      { success: false, response: { error: { message: e.message } } }
+    rescue DomainError => e
+      logger.error({ event: "service.processing_failed", error_class: e.class.name, backtrace: Array(e.backtrace).first(5) }.to_json)
+      { success: false, response: { error: { message: PROCESSING_FAILED } } }
     end
   end
 end

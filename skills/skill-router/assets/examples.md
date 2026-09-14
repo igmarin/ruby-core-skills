@@ -24,9 +24,9 @@ Active responses must put `Next skill: ...` first. When multiple skills may appl
 >
 > **Match:** Service extraction + external API integration. Two skills apply.
 >
-> **Chain:** `integrate-api-client` (API client layers) → `create-service-object` (sync coordination) → `tdd-process` (spec/test implementation)
+> **Chain:** `test-planning-process` → `tdd-process` (observe RED) → `integrate-api-client` (API client layers) → `create-service-object` (sync coordination)
 >
-> **Next skill: skills/integrate-api-client**
+> **Next skill: skills/test-planning-process**
 
 ### 3. Documenting Code
 

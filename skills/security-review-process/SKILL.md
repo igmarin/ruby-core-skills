@@ -16,6 +16,8 @@ metadata:
 ---
 # Security Review Process
 
+Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
+
 ## Security Gates & Quick Reference
 
 | Area | Gate |

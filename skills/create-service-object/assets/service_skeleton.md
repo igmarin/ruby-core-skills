@@ -5,6 +5,7 @@ Purpose: Comprehensive reference skeleton showing all conventions. Use `template
 ## Standard service (with transaction, validation, YARD)
 
 ```ruby
+# DomainError is the project-defined recoverable business error.
 # frozen_string_literal: true
 
 module ModuleName
@@ -30,12 +31,10 @@ module ModuleName
       end
       { success: true, response: { record: result } }
     rescue ValidationError => e
-      logger.error("Validation Error: #{e.message}")
-      logger.error(e.backtrace.join("\n"))
+      logger.error({ event: "service.validation_failed", error_class: e.class.name, backtrace: Array(e.backtrace).first(5) }.to_json)
       { success: false, response: { error: { message: e.message } } }
-    rescue StandardError => e
-      logger.error("Processing Error: #{e.message}")
-      logger.error(e.backtrace.join("\n"))
+    rescue DomainError => e
+      logger.error({ event: "service.processing_failed", error_class: e.class.name, backtrace: Array(e.backtrace).first(5) }.to_json)
       { success: false, response: { error: { message: PROCESSING_FAILED } } }
     end
   end

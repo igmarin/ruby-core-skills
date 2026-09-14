@@ -128,3 +128,9 @@ agent-mcp-runtime --pack rails --task "Add full_name to User model"
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Agent composition and compatibility
+
+Use [the execution contract](docs/agent-contract.md) when applying these skills. Developer roles and host exports are composed in `igmarin/agent-profiles`; this repository remains authoritative for the skill text and resources. Existing names and paths remain valid. Root `AGENTS.md` is for contributors, not an installed developer role.
+
+Run `ruby scripts/validate-ecosystem.rb` from a clean checkout for local catalog checks and `ruby spec/validate_ecosystem_spec.rb` for the standalone regression. For an explicit sibling ecosystem audit, pass `--registry /path/to/registry.json`; local success does not claim external dependencies were resolved.
