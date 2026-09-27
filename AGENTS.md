@@ -1,10 +1,7 @@
-# Agent instructions
+# Repository guidance
 
-## Code intelligence
-
-Use these tools before dumping whole files or grepping the tree.
-
-1. If `.codegraph/` exists, run `codegraph explore "<symbol or question>"` (or the CodeGraph MCP tools).
-2. If `graphify-out/graph.json` exists, use Graphify (`graphify explain`, `graphify path`, or the Graphify MCP).
-3. For a whole-repo pack, run `repomix` using `repomix.config.json`. Do not commit `repomix-output.*`.
-4. Regenerate Graphify with `graphify extract . --backend deepseek --no-cluster` (DeepSeek is the global LLM). Rust workspaces also pass `--cargo`.
+- `directory.json` is the skill registry. Keep each registered path valid.
+- This pack owns Ruby language and application patterns; Rails-specific conventions live in `rails-agent-skills`.
+- `code-workflow` is the sole Ruby process skill; keep its modes short and behavior-specific.
+- Keep examples and templates opt-in unless a skill needs them on every invocation.
+- Run `ruby scripts/validate-ecosystem.rb` after registry or cross-pack changes.

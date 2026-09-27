@@ -15,7 +15,6 @@ metadata:
 ---
 # Define Domain Language
 
-Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
 
 ## Quick Reference
 

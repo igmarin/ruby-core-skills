@@ -1,4 +1,8 @@
 # Changelog
+## [2.0.0] - 2026-09-26
+
+Breaking skill-profile release. See README.md for the migration map.
+
 
 All notable changes to `ruby-core-skills` will be documented in this file.
 

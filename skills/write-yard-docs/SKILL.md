@@ -18,7 +18,6 @@ metadata:
 ---
 # Write YARD Docs
 
-Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
 
 Use this skill when documenting Ruby classes and public methods with YARD.
 
