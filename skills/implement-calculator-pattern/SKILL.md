@@ -20,7 +20,6 @@ metadata:
 
 # Implement Calculator Pattern
 
-Apply the [execution contract](../../docs/agent-contract.md) before this procedure.
 
 One API for the client: `Calculator::Factory.for(entity).calculate`. The factory picks the strategy; NullService handles unknown variants safely.
 
