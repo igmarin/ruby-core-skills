@@ -11,7 +11,8 @@ Language-level Ruby patterns and one mode-based engineering workflow. Use with t
 | Old process/router | Use |
 |---|---|
 | `skill-router` | shared `work-router` |
-| `tdd-process`, `refactor-process`, `review-process`, `security-review-process`, `test-planning-process`, `respond-to-review` | `code-workflow` in the matching mode |
+| `tdd-process`, `refactor-process`, `review-process`, `security-review-process`, `respond-to-review` | `code-workflow` in the matching mode |
+| `test-planning-process` | `generate-tdd-tasks` |
 | `generate-tdd-tasks` | retained for Ruby implementation breakdown |
 
 [Pack metadata](directory.json) · [Docs index](docs/index.md)

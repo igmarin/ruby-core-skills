@@ -1,5 +1,6 @@
 # Repository guidance
 
+- Continue only authorized work; obtain authorization before starting new work that requires it.
 - `directory.json` is the skill registry. Keep each registered path valid.
 - This pack owns Ruby language and application patterns; Rails-specific conventions live in `rails-agent-skills`.
 - `code-workflow` is the sole Ruby process skill; keep its modes short and behavior-specific.

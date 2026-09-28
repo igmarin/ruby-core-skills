@@ -2,7 +2,7 @@
   "name": "igmarin/ruby-core-skills",
   "version": "2.0.0",
   "license": "MIT",
-  "summary": "Curated library of 16 public Ruby AI agent skills: 10 atomic skills (YARD docs, service objects, calculator pattern, API clients, DDD, bug triage, code review, skill routing), 5 process-discipline skills (TDD, refactoring, review, security, test planning), and 1 planning skill (TDD task generation). Zero agents \u2014 this is a foundational library consumed by framework-specific skill packs like rails-agent-skills and hanakai-yaku.",
+  "summary": "10 public Ruby skills: 8 language and domain skills, TDD task generation, and the mode-based code-workflow for implementation, refactoring, review, and security. This foundation supports framework-specific packs such as rails-agent-skills and hanakai-yaku.",
   "depends_on": [
     "igmarin/agnostic-planning-skills"
   ],
